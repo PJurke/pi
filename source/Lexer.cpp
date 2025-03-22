@@ -1,7 +1,7 @@
 #include "../include/Lexer.h"
 #include <cctype>
 
-Lexer::Lexer(const std::string &source) : source(source), index(0) {}
+Lexer::Lexer(const std::string &source) : source(source), index(0), line(1), column(1) {}
 
 char Lexer::currentChar() {
     if (index < source.size())
@@ -10,6 +10,12 @@ char Lexer::currentChar() {
 }
 
 void Lexer::advance() {
+    if (currentChar() == '\n') {
+        line++;
+        column = 1;
+    } else {
+        column++;
+    }
     index++;
 }
 
@@ -26,52 +32,58 @@ std::vector<Token> Lexer::tokenize() {
             continue;
         }
 
+        // Save start position for the current token
+        int tokenLine = line;
+        int tokenColumn = column;
+
         if (isalpha(c)) {
             std::string word;
+
             while (isalnum(currentChar())) {
                 word.push_back(currentChar());
                 advance();
             }
+
             if (word == "func")
-                tokens.push_back({TOKEN_FUNC, word});
+                tokens.push_back({TOKEN_FUNC, word, tokenLine, tokenColumn});
             else if (word == "start")
-                tokens.push_back({TOKEN_START, word});
+                tokens.push_back({TOKEN_START, word, tokenLine, tokenColumn});
             else if (word == "print")
-                tokens.push_back({TOKEN_PRINT, word});
+                tokens.push_back({TOKEN_PRINT, word, tokenLine, tokenColumn});
             else if (word == "int32")
-                tokens.push_back({TOKEN_INT32, word});
+                tokens.push_back({TOKEN_INT32, word, tokenLine, tokenColumn});
             else
-                tokens.push_back({TOKEN_IDENT, word});
+                tokens.push_back({TOKEN_IDENT, word, tokenLine, tokenColumn});
             continue;
         }
 
         if (c == '-' && (index + 1 < source.size()) && source[index + 1] == '>') {
-            tokens.push_back({TOKEN_ARROW, "->"});
+            tokens.push_back({TOKEN_ARROW, "->", tokenLine, tokenColumn});
             advance(); // skip '-'
             advance(); // skip '>'
             continue;
         }
 
         if (c == '(') {
-            tokens.push_back({TOKEN_LPAREN, "("});
+            tokens.push_back({TOKEN_LPAREN, "(", tokenLine, tokenColumn});
             advance();
             continue;
         }
 
         if (c == ')') {
-            tokens.push_back({TOKEN_RPAREN, ")"});
+            tokens.push_back({TOKEN_RPAREN, ")", tokenLine, tokenColumn});
             advance();
             continue;
         }
 
         if (c == '{') {
-            tokens.push_back({TOKEN_LBRACE, "{"});
+            tokens.push_back({TOKEN_LBRACE, "{", tokenLine, tokenColumn});
             advance();
             continue;
         }
 
         if (c == '}') {
-            tokens.push_back({TOKEN_RBRACE, "}"});
+            tokens.push_back({TOKEN_RBRACE, "}", tokenLine, tokenColumn});
             advance();
             continue;
         }
@@ -79,20 +91,22 @@ std::vector<Token> Lexer::tokenize() {
         if (c == '"') {
             std::string str;
             advance(); // öffnendes Anführungszeichen überspringen
+
             while (currentChar() != '"' && currentChar() != '\0') {
                 str.push_back(currentChar());
                 advance();
             }
+
             advance(); // schließendes Anführungszeichen überspringen
-            tokens.push_back({TOKEN_STRING, str});
+            tokens.push_back({TOKEN_STRING, str, tokenLine, tokenColumn});
             continue;
         }
 
         // Unbekannte Zeichen behandeln
-        tokens.push_back({TOKEN_UNKNOWN, std::string(1, c)});
+        tokens.push_back({TOKEN_UNKNOWN, std::string(1, c), tokenLine, tokenColumn});
         advance();
     }
 
-    tokens.push_back({TOKEN_EOF, ""});
+    tokens.push_back({TOKEN_EOF, "", line, column});
     return tokens;
 }

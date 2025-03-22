@@ -29,7 +29,7 @@ std::string readFile(const std::string &filename) {
     std::ifstream file(filename);
 
     if (!file)
-        throw std::runtime_error("Kann Datei " + filename + " nicht öffnen.");
+        throw std::runtime_error("Cannot open file " + filename);
     
     std::stringstream buffer;
     buffer << file.rdbuf();

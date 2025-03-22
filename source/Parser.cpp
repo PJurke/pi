@@ -17,8 +17,14 @@ void Parser::advance() {
 
 void Parser::expect(TokenType type, const std::string& errMsg) {
 
-    if (currentToken().type != type) {
-        std::string fullErr = errMsg + " (found: \"" + currentToken().lexeme + "\")";
+    Token token = currentToken();
+
+    if (token.type != type) {
+        std::string fullErr = "Syntax Error\n" +
+            errMsg + "\n" +
+            "Line " + std::to_string(token.line) + ", column " + std::to_string(token.column) + "\n" +
+            "Encountered: \"" + token.lexeme + "\"\n";
+
         throw std::runtime_error(fullErr);
     }
 
