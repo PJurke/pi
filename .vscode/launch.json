@@ -1,0 +1,24 @@
+{
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Launch pi-lang",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/pi-lang",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "lldb",
+            "setupCommands": [
+                {
+                    "description": "Enable pretty-printing for LLDB",
+                    "text": "settings set target.pretty-printing true",
+                    "ignoreFailures": true
+                }
+            ]
+        }
+    ]
+}

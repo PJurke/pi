@@ -1,0 +1,34 @@
+{
+    "tasks": [
+        {
+            "label": "C++ Build & Run",
+            "type": "shell",
+            "command": "g++",
+            "args": [
+                "-std=c++17",
+                "-Wall",
+                "-g",
+                "-o",
+                "pi",
+                "lexer.cpp",
+                "parser.cpp",
+                "main.cpp"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": ["$gcc"]
+        },
+        {
+            "label": "Run Executable",
+            "type": "shell",
+            "command": "./pi",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            },
+            "dependsOn": "C++ Build & Run"
+        }
+    ]
+}
