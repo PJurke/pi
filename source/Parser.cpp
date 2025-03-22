@@ -1,5 +1,6 @@
-#include "../include/Parser.h"
 #include <stdexcept>
+#include "../include/Parser.h"
+#include "../include/Token.h"
 
 Parser::Parser(const std::vector<Token>& tokens) : tokens(tokens), index(0) {}
 
@@ -15,8 +16,12 @@ void Parser::advance() {
 }
 
 void Parser::expect(TokenType type, const std::string& errMsg) {
-    if (currentToken().type != type)
-        throw std::runtime_error(errMsg);
+
+    if (currentToken().type != type) {
+        std::string fullErr = errMsg + " (found: \"" + currentToken().lexeme + "\")";
+        throw std::runtime_error(fullErr);
+    }
+
     advance();
 }
 

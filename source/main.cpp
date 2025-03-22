@@ -51,7 +51,13 @@ int main() {
 
     // Parsing: Build an AST from the tokens
     Parser parser(tokens);
-    auto funcAST = parser.parseFunction();
+    std::unique_ptr<FunctionNode> funcAST;
+    try {
+        funcAST = parser.parseFunction();
+    } catch (const std::runtime_error &e) {
+        errs() << "Parsing error: " << e.what() << "\n";
+        return 1;
+    }
 
     // IR-Generation
     LLVMContext Context;
