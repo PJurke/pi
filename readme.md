@@ -1,5 +1,14 @@
 # PI Language
 
+## Requirements
+- CMake
+- LLVM
+
+## Build
 ```shell
-clang++ -std=c++17 -g source/main.cpp source/Lexer.cpp source/Parser.cpp source/Token.cpp `llvm-config --cxxflags --ldflags --system-libs --libs core` -o pi-lang
+mkdir build
+cd build
+cmake ..
+cmake --build .
+./pi-lang
 ```
