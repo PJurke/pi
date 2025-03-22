@@ -10,5 +10,5 @@ mkdir build
 cd build
 cmake ..
 cmake --build .
-./pi-lang
+./pi-lang ../code/start.pi
 ```

@@ -10,6 +10,7 @@
 #include <llvm/Support/TargetSelect.h>
 #include <llvm/Support/raw_ostream.h>
 
+#include <iostream>
 #include <fstream>
 #include <sstream>
 #include <stdexcept>
@@ -35,15 +36,28 @@ std::string readFile(const std::string &filename) {
     return buffer.str();
 }
 
-int main() {
+// The Pi file is given by the arguments    
+int main(int argc, char **argv) {
+
+    if (argc < 2) {
+        std::cerr << "Usage: " << argv[0] << " <pi_file_path>" << std::endl;
+        return 1;
+    }
+    
+    // Reads the path to the Pi file from the command line
+    std::string filePath = argv[1];
+    std::string source;
+    try {
+        source = readFile(filePath);
+    } catch (const std::runtime_error &e) {
+        std::cerr << "Error reading the file: " << e.what() << std::endl;
+        return 1;
+    }
 
     // Initialize LLVM
     InitializeNativeTarget();
     InitializeNativeTargetAsmPrinter();
     InitializeNativeTargetAsmParser();
-
-    // Read Pi language file
-    std::string source = readFile("code/start.pi");
 
     // Lexical analysis: Tokenize the read pi language code
     Lexer lexer(source);
