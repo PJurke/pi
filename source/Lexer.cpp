@@ -90,19 +90,19 @@ std::vector<Token> Lexer::tokenize() {
 
         if (c == '"') {
             std::string str;
-            advance(); // öffnendes Anführungszeichen überspringen
+            advance(); // skip opening quotation mark
 
             while (currentChar() != '"' && currentChar() != '\0') {
                 str.push_back(currentChar());
                 advance();
             }
 
-            advance(); // schließendes Anführungszeichen überspringen
+            advance(); // skip closing quotation mark
             tokens.push_back({TOKEN_STRING, str, tokenLine, tokenColumn});
             continue;
         }
 
-        // Unbekannte Zeichen behandeln
+        // Handle unknown characters
         tokens.push_back({TOKEN_UNKNOWN, std::string(1, c), tokenLine, tokenColumn});
         advance();
     }

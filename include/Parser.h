@@ -11,16 +11,16 @@ struct ASTNode {
     virtual ~ASTNode() = default;
 };
 
-// AST-Knoten für einen Print-Befehl
+// AST node for a print command
 struct PrintNode : public ASTNode {
     std::string text;
 };
 
-// Neuer AST-Knoten für Funktionen
+// New AST node for functions
 struct FunctionNode : public ASTNode {
     std::string name;
-    std::string returnType; // Hier können wir später einen komplexeren Typ repräsentieren
-    std::unique_ptr<ASTNode> body; // Aktuell gehen wir von einem einzelnen PrintNode aus
+    std::string returnType; // Here we can later represent a more complex type
+    std::unique_ptr<ASTNode> body; // We currently assume a single PrintNode
 };
 
 class Parser {
@@ -33,7 +33,7 @@ private:
     Token currentToken();
     void advance();
     
-    // Hilfsfunktionen, z.B. um erwartete Token zu überprüfen:
+    // Auxiliary functions, e.g. to check expected tokens:
     void expect(TokenType type, const std::string& errMsg);
 };
 
