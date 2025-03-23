@@ -18,6 +18,11 @@ enum TokenType {
 
     TOKEN_ARROW,    // indicate a return type of a function
 
+    // CHARACTER TYPES
+    TOKEN_CHAR8,
+    TOKEN_CHAR16,
+    TOKEN_CHAR32,
+
     // INTEGER TYPES
     TOKEN_INT8,
     TOKEN_INT16,

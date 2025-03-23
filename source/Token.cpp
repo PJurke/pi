@@ -17,6 +17,14 @@ std::string TokenTypeToString(TokenType type) {
 
         case TokenType::TOKEN_ARROW:    return "->";
         
+        // CHARACTER TYPES
+
+        case TokenType::TOKEN_CHAR8:    return "char8";
+        case TokenType::TOKEN_CHAR16:   return "char16";
+        case TokenType::TOKEN_CHAR32:   return "char32";
+
+        // INTEGER TYPES
+
         case TokenType::TOKEN_INT8:     return "int8";
         case TokenType::TOKEN_INT16:    return "int16";
         case TokenType::TOKEN_INT32:    return "int32";
