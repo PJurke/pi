@@ -6,9 +6,5 @@
 
 ## Build
 ```shell
-mkdir build
-cd build
-cmake ..
-cmake --build .
-./pi-lang ../code/start.pi
+./run.sh
 ```
