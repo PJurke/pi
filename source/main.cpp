@@ -79,7 +79,13 @@ int main(int argc, char **argv) {
     IRBuilder<> Builder(Context);
 
     Type* retType = nullptr;
-    if (funcAST->returnType == "int8")
+    if (funcAST->returnType == "char8")
+        retType = Builder.getInt8Ty();
+    else if (funcAST->returnType == "char16")
+        retType = Builder.getInt16Ty();
+    else if (funcAST->returnType == "char32")
+        retType = Builder.getInt32Ty();
+    else if (funcAST->returnType == "int8")
         retType = Builder.getInt8Ty();
     else if (funcAST->returnType == "int16")
         retType = Builder.getInt16Ty();

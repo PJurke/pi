@@ -57,11 +57,12 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
     std::string retType;
 
     Token t = currentToken();
-    if (t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64) {
+    if (t.type == TOKEN_CHAR8 || t.type == TOKEN_CHAR16 || t.type == TOKEN_CHAR32 ||
+        t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64) {
         retType = t.lexeme;
         advance();
     } else {
-        throw std::runtime_error("Expected type (e.g. int8, int16, int32, int64) after '->'");
+        throw std::runtime_error("Expected type (e.g. char8, char16, char32, int8, int16, int32, int64) after '->'");
     }
 
     // Function body
