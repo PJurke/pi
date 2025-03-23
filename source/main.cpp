@@ -78,8 +78,17 @@ int main(int argc, char **argv) {
     auto TheModule = std::make_unique<Module>("MyLangModule", Context);
     IRBuilder<> Builder(Context);
 
-    // For int32 return type
-    Type *retType = Builder.getInt32Ty();
+    Type* retType = nullptr;
+    if (funcAST->returnType == "int8")
+        retType = Builder.getInt8Ty();
+    else if (funcAST->returnType == "int16")
+        retType = Builder.getInt16Ty();
+    else if (funcAST->returnType == "int32")
+        retType = Builder.getInt32Ty();
+    else if (funcAST->returnType == "int64")
+        retType = Builder.getInt64Ty();
+    else
+        throw std::runtime_error("Unsupported return type: " + funcAST->returnType);
 
     // Declare C function: int puts(const char*);
     std::vector<Type*> putsArgs { Type::getInt8Ty(Context)->getPointerTo() };

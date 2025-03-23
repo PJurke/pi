@@ -50,8 +50,14 @@ std::vector<Token> Lexer::tokenize() {
                 tokens.push_back({TOKEN_START, word, tokenLine, tokenColumn});
             else if (word == "print")
                 tokens.push_back({TOKEN_PRINT, word, tokenLine, tokenColumn});
+            else if (word == "int8")
+                tokens.push_back({TOKEN_INT8, word, tokenLine, tokenColumn});
+            else if (word == "int16")
+                tokens.push_back({TOKEN_INT16, word, tokenLine, tokenColumn});
             else if (word == "int32")
                 tokens.push_back({TOKEN_INT32, word, tokenLine, tokenColumn});
+            else if (word == "int64")
+                tokens.push_back({TOKEN_INT64, word, tokenLine, tokenColumn});
             else
                 tokens.push_back({TOKEN_IDENT, word, tokenLine, tokenColumn});
             continue;

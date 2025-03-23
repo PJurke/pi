@@ -16,9 +16,14 @@ enum TokenType {
     TOKEN_LBRACE,   // {
     TOKEN_RBRACE,   // }
 
-    TOKEN_ARROW,    // result type of a function
+    TOKEN_ARROW,    // indicate a return type of a function
 
-    TOKEN_INT32,    // data type integer, 32 bit
+    // INTEGER TYPES
+    TOKEN_INT8,
+    TOKEN_INT16,
+    TOKEN_INT32,
+    TOKEN_INT64,
+    
     TOKEN_STRING,   // data type string
 
     TOKEN_EOF,      // end of file

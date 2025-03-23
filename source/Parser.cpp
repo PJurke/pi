@@ -56,11 +56,12 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
     expect(TOKEN_ARROW, "Expected '->' after parameter list");
     std::string retType;
 
-    if (currentToken().type == TOKEN_INT32) {
-        retType = currentToken().lexeme;
+    Token t = currentToken();
+    if (t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64) {
+        retType = t.lexeme;
         advance();
     } else {
-        throw std::runtime_error("Expected type (e.g. int32) after '->'");
+        throw std::runtime_error("Expected type (e.g. int8, int16, int32, int64) after '->'");
     }
 
     // Function body
