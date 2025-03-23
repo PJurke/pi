@@ -17,7 +17,7 @@ PrintStatement ::= "print" "(" StringLiteral ")"
 ```
 
 ```ebnf
-Type ::= "int32"
+Type ::= "int8" | "int16" | "int32" | "int64"
 ```
 
 ```ebnf
