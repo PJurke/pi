@@ -18,4 +18,4 @@ cmake ..
 cmake --build .
 
 # Run the program with the given .pi file
-./pi-lang ../code/start.pi
+./picc ../code/start.pi

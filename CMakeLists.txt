@@ -26,11 +26,11 @@ set(SOURCE_FILES
 )
 
 # Create the executable
-add_executable(pi-lang ${SOURCE_FILES})
+add_executable(picc ${SOURCE_FILES})
 
 # Get the necessary LLVM libraries:
 # We add the “native” component here in addition to “core” to link the native target functions (AArch64).
 llvm_map_components_to_libnames(llvm_libs core native)
 
 # Link the LLVM libraries to your project
-target_link_libraries(pi-lang ${llvm_libs})
+target_link_libraries(picc ${llvm_libs})
