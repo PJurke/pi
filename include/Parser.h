@@ -1,10 +1,11 @@
 #ifndef PARSER_H
 #define PARSER_H
 
-#include "Lexer.h"
-#include <vector>
-#include <string>
 #include <memory>
+#include <string>
+#include <vector>
+
+#include "Lexer.h"
 
 // Base class for AST nodes
 struct ASTNode {

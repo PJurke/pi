@@ -1,5 +1,6 @@
-#include "../include/Lexer.h"
 #include <cctype>
+
+#include "../include/Lexer.h"
 
 Lexer::Lexer(const std::string &source) : source(source), index(0), line(1), column(1) {}
 

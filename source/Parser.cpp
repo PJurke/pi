@@ -1,4 +1,5 @@
 #include <stdexcept>
+
 #include "../include/Parser.h"
 #include "../include/Token.h"
 

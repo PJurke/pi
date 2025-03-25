@@ -20,6 +20,7 @@ include_directories(${PROJECT_SOURCE_DIR}/include)
 # List of source code files (adjust the paths if necessary)
 set(SOURCE_FILES
     source/main.cpp
+    source/Codegen.cpp
     source/Lexer.cpp
     source/Parser.cpp
     source/Token.cpp

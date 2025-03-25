@@ -1,22 +1,14 @@
-#include <llvm/ADT/STLExtras.h>
-#include <llvm/IR/BasicBlock.h>
-#include <llvm/IR/Constants.h>
-#include <llvm/IR/Function.h>
-#include <llvm/IR/IRBuilder.h>
+#include <fstream>
+#include <iostream>
+#include <memory>
+#include <sstream>
+#include <stdexcept>
+
 #include <llvm/IR/LLVMContext.h>
-#include <llvm/IR/Module.h>
-#include <llvm/IR/Type.h>
-#include <llvm/IR/Verifier.h>
 #include <llvm/Support/TargetSelect.h>
 #include <llvm/Support/raw_ostream.h>
 
-#include <iostream>
-#include <fstream>
-#include <sstream>
-#include <stdexcept>
-#include <memory>
-#include <vector>
-
+#include "../include/Codegen.h"
 #include "../include/Lexer.h"
 #include "../include/Parser.h"
 
@@ -73,62 +65,23 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    // IR-Generation
-    LLVMContext Context;
-    auto TheModule = std::make_unique<Module>("MyLangModule", Context);
-    IRBuilder<> Builder(Context);
+    // Code generation via the outsourced module
+    Codegen codegen;
+    codegen.generateCode(funcAST.get());
 
-    Type* retType = nullptr;
-    if (funcAST->returnType == "char8")
-        retType = Builder.getInt8Ty();
-    else if (funcAST->returnType == "char16")
-        retType = Builder.getInt16Ty();
-    else if (funcAST->returnType == "char32")
-        retType = Builder.getInt32Ty();
-    else if (funcAST->returnType == "int8")
-        retType = Builder.getInt8Ty();
-    else if (funcAST->returnType == "int16")
-        retType = Builder.getInt16Ty();
-    else if (funcAST->returnType == "int32")
-        retType = Builder.getInt32Ty();
-    else if (funcAST->returnType == "int64")
-        retType = Builder.getInt64Ty();
-    else
-        throw std::runtime_error("Unsupported return type: " + funcAST->returnType);
+    // Create the main function that calls the generated function
+    llvm::LLVMContext &context = codegen.getModule()->getContext();
+    llvm::IRBuilder<> builder(context);
+    llvm::FunctionType* mainType = llvm::FunctionType::get(builder.getInt32Ty(), false);
+    llvm::Function* mainFunc = llvm::Function::Create(mainType, llvm::Function::ExternalLinkage, "main", codegen.getModule().get());
+    llvm::BasicBlock* mainBB = llvm::BasicBlock::Create(context, "entry", mainFunc);
+    builder.SetInsertPoint(mainBB);
+    builder.CreateCall(codegen.getModule()->getFunction(funcAST->name));
+    builder.CreateRet(llvm::ConstantInt::get(builder.getInt32Ty(), 0));
+    llvm::verifyFunction(*mainFunc);
 
-    // Declare C function: int puts(const char*);
-    std::vector<Type*> putsArgs { Type::getInt8Ty(Context)->getPointerTo() };
-    FunctionType *putsType = FunctionType::get(Builder.getInt32Ty(), putsArgs, false);
-    FunctionCallee putsFunc = TheModule->getOrInsertFunction("puts", putsType);
-
-    // Create "start" funktion: void start()
-    FunctionType *funcType = FunctionType::get(retType, false);
-    Function *func = Function::Create(funcType, Function::ExternalLinkage, funcAST->name, TheModule.get());
-    BasicBlock *funcBB = BasicBlock::Create(Context, "entry", func);
-    Builder.SetInsertPoint(funcBB);
-
-    // Expect body is PrintNode
-    PrintNode *printNode = dynamic_cast<PrintNode*>(funcAST->body.get());
-    if (printNode) {
-        Value *helloWorld = Builder.CreateGlobalStringPtr(printNode->text, "helloWorld");
-        Builder.CreateCall(putsFunc, helloWorld);
-    }
-
-    // For int32 return functions we return 0
-    Builder.CreateRet(ConstantInt::get(retType, 0));
-    verifyFunction(*func);
-
-    // Create the “main” function: int main()
-    FunctionType *mainType = FunctionType::get(Builder.getInt32Ty(), false);
-    Function *mainFunc = Function::Create(mainType, Function::ExternalLinkage, "main", TheModule.get());
-    BasicBlock *mainBB = BasicBlock::Create(Context, "entry", mainFunc);
-    Builder.SetInsertPoint(mainBB);
-    Builder.CreateCall(func);
-    Builder.CreateRet(ConstantInt::get(Builder.getInt32Ty(), 0));
-    verifyFunction(*mainFunc);
-
-    // Output of the generated LLVM-IR to stdout
-    TheModule->print(outs(), nullptr);
+    // Output of the generated LLVM-IR
+    codegen.printModule();
     return 0;
     
 }
