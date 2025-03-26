@@ -18,7 +18,7 @@ cmake ..
 cmake --build .
 
 # Compiler the given .pi file to LLVM IR
-./picc ../code/start.pi > start.ll
+./picc ../examples/hello-world.pi > hello-world.ll
 
 # Run the generated LLVM IR
-lli start.ll
+lli hello-world.ll
