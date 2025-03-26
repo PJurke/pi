@@ -9,6 +9,7 @@ enum TokenType {
     TOKEN_START,    // start function
     TOKEN_IDENT,    // function identifier
     TOKEN_PRINT,    // print function (provisional)
+    TOKEN_CONST,    // constant
 
     TOKEN_LPAREN,   // (
     TOKEN_RPAREN,   // )
@@ -16,6 +17,8 @@ enum TokenType {
     TOKEN_LBRACE,   // {
     TOKEN_RBRACE,   // }
 
+    TOKEN_COLON,    // :
+    TOKEN_ASSIGN,   // =
     TOKEN_ARROW,    // indicate a return type of a function
 
     // CHARACTER TYPES
@@ -30,6 +33,7 @@ enum TokenType {
     TOKEN_INT64,
     
     TOKEN_STRING,   // data type string
+    TOKEN_NUMBER,   // data type number
 
     TOKEN_EOF,      // end of file
     TOKEN_UNKNOWN   // something unexpected appeared
