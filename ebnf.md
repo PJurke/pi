@@ -14,14 +14,20 @@ A function consists of a series of statements.
 FunctionDefinition ::= "func" Identifier "(" ")" "->" Type "{" { Statement } "}"
 ```
 
-For now, print statements are allowed.
+For now, print and const statements are allowed.
 
 ```ebnf
-Statement ::= PrintStatement
+Statement ::= PrintStatement | ConstStatement
 ```
 
 ```ebnf
 PrintStatement ::= "print" "(" StringLiteral ")"
+```
+
+Only numeric literals are allowed for now
+
+```ebnf
+ConstStatement ::= "const" Identifier ":" Type "=" NumberLiteral
 ```
 
 **Types and Constants**<br>
