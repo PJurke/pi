@@ -1,0 +1,3 @@
+func start() -> int32 {
+    const x: int32 = 42
+}
