@@ -11,7 +11,7 @@ Program ::= { FunctionDefinition }
 A function consists of a series of statements.
 
 ```ebnf
-FunctionDefinition ::= "func" Identifier "(" ")" "->" Type "{" Statement "}"
+FunctionDefinition ::= "func" Identifier "(" ")" "->" Type "{" { Statement } "}"
 ```
 
 For now, print statements are allowed.
