@@ -90,6 +90,32 @@ std::vector<Token> Lexer::tokenize() {
             continue;
         }
 
+        if (c == '\'') {
+
+            // skip the opening '
+            advance();
+            
+            std::string charLiteral;
+
+            // optional: handling of escape sequences
+            if (currentChar() == '\\') {
+                advance();
+                charLiteral.push_back(currentChar());
+                advance();
+            } else {
+                charLiteral.push_back(currentChar());
+                advance();
+            }
+
+            if (currentChar() != '\'')
+                throw std::runtime_error("Expected closing ' for char literal");
+
+            // skip the closing '
+            advance();
+            tokens.push_back({TOKEN_CHAR, charLiteral, tokenLine, tokenColumn});
+            continue;
+        }
+
         if (c == '-' && (index + 1 < source.size()) && source[index + 1] == '>') {
             tokens.push_back({TOKEN_ARROW, "->", tokenLine, tokenColumn});
             advance(); // skip '-'

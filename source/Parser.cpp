@@ -135,11 +135,17 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         expect(TOKEN_ASSIGN, "Expected '=' after type");
 
-        if (currentToken().type != TOKEN_NUMBER)
-            throw std::runtime_error("Expected number after '=' in const statement");
-
-        int value = std::stoi(currentToken().lexeme);
-        advance();
+        int value = 0;
+        if (currentToken().type == TOKEN_NUMBER) {
+            value = std::stoi(currentToken().lexeme);
+            advance();
+        } else if (currentToken().type == TOKEN_CHAR) {
+            // Assumption: lexeme contains exactly one character, e.g. “a”
+            value = static_cast<int>(currentToken().lexeme[0]);
+            advance();
+        } else {
+            throw std::runtime_error("Expected number or char literal after '=' in const statement");
+        }
 
         auto node = std::make_unique<ConstNode>();
         node->name = name;

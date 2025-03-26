@@ -1,3 +1,4 @@
 func start() -> int32 {
     const x: int32 = 42
+    const y: char8 = 'a'
 }

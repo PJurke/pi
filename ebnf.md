@@ -44,11 +44,15 @@ Identifier ::= Letter { Letter | Digit }
 **Literals**
 
 ```ebnf
-Literal ::= NumberLiteral | StringLiteral
+Literal ::= NumberLiteral | CharLiteral | StringLiteral
 ```
 
 ```ebnf
 NumberLiteral ::= Digit { Digit }
+```
+
+```ebnf
+CharLiteral ::= "'" AnySingleCharExceptQuoteOrBackslash "'"
 ```
 
 ```ebnf

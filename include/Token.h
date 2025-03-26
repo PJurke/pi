@@ -32,6 +32,7 @@ enum TokenType {
     TOKEN_INT32,
     TOKEN_INT64,
     
+    TOKEN_CHAR,     // char data type
     TOKEN_STRING,   // data type string
     TOKEN_NUMBER,   // data type number
 
