@@ -24,10 +24,18 @@ struct FunctionNode : public ASTNode {
     std::vector<std::unique_ptr<ASTNode>> body; // We currently allow multiple print statements
 };
 
+// New AST node for constants
+struct ConstNode : public ASTNode {
+    std::string name;
+    std::string type;
+    int value; // For now numerical constants only
+};
+
 class Parser {
 public:
     Parser(const std::vector<Token>& tokens);
     std::unique_ptr<FunctionNode> parseFunction();
+    std::unique_ptr<ASTNode> parseStatement();
     
 private:
     const std::vector<Token>& tokens;

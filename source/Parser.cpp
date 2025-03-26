@@ -73,22 +73,10 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
     std::vector<std::unique_ptr<ASTNode>> bodyStatements;
 
     while (currentToken().type != TOKEN_RBRACE) {
-        expect(TOKEN_PRINT, "Expected 'print' in function body");
-        expect(TOKEN_LPAREN, "Expected '(' after 'print'");
-    
-        std::string printText;
-        if (currentToken().type == TOKEN_STRING) {
-            printText = currentToken().lexeme;
-            advance();
-        } else {
-            throw std::runtime_error("Expected string literal in print statement");
-        }
-    
-        expect(TOKEN_RPAREN, "Expected ')' after string literal");
-    
-        auto printNode = std::make_unique<PrintNode>();
-        printNode->text = printText;
-        bodyStatements.push_back(std::move(printNode));
+
+        // Parse statement function processes print and const statements
+        bodyStatements.push_back(parseStatement());
+        
     }
     
     expect(TOKEN_RBRACE, "Expected '}' to close function body");
@@ -99,4 +87,66 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
     funcNode->body = std::move(bodyStatements);
 
     return funcNode;
+}
+
+std::unique_ptr<ASTNode> Parser::parseStatement() {
+    if (currentToken().type == TOKEN_PRINT) {
+
+        advance(); // skip 'print'
+        expect(TOKEN_LPAREN, "Expected '(' after 'print'");
+
+        std::string printText;
+
+        if (currentToken().type == TOKEN_STRING) {
+            printText = currentToken().lexeme;
+            advance();
+        } else {
+            throw std::runtime_error("Expected string literal in print statement");
+        }
+
+        expect(TOKEN_RPAREN, "Expected ')' after string literal");
+
+        auto node = std::make_unique<PrintNode>();
+        node->text = printText;
+        return node;
+    }
+    else if (currentToken().type == TOKEN_CONST) {
+
+        advance(); // skip 'const'
+
+        if (currentToken().type != TOKEN_IDENT)
+            throw std::runtime_error("Expected identifier after 'const'");
+
+        std::string name = currentToken().lexeme;
+        advance();
+
+        expect(TOKEN_COLON, "Expected ':' after identifier");
+
+        std::string type;
+
+        Token t = currentToken();
+        if (t.type == TOKEN_CHAR8 || t.type == TOKEN_CHAR16 || t.type == TOKEN_CHAR32 ||
+            t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64) {
+            type = t.lexeme;
+            advance();
+        } else {
+            throw std::runtime_error("Expected type after ':'");
+        }
+
+        expect(TOKEN_ASSIGN, "Expected '=' after type");
+
+        if (currentToken().type != TOKEN_NUMBER)
+            throw std::runtime_error("Expected number after '=' in const statement");
+
+        int value = std::stoi(currentToken().lexeme);
+        advance();
+
+        auto node = std::make_unique<ConstNode>();
+        node->name = name;
+        node->type = type;
+        node->value = value;
+        return node;
+    }
+
+    throw std::runtime_error("Expected statement (print or const)");
 }
