@@ -38,10 +38,12 @@ void Codegen::generateCode(const FunctionNode* funcAST) {
     BasicBlock* funcBB = BasicBlock::Create(context, "entry", func);
     builder.SetInsertPoint(funcBB);
 
-    // Here we treat a PrintNode as a function body as an example
-    if (auto printNode = dynamic_cast<const PrintNode*>(funcAST->body.get())) {
-        Value* strVal = builder.CreateGlobalStringPtr(printNode->text, "str");
-        builder.CreateCall(putsFunc, strVal);
+    // Here we treat a series of print statements as a function body
+    for (const auto& stmt : funcAST->body) {
+        if (auto printNode = dynamic_cast<const PrintNode*>(stmt.get())) {
+            Value* strVal = builder.CreateGlobalStringPtr(printNode->text, "str");
+            builder.CreateCall(putsFunc, strVal);
+        }
     }
 
     // Return: 0 as default value

@@ -69,29 +69,34 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
     // Function body
     expect(TOKEN_LBRACE, "Expected '{' to start function body");
 
-    // For now, we only accept a single print statement
-    expect(TOKEN_PRINT, "Expected 'print' in function body");
-    expect(TOKEN_LPAREN, "Expected '(' after 'print'");
+    // We allow multiple statements in a function body
+    std::vector<std::unique_ptr<ASTNode>> bodyStatements;
 
-    std::string printText;
-    if (currentToken().type == TOKEN_STRING) {
-        printText = currentToken().lexeme;
-        advance();
-    } else {
-        throw std::runtime_error("Expected string literal in print statement");
+    while (currentToken().type != TOKEN_RBRACE) {
+        expect(TOKEN_PRINT, "Expected 'print' in function body");
+        expect(TOKEN_LPAREN, "Expected '(' after 'print'");
+    
+        std::string printText;
+        if (currentToken().type == TOKEN_STRING) {
+            printText = currentToken().lexeme;
+            advance();
+        } else {
+            throw std::runtime_error("Expected string literal in print statement");
+        }
+    
+        expect(TOKEN_RPAREN, "Expected ')' after string literal");
+    
+        auto printNode = std::make_unique<PrintNode>();
+        printNode->text = printText;
+        bodyStatements.push_back(std::move(printNode));
     }
-
-    expect(TOKEN_RPAREN, "Expected ')' after string literal");
+    
     expect(TOKEN_RBRACE, "Expected '}' to close function body");
-
-    // Create AST node
-    auto printNode = std::make_unique<PrintNode>();
-    printNode->text = printText;
 
     auto funcNode = std::make_unique<FunctionNode>();
     funcNode->name = funcName;
     funcNode->returnType = retType;
-    funcNode->body = std::move(printNode);
+    funcNode->body = std::move(bodyStatements);
 
     return funcNode;
 }

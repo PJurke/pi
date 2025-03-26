@@ -21,13 +21,14 @@ struct PrintNode : public ASTNode {
 struct FunctionNode : public ASTNode {
     std::string name;
     std::string returnType; // Here we can later represent a more complex type
-    std::unique_ptr<ASTNode> body; // We currently assume a single PrintNode
+    std::vector<std::unique_ptr<ASTNode>> body; // We currently allow multiple print statements
 };
 
 class Parser {
 public:
     Parser(const std::vector<Token>& tokens);
     std::unique_ptr<FunctionNode> parseFunction();
+    
 private:
     const std::vector<Token>& tokens;
     size_t index;
