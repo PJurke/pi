@@ -51,6 +51,8 @@ std::vector<Token> Lexer::tokenize() {
                 tokens.push_back({TOKEN_START, word, tokenLine, tokenColumn});
             else if (word == "print")
                 tokens.push_back({TOKEN_PRINT, word, tokenLine, tokenColumn});
+            else if (word == "const")
+                tokens.push_back({TOKEN_CONST, word, tokenLine, tokenColumn});
 
             // CHARACTER TYPES
             else if (word == "char8")
@@ -75,10 +77,35 @@ std::vector<Token> Lexer::tokenize() {
             continue;
         }
 
+        if (isdigit(c)) {
+
+            std::string number;
+
+            while (isdigit(currentChar())) {
+                number += currentChar();
+                advance();
+            }
+            
+            tokens.push_back({TOKEN_NUMBER, number, tokenLine, tokenColumn});
+            continue;
+        }
+
         if (c == '-' && (index + 1 < source.size()) && source[index + 1] == '>') {
             tokens.push_back({TOKEN_ARROW, "->", tokenLine, tokenColumn});
             advance(); // skip '-'
             advance(); // skip '>'
+            continue;
+        }
+
+        if (c == ':') {
+            tokens.push_back({TOKEN_COLON, ":", tokenLine, tokenColumn});
+            advance();
+            continue;
+        }
+
+        if (c == '=') {
+            tokens.push_back({TOKEN_ASSIGN, "=", tokenLine, tokenColumn});
+            advance();
             continue;
         }
 
