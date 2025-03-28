@@ -9,7 +9,7 @@ Token Parser::currentToken() {
     if (index < tokens.size())
         return tokens[index];
 
-    return {TOKEN_EOF, ""};
+    return {TOKEN_EOF, "", -1, -1};
 }
 
 void Parser::advance() {
