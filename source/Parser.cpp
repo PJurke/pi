@@ -137,12 +137,37 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         int value = 0;
         if (currentToken().type == TOKEN_NUMBER) {
+
+            // A number literal is permitted for int types only
+            if (type != "int8" && type != "int16" && type != "int32" && type != "int64") {
+
+                std::string fullErr = std::string("Type Mismatch Error\n") +
+                    "Expected char literal for constant of type " + type + "\n" +
+                    "Line " + std::to_string(currentToken().line) + ", column " + std::to_string(currentToken().column) + "\n";
+
+                throw std::runtime_error(fullErr);
+
+            }
+
             value = std::stoi(currentToken().lexeme);
             advance();
+
         } else if (currentToken().type == TOKEN_CHAR) {
-            // Assumption: lexeme contains exactly one character, e.g. “a”
+
+            // A character literal is permitted for char types only
+            if (type != "char8" && type != "char16" && type != "char32") {
+
+                std::string fullErr = std::string("Type Mismatch Error\n") +
+                    "Expected number literal for constant of type " + type + "\n" +
+                    "Line " + std::to_string(currentToken().line) + ", column " + std::to_string(currentToken().column) + "\n";
+
+                throw std::runtime_error(fullErr);
+
+            }
+
             value = static_cast<int>(currentToken().lexeme[0]);
             advance();
+
         } else {
             throw std::runtime_error("Expected number or char literal after '=' in const statement");
         }
