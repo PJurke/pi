@@ -1,9 +1,12 @@
 #include <stdexcept>
 
+#include "../include/Logger.h"
 #include "../include/Parser.h"
 #include "../include/Token.h"
 
-Parser::Parser(const std::vector<Token>& tokens) : tokens(tokens), index(0) {}
+Parser::Parser(const std::vector<Token>& tokens) : tokens(tokens), index(0) {
+    LOG_INFO("Initializing Parser with " + std::to_string(tokens.size()) + " tokens");
+}
 
 Token Parser::currentToken() {
     if (index < tokens.size())
