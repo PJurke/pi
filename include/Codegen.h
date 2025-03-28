@@ -66,6 +66,10 @@ private:
      * @throws std::runtime_error if the type is not supported.
      */
     llvm::Type* getReturnType(const std::string &retTypeStr);
+
+    void generateConst(const ConstNode* constNode);
+    void generatePrint(const PrintNode* printNode);
+
 };
 
 #endif

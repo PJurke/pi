@@ -41,21 +41,9 @@ void Codegen::generateCode(const FuncNode* funcAST) {
     // Here we treat a series of print statements as a function body
     for (const auto& stmt : funcAST->body) {
         if (auto printNode = dynamic_cast<const PrintNode*>(stmt.get())) {
-
-            Value* strVal = builder.CreateGlobalStringPtr(printNode->text, "str");
-            builder.CreateCall(putsFunc, strVal);
-
+            generatePrint(printNode);
         } else if (auto constNode = dynamic_cast<const ConstNode*>(stmt.get())) {
-
-            // Determine the corresponding LLVM type for the constant
-            llvm::Type* llvmType = getReturnType(constNode->type);
-
-            // Create a local variable (allocaInst)
-            llvm::AllocaInst* allocaInst = builder.CreateAlloca(llvmType, nullptr, constNode->name);
-            
-            // Write the constant value to the variable
-            builder.CreateStore(llvm::ConstantInt::get(llvmType, constNode->value), allocaInst);
-
+            generateConst(constNode);
         }
     }
 
@@ -63,6 +51,24 @@ void Codegen::generateCode(const FuncNode* funcAST) {
     builder.CreateRet(ConstantInt::get(retType, 0));
     verifyFunction(*func);
     
+}
+
+void Codegen::generateConst(const ConstNode* constNode) {
+
+    // Determine the corresponding LLVM type for the constant
+    llvm::Type* llvmType = getReturnType(constNode->type);
+
+    // Create a local variable (allocaInst)
+    llvm::AllocaInst* allocaInst = builder.CreateAlloca(llvmType, nullptr, constNode->name);
+    
+    // Write the constant value to the variable
+    builder.CreateStore(llvm::ConstantInt::get(llvmType, constNode->value), allocaInst);
+
+}
+
+void Codegen::generatePrint(const PrintNode* printNode) {
+    Value* strVal = builder.CreateGlobalStringPtr(printNode->text, "str");
+    builder.CreateCall(putsFunc, strVal);
 }
 
 void Codegen::printModule() const {
