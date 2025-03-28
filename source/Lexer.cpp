@@ -1,8 +1,11 @@
 #include <cctype>
 
 #include "../include/Lexer.h"
+#include "../include/Logger.h"
 
-Lexer::Lexer(const std::string &source) : source(source), index(0), line(1), column(1) {}
+Lexer::Lexer(const std::string &source) : source(source), index(0), line(1), column(1) {
+    LOG_INFO("Initializing Lexer with source code of length: " + std::to_string(source.length()));
+}
 
 char Lexer::currentChar() {
     if (index < source.size())
@@ -21,6 +24,8 @@ void Lexer::advance() {
 }
 
 std::vector<Token> Lexer::tokenize() {
+
+    LOG_DEBUG("Starting tokenization process");
 
     std::vector<Token> tokens;
 
@@ -179,5 +184,8 @@ std::vector<Token> Lexer::tokenize() {
     }
 
     tokens.push_back({TOKEN_EOF, "", line, column});
+
+    LOG_INFO("Tokenization completed successfully. Total tokens: " + std::to_string(tokens.size()));
+
     return tokens;
 }
