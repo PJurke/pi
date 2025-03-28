@@ -10,6 +10,7 @@
 
 #include "../include/Codegen.h"
 #include "../include/Lexer.h"
+#include "../include/Logger.h"
 #include "../include/Parser.h"
 
 using namespace llvm;
@@ -31,7 +32,14 @@ std::string readFile(const std::string &filename) {
 // The Pi file is given by the arguments    
 int main(int argc, char **argv) {
 
+    // Logger configuration
+    Logger::getInstance().setLogLevel(LogLevel::DEBUG);
+    Logger::getInstance().enableFileLogging("pi_compiler.log");
+
+    LOG_INFO("PICC starting");
+
     if (argc < 2) {
+        LOG_ERROR("Insufficient command line arguments");
         std::cerr << "Usage: " << argv[0] << " <pi_file_path>" << std::endl;
         return 1;
     }
