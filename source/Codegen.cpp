@@ -1,9 +1,12 @@
-#include "Codegen.h"
-#include "Token.h"
+#include "../include/Codegen.h"
+#include "../include/Logger.h"
+#include "../include/Token.h"
 
 using namespace llvm;
 
 Codegen::Codegen() : module(std::make_unique<Module>("MyLangModule", context)), builder(context) {
+
+    LOG_INFO("Initializing CodeGen with new LLVM module");
 
     // Declare the C function puts
     std::vector<Type*> putsArgs { Type::getInt8Ty(context)->getPointerTo() };
