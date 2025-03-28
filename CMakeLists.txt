@@ -22,6 +22,7 @@ set(SOURCE_FILES
     source/main.cpp
     source/Codegen.cpp
     source/Lexer.cpp
+    source/Logger.cpp
     source/Parser.cpp
     source/Token.cpp
 )
