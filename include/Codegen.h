@@ -31,12 +31,12 @@ public:
     /**
      * @brief Generates the LLVM IR code for a given function.
      *
-     * Generates the corresponding LLVM function based on the transferred AST (FunctionNode),
+     * Generates the corresponding LLVM function based on the transferred AST (FuncNode),
      * adds the function body (e.g. a print command) and verifies the function.
      *
      * @param funcAST Pointer to the AST node of the function.
      */
-    void generateCode(const FunctionNode* funcAST);
+    void generateCode(const FuncNode* funcAST);
 
     /**
      * @brief Outputs the generated LLVM module on stdout.

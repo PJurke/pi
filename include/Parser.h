@@ -18,10 +18,10 @@ struct PrintNode : public ASTNode {
 };
 
 /// @brief AST node for functions
-struct FunctionNode : public ASTNode {
+struct FuncNode : public ASTNode {
     std::string name;
-    std::string returnType; // Here we can later represent a more complex type
-    std::vector<std::unique_ptr<ASTNode>> body; // We currently allow multiple print statements
+    std::string returnType;
+    std::vector<std::unique_ptr<ASTNode>> body;     // Series of statements
 };
 
 /// @brief AST node for constants
@@ -34,7 +34,7 @@ struct ConstNode : public ASTNode {
 class Parser {
 public:
     Parser(const std::vector<Token>& tokens);
-    std::unique_ptr<FunctionNode> parseFunction();
+    std::unique_ptr<FuncNode> parseFunction();
     std::unique_ptr<ASTNode> parseStatement();
     
 private:

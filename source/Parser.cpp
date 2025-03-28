@@ -33,7 +33,7 @@ void Parser::expect(TokenType type, const std::string& errorMessage) {
     advance();
 }
 
-std::unique_ptr<FunctionNode> Parser::parseFunction() {
+std::unique_ptr<FuncNode> Parser::parseFunction() {
 
     // Expected syntax
     // func <name> () -> <type> { <body> }
@@ -82,12 +82,12 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
     
     expect(TOKEN_RBRACE, "Expected '}' to close function body");
 
-    auto functionNode = std::make_unique<FunctionNode>();
-    functionNode->name = functionName;
-    functionNode->returnType = returnType;
-    functionNode->body = std::move(bodyStatements);
+    auto funcNode = std::make_unique<FuncNode>();
+    funcNode->name = functionName;
+    funcNode->returnType = returnType;
+    funcNode->body = std::move(bodyStatements);
 
-    return functionNode;
+    return funcNode;
 }
 
 std::unique_ptr<ASTNode> Parser::parseStatement() {

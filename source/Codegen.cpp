@@ -27,7 +27,7 @@ llvm::Type* Codegen::getReturnType(const std::string &retTypeStr) {
 
 }
 
-void Codegen::generateCode(const FunctionNode* funcAST) {
+void Codegen::generateCode(const FuncNode* funcAST) {
 
     // Determine the LLVM type for the return type of the function
     llvm::Type* retType = getReturnType(funcAST->returnType);

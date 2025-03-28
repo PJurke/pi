@@ -57,7 +57,7 @@ int main(int argc, char **argv) {
 
     // Parsing: Build an AST from the tokens
     Parser parser(tokens);
-    std::unique_ptr<FunctionNode> funcAST;
+    std::unique_ptr<FuncNode> funcAST;
     try {
         funcAST = parser.parseFunction();
     } catch (const std::runtime_error &e) {

@@ -1,8 +1,9 @@
 #include "../include/Token.h"
 
-std::string TokenTypeToString(TokenType type) {
+std::string TokenTypeToString(TokenType tokenType) {
 
-    switch (type) {
+    switch (tokenType) {
+
         case TokenType::TOKEN_FUNC:     return "func";
 
         case TokenType::TOKEN_START:    return "start function";
@@ -39,6 +40,7 @@ std::string TokenTypeToString(TokenType type) {
 
         case TokenType::TOKEN_EOF:      return "end of file";
         case TokenType::TOKEN_UNKNOWN:  return "unknown";
+        
     }
 
 }

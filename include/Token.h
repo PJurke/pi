@@ -4,6 +4,7 @@
 #include <string>
 
 enum TokenType {
+
     TOKEN_FUNC,     // function
 
     TOKEN_START,    // start function
@@ -22,11 +23,13 @@ enum TokenType {
     TOKEN_ARROW,    // indicate a return type of a function
 
     // CHARACTER TYPES
+
     TOKEN_CHAR8,
     TOKEN_CHAR16,
     TOKEN_CHAR32,
 
     // INTEGER TYPES
+
     TOKEN_INT8,
     TOKEN_INT16,
     TOKEN_INT32,
@@ -38,8 +41,9 @@ enum TokenType {
 
     TOKEN_EOF,      // end of file
     TOKEN_UNKNOWN   // something unexpected appeared
+
 };
 
-std::string TokenTypeToString(TokenType type);
+std::string TokenTypeToString(TokenType tokenType);
 
 #endif
