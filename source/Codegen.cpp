@@ -48,13 +48,13 @@ void Codegen::generateCode(const FunctionNode* funcAST) {
         } else if (auto constNode = dynamic_cast<const ConstNode*>(stmt.get())) {
 
             // Determine the corresponding LLVM type for the constant
-            llvm::Type* varType = getReturnType(constNode->type);
+            llvm::Type* llvmType = getReturnType(constNode->type);
 
-            // Create a local variable (Alloca)
-            llvm::AllocaInst* alloc = builder.CreateAlloca(varType, nullptr, constNode->name);
+            // Create a local variable (allocaInst)
+            llvm::AllocaInst* allocaInst = builder.CreateAlloca(llvmType, nullptr, constNode->name);
             
             // Write the constant value to the variable
-            builder.CreateStore(llvm::ConstantInt::get(varType, constNode->value), alloc);
+            builder.CreateStore(llvm::ConstantInt::get(llvmType, constNode->value), allocaInst);
 
         }
     }

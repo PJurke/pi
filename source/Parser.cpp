@@ -8,6 +8,7 @@ Parser::Parser(const std::vector<Token>& tokens) : tokens(tokens), index(0) {}
 Token Parser::currentToken() {
     if (index < tokens.size())
         return tokens[index];
+
     return {TOKEN_EOF, ""};
 }
 
@@ -16,17 +17,17 @@ void Parser::advance() {
         index++;
 }
 
-void Parser::expect(TokenType type, const std::string& errMsg) {
+void Parser::expect(TokenType type, const std::string& errorMessage) {
 
     Token token = currentToken();
 
     if (token.type != type) {
-        std::string fullErr = "Syntax Error\n" +
-            errMsg + "\n" +
+        std::string fullError = "Syntax Error\n" +
+            errorMessage + "\n" +
             "Line " + std::to_string(token.line) + ", column " + std::to_string(token.column) + "\n" +
             "Encountered: \"" + token.lexeme + "\"\n";
 
-        throw std::runtime_error(fullErr);
+        throw std::runtime_error(fullError);
     }
 
     advance();
@@ -40,10 +41,10 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
     
     // Function name
     // Two possibilities: TOKEN_START (entry function) or TOKEN_IDENT (user-defined function)
-    std::string funcName;
+    std::string functionName;
 
     if (currentToken().type == TOKEN_START || currentToken().type == TOKEN_IDENT) {
-        funcName = currentToken().lexeme;
+        functionName = currentToken().lexeme;
         advance();
     } else {
         throw std::runtime_error("Expected function name after 'func'");
@@ -55,12 +56,12 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
 
     // Return type
     expect(TOKEN_ARROW, "Expected '->' after parameter list");
-    std::string retType;
+    std::string returnType;
 
     Token t = currentToken();
     if (t.type == TOKEN_CHAR8 || t.type == TOKEN_CHAR16 || t.type == TOKEN_CHAR32 ||
         t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64) {
-        retType = t.lexeme;
+        returnType = t.lexeme;
         advance();
     } else {
         throw std::runtime_error("Expected type (e.g. char8, char16, char32, int8, int16, int32, int64) after '->'");
@@ -81,15 +82,16 @@ std::unique_ptr<FunctionNode> Parser::parseFunction() {
     
     expect(TOKEN_RBRACE, "Expected '}' to close function body");
 
-    auto funcNode = std::make_unique<FunctionNode>();
-    funcNode->name = funcName;
-    funcNode->returnType = retType;
-    funcNode->body = std::move(bodyStatements);
+    auto functionNode = std::make_unique<FunctionNode>();
+    functionNode->name = functionName;
+    functionNode->returnType = returnType;
+    functionNode->body = std::move(bodyStatements);
 
-    return funcNode;
+    return functionNode;
 }
 
 std::unique_ptr<ASTNode> Parser::parseStatement() {
+
     if (currentToken().type == TOKEN_PRINT) {
 
         advance(); // skip 'print'
@@ -106,9 +108,9 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         expect(TOKEN_RPAREN, "Expected ')' after string literal");
 
-        auto node = std::make_unique<PrintNode>();
-        node->text = printText;
-        return node;
+        auto printNode = std::make_unique<PrintNode>();
+        printNode->text = printText;
+        return printNode;
     }
     else if (currentToken().type == TOKEN_CONST) {
 
@@ -122,12 +124,12 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         expect(TOKEN_COLON, "Expected ':' after identifier");
 
-        std::string type;
+        std::string declaredType;
 
         Token t = currentToken();
         if (t.type == TOKEN_CHAR8 || t.type == TOKEN_CHAR16 || t.type == TOKEN_CHAR32 ||
             t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64) {
-            type = t.lexeme;
+            declaredType = t.lexeme;
             advance();
         } else {
             throw std::runtime_error("Expected type after ':'");
@@ -135,37 +137,37 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         expect(TOKEN_ASSIGN, "Expected '=' after type");
 
-        int value = 0;
+        int literalValue = 0;
         if (currentToken().type == TOKEN_NUMBER) {
 
             // A number literal is permitted for int types only
-            if (type != "int8" && type != "int16" && type != "int32" && type != "int64") {
+            if (declaredType != "int8" && declaredType != "int16" && declaredType != "int32" && declaredType != "int64") {
 
                 std::string fullErr = std::string("Type Mismatch Error\n") +
-                    "Expected char literal for constant of type " + type + "\n" +
+                    "Expected char literal for constant of type " + declaredType + "\n" +
                     "Line " + std::to_string(currentToken().line) + ", column " + std::to_string(currentToken().column) + "\n";
 
                 throw std::runtime_error(fullErr);
 
             }
 
-            value = std::stoi(currentToken().lexeme);
+            literalValue = std::stoi(currentToken().lexeme);
             advance();
 
         } else if (currentToken().type == TOKEN_CHAR) {
 
             // A character literal is permitted for char types only
-            if (type != "char8" && type != "char16" && type != "char32") {
+            if (declaredType != "char8" && declaredType != "char16" && declaredType != "char32") {
 
                 std::string fullErr = std::string("Type Mismatch Error\n") +
-                    "Expected number literal for constant of type " + type + "\n" +
+                    "Expected number literal for constant of type " + declaredType + "\n" +
                     "Line " + std::to_string(currentToken().line) + ", column " + std::to_string(currentToken().column) + "\n";
 
                 throw std::runtime_error(fullErr);
 
             }
 
-            value = static_cast<int>(currentToken().lexeme[0]);
+            literalValue = static_cast<int>(currentToken().lexeme[0]);
             advance();
 
         } else {
@@ -174,8 +176,8 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         auto node = std::make_unique<ConstNode>();
         node->name = name;
-        node->type = type;
-        node->value = value;
+        node->type = declaredType;
+        node->value = literalValue;
         return node;
     }
 

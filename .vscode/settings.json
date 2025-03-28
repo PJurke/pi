@@ -53,6 +53,9 @@
         "algorithm": "cpp",
         "fstream": "cpp",
         "iomanip": "cpp",
-        "*.inc": "cpp"
+        "*.inc": "cpp",
+        "__tree": "cpp",
+        "type_traits": "cpp",
+        "forward_list": "cpp"
     }
 }
