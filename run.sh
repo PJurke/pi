@@ -12,7 +12,7 @@ mkdir -p build
 cd build
 
 # Run CMake configuration
-cmake ..
+cmake -DCMAKE_OSX_SYSROOT=/Library/Developer/CommandLineTools/SDKs/MacOSX15.4.sdk ..
 
 # Build the project
 cmake --build .

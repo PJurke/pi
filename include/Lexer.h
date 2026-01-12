@@ -6,13 +6,6 @@
 
 #include "Token.h"
 
-struct Token {
-    TokenType type;
-    std::string lexeme;
-    int line;               // Line number where the token was found
-    int column;             // Column number where the token was found
-};
-
 class Lexer {
 public:
     Lexer(const std::string &source);
