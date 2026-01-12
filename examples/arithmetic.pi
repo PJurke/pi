@@ -1,0 +1,5 @@
+func start() -> int32 {
+    const a: int32 = 10 + 20 * 3
+    const b: int32 = (10 + 20) * 3
+    print("Arithmetic test compiled successfully")
+}

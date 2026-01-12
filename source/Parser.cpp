@@ -145,49 +145,80 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         expect(TOKEN_ASSIGN, "Expected '=' after type");
 
-        int literalValue = 0;
-        if (currentToken().type == TOKEN_NUMBER) {
-
-            // A number literal is permitted for int types only
-            if (declaredType != "int8" && declaredType != "int16" && declaredType != "int32" && declaredType != "int64") {
-
-                std::string fullErr = std::string("Type Mismatch Error\n") +
-                    "Expected char literal for constant of type " + declaredType + "\n" +
-                    "Line " + std::to_string(currentToken().line) + ", column " + std::to_string(currentToken().column) + "\n";
-
-                throw std::runtime_error(fullErr);
-
-            }
-
-            literalValue = std::stoi(currentToken().lexeme);
-            advance();
-
-        } else if (currentToken().type == TOKEN_CHAR) {
-
-            // A character literal is permitted for char types only
-            if (declaredType != "char8" && declaredType != "char16" && declaredType != "char32") {
-
-                std::string fullErr = std::string("Type Mismatch Error\n") +
-                    "Expected number literal for constant of type " + declaredType + "\n" +
-                    "Line " + std::to_string(currentToken().line) + ", column " + std::to_string(currentToken().column) + "\n";
-
-                throw std::runtime_error(fullErr);
-
-            }
-
-            literalValue = static_cast<int>(currentToken().lexeme[0]);
-            advance();
-
-        } else {
-            throw std::runtime_error("Expected number or char literal after '=' in const statement");
-        }
+        // Parse expression for the value
+        auto expr = parseExpression();
 
         auto node = std::make_unique<ConstNode>();
         node->name = name;
         node->type = declaredType;
-        node->value = literalValue;
+        node->value = std::move(expr);
         return node;
     }
 
     throw std::runtime_error("Expected statement (print or const)");
+}
+
+std::unique_ptr<ASTNode> Parser::parseExpression() {
+    // Expression ::= Term { ("+" | "-") Term }
+    auto left = parseTerm();
+
+    while (currentToken().type == TOKEN_PLUS || currentToken().type == TOKEN_MINUS) {
+        std::string op = currentToken().lexeme;
+        advance();
+        auto right = parseTerm();
+        
+        auto binaryNode = std::make_unique<BinaryOpNode>();
+        binaryNode->left = std::move(left);
+        binaryNode->right = std::move(right);
+        binaryNode->op = op;
+        left = std::move(binaryNode);
+    }
+
+    return left;
+}
+
+std::unique_ptr<ASTNode> Parser::parseTerm() {
+    // Term ::= Factor { ("*" | "/") Factor }
+    auto left = parseFactor();
+
+    while (currentToken().type == TOKEN_STAR || currentToken().type == TOKEN_SLASH) {
+        std::string op = currentToken().lexeme;
+        advance();
+        auto right = parseFactor();
+
+        auto binaryNode = std::make_unique<BinaryOpNode>();
+        binaryNode->left = std::move(left);
+        binaryNode->right = std::move(right);
+        binaryNode->op = op;
+        left = std::move(binaryNode);
+    }
+
+    return left;
+}
+
+std::unique_ptr<ASTNode> Parser::parseFactor() {
+    // Factor ::= NumberLiteral | "(" Expression ")"
+    
+    if (currentToken().type == TOKEN_NUMBER) {
+        int val = std::stoi(currentToken().lexeme);
+        advance();
+        auto node = std::make_unique<NumberNode>();
+        node->value = val;
+        return node;
+    }
+    else if (currentToken().type == TOKEN_CHAR) {
+        char val = currentToken().lexeme[0];
+        advance();
+        auto node = std::make_unique<CharNode>();
+        node->value = val;
+        return node;
+    }
+    else if (currentToken().type == TOKEN_LPAREN) {
+        advance(); // skip '('
+        auto expr = parseExpression();
+        expect(TOKEN_RPAREN, "Expected ')' after expression");
+        return expr;
+    }
+
+    throw std::runtime_error("Unexpected token in expression: " + currentToken().lexeme);
 }

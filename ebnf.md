@@ -17,6 +17,7 @@ FunctionDefinition ::= "func" Identifier "(" ")" "->" Type "{" { Statement } "}"
 For now, print and const statements are allowed.
 
 ```ebnf
+
 Statement ::= PrintStatement | ConstStatement
 ```
 
@@ -27,7 +28,7 @@ PrintStatement ::= "print" "(" StringLiteral ")"
 Only numeric literals are allowed for now
 
 ```ebnf
-ConstStatement ::= "const" Identifier ":" Type "=" NumberLiteral
+ConstStatement ::= "const" Identifier ":" Type "=" Expression
 ```
 
 **Types and Constants**<br>
@@ -41,8 +42,22 @@ Type ::= "char8" | "char16" | "char32" | "int8" | "int16" | "int32" | "int64"
 Identifier ::= Letter { Letter | Digit }
 ```
 
-**Literals**
+**Expressions**<br>
+Arithmetic expressions with support for addition, subtraction, multiplication, and division.
 
+```ebnf
+Expression ::= Term { ("+" | "-") Term }
+```
+
+```ebnf
+Term ::= Factor { ("*" | "/") Factor }
+```
+
+```ebnf
+Factor ::= NumberLiteral | "(" Expression ")"
+```
+
+**Literals**<br>
 ```ebnf
 Literal ::= NumberLiteral | CharLiteral | StringLiteral
 ```
@@ -59,8 +74,7 @@ CharLiteral ::= "'" AnySingleCharExceptQuoteOrBackslash "'"
 StringLiteral ::= '"' { AnyCharExceptQuote } '"'
 ```
 
-**Single Symbols**
-
+**Single Symbols**<br>
 ```ebnf
 Letter ::= "A" | "B" | "C" | ... | "Z" | "a" | "b" | ... | "z"
 ```

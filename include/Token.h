@@ -22,6 +22,11 @@ enum TokenType {
     TOKEN_ASSIGN,   // =
     TOKEN_ARROW,    // indicate a return type of a function
 
+    TOKEN_PLUS,     // +
+    TOKEN_MINUS,    // -
+    TOKEN_STAR,     // *
+    TOKEN_SLASH,    // /
+
     // CHARACTER TYPES
 
     TOKEN_CHAR8,

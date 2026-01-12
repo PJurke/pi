@@ -63,6 +63,32 @@ void Codegen::generateCode(const FuncNode* funcAST) {
     
 }
 
+llvm::Value* Codegen::generateExpression(const ASTNode* node) {
+    if (auto numberNode = dynamic_cast<const NumberNode*>(node)) {
+        return llvm::ConstantInt::get(builder.getInt32Ty(), numberNode->value);
+    }
+    else if (auto charNode = dynamic_cast<const CharNode*>(node)) {
+        return llvm::ConstantInt::get(builder.getInt8Ty(), charNode->value);
+    }
+    else if (auto binaryNode = dynamic_cast<const BinaryOpNode*>(node)) {
+        llvm::Value* left = generateExpression(binaryNode->left.get());
+        llvm::Value* right = generateExpression(binaryNode->right.get());
+
+        if (binaryNode->op == "+")
+            return builder.CreateAdd(left, right, "addtmp");
+        if (binaryNode->op == "-")
+            return builder.CreateSub(left, right, "subtmp");
+        if (binaryNode->op == "*")
+            return builder.CreateMul(left, right, "multmp");
+        if (binaryNode->op == "/")
+            return builder.CreateSDiv(left, right, "divtmp"); // Signed division
+        
+        throw std::runtime_error("Unknown binary operator: " + binaryNode->op);
+    }
+    
+    throw std::runtime_error("Unknown expression node type");
+}
+
 void Codegen::generateConst(const ConstNode* constNode) {
 
     // Determine the corresponding LLVM type for the constant
@@ -71,8 +97,11 @@ void Codegen::generateConst(const ConstNode* constNode) {
     // Create a local variable (allocaInst)
     llvm::AllocaInst* allocaInst = builder.CreateAlloca(llvmType, nullptr, constNode->name);
     
+    // Evaluate validity of the expression
+    llvm::Value* initVal = generateExpression(constNode->value.get());
+
     // Write the constant value to the variable
-    builder.CreateStore(llvm::ConstantInt::get(llvmType, constNode->value), allocaInst);
+    builder.CreateStore(initVal, allocaInst);
 
 }
 

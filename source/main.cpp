@@ -4,15 +4,11 @@
 #include <sstream>
 #include <stdexcept>
 
-
-
 #include "../include/Codegen.h"
 #include "../include/Lexer.h"
 #include "../include/Logger.h"
 #include "../include/ScopedLogger.h"
 #include "../include/Parser.h"
-
-
 
 /// @brief Helper function to read a file into a string
 /// @param filename The name of the file to read

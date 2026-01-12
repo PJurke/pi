@@ -122,10 +122,15 @@ std::vector<Token> Lexer::tokenize() {
             continue;
         }
 
-        if (c == '-' && (index + 1 < source.size()) && source[index + 1] == '>') {
-            tokens.push_back({TOKEN_ARROW, "->", tokenLine, tokenColumn});
-            advance(); // skip '-'
-            advance(); // skip '>'
+        if (c == '-') {
+            if (index + 1 < source.size() && source[index + 1] == '>') {
+                tokens.push_back({TOKEN_ARROW, "->", tokenLine, tokenColumn});
+                advance(); // skip '-'
+                advance(); // skip '>'
+            } else {
+                tokens.push_back({TOKEN_MINUS, "-", tokenLine, tokenColumn});
+                advance();
+            }
             continue;
         }
 
@@ -137,6 +142,24 @@ std::vector<Token> Lexer::tokenize() {
 
         if (c == '=') {
             tokens.push_back({TOKEN_ASSIGN, "=", tokenLine, tokenColumn});
+            advance();
+            continue;
+        }
+
+        if (c == '+') {
+            tokens.push_back({TOKEN_PLUS, "+", tokenLine, tokenColumn});
+            advance();
+            continue;
+        }
+
+        if (c == '*') {
+            tokens.push_back({TOKEN_STAR, "*", tokenLine, tokenColumn});
+            advance();
+            continue;
+        }
+
+        if (c == '/') {
+            tokens.push_back({TOKEN_SLASH, "/", tokenLine, tokenColumn});
             advance();
             continue;
         }

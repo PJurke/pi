@@ -76,6 +76,7 @@ private:
 
     void generateConst(const ConstNode* constNode);
     void generatePrint(const PrintNode* printNode);
+    llvm::Value* generateExpression(const ASTNode* node);
 
 };
 

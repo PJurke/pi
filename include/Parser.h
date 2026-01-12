@@ -17,6 +17,24 @@ struct PrintNode : public ASTNode {
     std::string text;
 };
 
+
+/// @brief AST node for numbers
+struct NumberNode : public ASTNode {
+    int value;
+};
+
+/// @brief AST node for characters
+struct CharNode : public ASTNode {
+    char value;
+};
+
+/// @brief AST node for binary operations
+struct BinaryOpNode : public ASTNode {
+    std::unique_ptr<ASTNode> left;
+    std::unique_ptr<ASTNode> right;
+    std::string op;
+};
+
 /// @brief AST node for functions
 struct FuncNode : public ASTNode {
     std::string name;
@@ -28,7 +46,7 @@ struct FuncNode : public ASTNode {
 struct ConstNode : public ASTNode {
     std::string name;
     std::string type;
-    int value;
+    std::unique_ptr<ASTNode> value;
 };
 
 class Parser {
@@ -37,6 +55,11 @@ public:
     std::unique_ptr<FuncNode> parseFunction();
     std::unique_ptr<ASTNode> parseStatement();
     
+    // Expression parsing
+    std::unique_ptr<ASTNode> parseExpression();
+    std::unique_ptr<ASTNode> parseTerm();
+    std::unique_ptr<ASTNode> parseFactor();
+
 private:
     const std::vector<Token>& tokens;
     size_t index;

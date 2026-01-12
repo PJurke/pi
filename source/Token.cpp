@@ -20,6 +20,11 @@ std::string TokenTypeToString(TokenType tokenType) {
         case TokenType::TOKEN_COLON:    return ":";
         case TokenType::TOKEN_ASSIGN:   return "=";
         case TokenType::TOKEN_ARROW:    return "->";
+
+        case TokenType::TOKEN_PLUS:     return "+";
+        case TokenType::TOKEN_MINUS:    return "-";
+        case TokenType::TOKEN_STAR:     return "*";
+        case TokenType::TOKEN_SLASH:    return "/";
         
         // CHARACTER TYPES
 
