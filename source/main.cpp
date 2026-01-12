@@ -11,6 +11,7 @@
 #include "../include/Codegen.h"
 #include "../include/Lexer.h"
 #include "../include/Logger.h"
+#include "../include/ScopedLogger.h"
 #include "../include/Parser.h"
 
 using namespace llvm;
@@ -55,9 +56,12 @@ int main(int argc, char **argv) {
     }
 
     // Initialize LLVM
-    InitializeNativeTarget();
-    InitializeNativeTargetAsmPrinter();
-    InitializeNativeTargetAsmParser();
+    {
+        LOG_SCOPE("LLVM Initialization");
+        InitializeNativeTarget();
+        InitializeNativeTargetAsmPrinter();
+        InitializeNativeTargetAsmParser();
+    }
 
     // Lexical analysis: Tokenize the read pi language code
     Lexer lexer(source);
@@ -75,18 +79,24 @@ int main(int argc, char **argv) {
 
     // Code generation via the outsourced module
     Codegen codegen;
-    codegen.generateCode(funcAST.get());
+    {
+        LOG_SCOPE("Code Generation");
+        codegen.generateCode(funcAST.get());
+    }
 
     // Create the main function that calls the generated function
-    llvm::LLVMContext &context = codegen.getModule()->getContext();
-    llvm::IRBuilder<> builder(context);
-    llvm::FunctionType* mainType = llvm::FunctionType::get(builder.getInt32Ty(), false);
-    llvm::Function* mainFunc = llvm::Function::Create(mainType, llvm::Function::ExternalLinkage, "main", codegen.getModule().get());
-    llvm::BasicBlock* mainBB = llvm::BasicBlock::Create(context, "entry", mainFunc);
-    builder.SetInsertPoint(mainBB);
-    builder.CreateCall(codegen.getModule()->getFunction(funcAST->name));
-    builder.CreateRet(llvm::ConstantInt::get(builder.getInt32Ty(), 0));
-    llvm::verifyFunction(*mainFunc);
+    {
+        LOG_SCOPE("LLVM IR Construction (Main)");
+        llvm::LLVMContext &context = codegen.getModule()->getContext();
+        llvm::IRBuilder<> builder(context);
+        llvm::FunctionType* mainType = llvm::FunctionType::get(builder.getInt32Ty(), false);
+        llvm::Function* mainFunc = llvm::Function::Create(mainType, llvm::Function::ExternalLinkage, "main", codegen.getModule().get());
+        llvm::BasicBlock* mainBB = llvm::BasicBlock::Create(context, "entry", mainFunc);
+        builder.SetInsertPoint(mainBB);
+        builder.CreateCall(codegen.getModule()->getFunction(funcAST->name));
+        builder.CreateRet(llvm::ConstantInt::get(builder.getInt32Ty(), 0));
+        llvm::verifyFunction(*mainFunc);
+    }
 
     // Output of the generated LLVM-IR
     codegen.printModule();
