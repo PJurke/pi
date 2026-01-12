@@ -90,6 +90,8 @@ int main(int argc, char **argv) {
 
     // Output of the generated LLVM-IR
     codegen.printModule();
+    
+    Logger::getInstance().printPerformanceSummary();
     return 0;
     
 }

@@ -1,6 +1,7 @@
 #include <stdexcept>
 
 #include "../include/Logger.h"
+#include "../include/ScopedLogger.h"
 #include "../include/Parser.h"
 #include "../include/Token.h"
 
@@ -53,6 +54,9 @@ std::unique_ptr<FuncNode> Parser::parseFunction() {
         throw std::runtime_error("Expected function name after 'func'");
     }
 
+    LOG_INFO("Parsing Function '" + functionName + "'");
+    LOG_SCOPE("Parsing");
+
     // Parameter list (empty for now)
     expect(TOKEN_LPAREN, "Expected '(' after function name");
     expect(TOKEN_RPAREN, "Expected ')' after '(' in function definition");
@@ -94,6 +98,7 @@ std::unique_ptr<FuncNode> Parser::parseFunction() {
 }
 
 std::unique_ptr<ASTNode> Parser::parseStatement() {
+    LOG_SCOPE("Parsing Statement");
 
     if (currentToken().type == TOKEN_PRINT) {
 

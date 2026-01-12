@@ -2,6 +2,7 @@
 
 #include "../include/Lexer.h"
 #include "../include/Logger.h"
+#include "../include/ScopedLogger.h"
 
 Lexer::Lexer(const std::string &source) : source(source), index(0), line(1), column(1) {
     LOG_INFO("Initializing Lexer with source code of length: " + std::to_string(source.length()));
@@ -25,7 +26,7 @@ void Lexer::advance() {
 
 std::vector<Token> Lexer::tokenize() {
 
-    LOG_DEBUG("Starting tokenization process");
+    LOG_SCOPE("Tokenization");
 
     std::vector<Token> tokens;
 
