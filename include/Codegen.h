@@ -24,7 +24,7 @@ public:
      * @brief Constructor.
      *
      * Initializes the LLVM context, the module and the IRBuilder.
-     * Also declares the external C function puts.
+     * Also initializes the native target and declares the external C function puts.
      */
     Codegen();
 
@@ -37,6 +37,13 @@ public:
      * @param funcAST Pointer to the AST node of the function.
      */
     void generateCode(const FuncNode* funcAST);
+
+    /**
+     * @brief Creates a C-style main function wrapper that calls the generated target function.
+     *
+     * @param targetFuncName The name of the function to be called by main.
+     */
+    void createMainWrapper(const std::string& targetFuncName);
 
     /**
      * @brief Outputs the generated LLVM module on stdout.

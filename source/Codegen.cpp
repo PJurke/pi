@@ -2,11 +2,18 @@
 #include "../include/Logger.h"
 #include "../include/Token.h"
 
+#include <llvm/Support/TargetSelect.h>
+
 using namespace llvm;
 
 Codegen::Codegen() : module(std::make_unique<Module>("MyLangModule", context)), builder(context) {
 
     LOG_INFO("Initializing CodeGen with new LLVM module");
+
+    // Initialize LLVM native targets
+    InitializeNativeTarget();
+    InitializeNativeTargetAsmPrinter();
+    InitializeNativeTargetAsmParser();
 
     // Declare the C function puts
     std::vector<Type*> putsArgs { Type::getInt8Ty(context)->getPointerTo() };
@@ -72,6 +79,31 @@ void Codegen::generateConst(const ConstNode* constNode) {
 void Codegen::generatePrint(const PrintNode* printNode) {
     Value* strVal = builder.CreateGlobalStringPtr(printNode->text, "str");
     builder.CreateCall(putsFunc, strVal);
+}
+
+void Codegen::createMainWrapper(const std::string& targetFuncName) {
+    llvm::FunctionType* mainType = llvm::FunctionType::get(builder.getInt32Ty(), false);
+    llvm::Function* mainFunc = llvm::Function::Create(mainType, llvm::Function::ExternalLinkage, "main", module.get());
+    llvm::BasicBlock* mainBB = llvm::BasicBlock::Create(context, "entry", mainFunc);
+    
+    // Save current insert point
+    auto savedInsertBlock = builder.GetInsertBlock();
+    auto savedInsertPoint = builder.GetInsertPoint();
+
+    builder.SetInsertPoint(mainBB);
+    
+    llvm::Function* targetFunc = module->getFunction(targetFuncName);
+    if (!targetFunc) {
+        throw std::runtime_error("Function " + targetFuncName + " not found in module");
+    }
+
+    builder.CreateCall(targetFunc);
+    builder.CreateRet(llvm::ConstantInt::get(builder.getInt32Ty(), 0));
+    llvm::verifyFunction(*mainFunc);
+    
+    // Restore insert point (optional, but good practice if we were doing more)
+    if (savedInsertBlock)
+        builder.SetInsertPoint(savedInsertBlock, savedInsertPoint);
 }
 
 void Codegen::printModule() const {

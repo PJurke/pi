@@ -4,9 +4,7 @@
 #include <sstream>
 #include <stdexcept>
 
-#include <llvm/IR/LLVMContext.h>
-#include <llvm/Support/TargetSelect.h>
-#include <llvm/Support/raw_ostream.h>
+
 
 #include "../include/Codegen.h"
 #include "../include/Lexer.h"
@@ -14,7 +12,7 @@
 #include "../include/ScopedLogger.h"
 #include "../include/Parser.h"
 
-using namespace llvm;
+
 
 /// @brief Helper function to read a file into a string
 /// @param filename The name of the file to read
@@ -55,14 +53,6 @@ int main(int argc, char **argv) {
         return 1;
     }
 
-    // Initialize LLVM
-    {
-        LOG_SCOPE("LLVM Initialization");
-        InitializeNativeTarget();
-        InitializeNativeTargetAsmPrinter();
-        InitializeNativeTargetAsmParser();
-    }
-
     // Lexical analysis: Tokenize the read pi language code
     Lexer lexer(source);
     auto tokens = lexer.tokenize();
@@ -73,7 +63,7 @@ int main(int argc, char **argv) {
     try {
         funcAST = parser.parseFunction();
     } catch (const std::runtime_error &e) {
-        errs() << "Parsing error: " << e.what() << "\n";
+        std::cerr << "Parsing error: " << e.what() << "\n";
         return 1;
     }
 
@@ -87,15 +77,7 @@ int main(int argc, char **argv) {
     // Create the main function that calls the generated function
     {
         LOG_SCOPE("LLVM IR Construction (Main)");
-        llvm::LLVMContext &context = codegen.getModule()->getContext();
-        llvm::IRBuilder<> builder(context);
-        llvm::FunctionType* mainType = llvm::FunctionType::get(builder.getInt32Ty(), false);
-        llvm::Function* mainFunc = llvm::Function::Create(mainType, llvm::Function::ExternalLinkage, "main", codegen.getModule().get());
-        llvm::BasicBlock* mainBB = llvm::BasicBlock::Create(context, "entry", mainFunc);
-        builder.SetInsertPoint(mainBB);
-        builder.CreateCall(codegen.getModule()->getFunction(funcAST->name));
-        builder.CreateRet(llvm::ConstantInt::get(builder.getInt32Ty(), 0));
-        llvm::verifyFunction(*mainFunc);
+        codegen.createMainWrapper(funcAST->name);
     }
 
     // Output of the generated LLVM-IR
