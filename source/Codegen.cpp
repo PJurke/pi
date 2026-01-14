@@ -32,6 +32,8 @@ llvm::Type* Codegen::getReturnType(const std::string &retTypeStr) {
         return builder.getInt32Ty();
     else if(retTypeStr == "int64")
         return builder.getInt64Ty();
+    else if(retTypeStr == "void")
+        return builder.getVoidTy();
     
     throw std::runtime_error("Unsupported return type: " + retTypeStr);
 
@@ -58,7 +60,12 @@ void Codegen::generateCode(const FuncNode* funcAST) {
     }
 
     // Return: 0 as default value
-    builder.CreateRet(ConstantInt::get(retType, 0));
+    // Return: 0 as default value
+    if (retType->isVoidTy()) {
+        builder.CreateRetVoid();
+    } else {
+        builder.CreateRet(ConstantInt::get(retType, 0));
+    }
     verifyFunction(*func);
     
 }

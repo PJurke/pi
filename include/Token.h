@@ -6,6 +6,7 @@
 enum TokenType {
 
     TOKEN_FUNC,     // function
+    TOKEN_VOID,     // void return type
 
     TOKEN_START,    // start function
     TOKEN_IDENT,    // function identifier

@@ -11,7 +11,11 @@ Program ::= { FunctionDefinition }
 A function consists of a series of statements.
 
 ```ebnf
-FunctionDefinition ::= "func" Identifier "(" ")" "->" Type "{" { Statement } "}"
+FunctionDefinition ::= "func" Identifier "(" ")" "->" ReturnType "{" { Statement } "}"
+```
+
+```ebnf
+ReturnType ::= Type | "void"
 ```
 
 For now, print and const statements are allowed.

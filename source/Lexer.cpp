@@ -59,6 +59,8 @@ std::vector<Token> Lexer::tokenize() {
                 tokens.push_back({TOKEN_PRINT, word, tokenLine, tokenColumn});
             else if (word == "const")
                 tokens.push_back({TOKEN_CONST, word, tokenLine, tokenColumn});
+            else if (word == "void")
+                tokens.push_back({TOKEN_VOID, word, tokenLine, tokenColumn});
 
             // CHARACTER TYPES
             else if (word == "char8")

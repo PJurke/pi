@@ -1,0 +1,7 @@
+// Run: %pi %s | filecheck %s
+
+func myvoidfunc() -> void {
+}
+
+// CHECK: define void @myvoidfunc()
+// CHECK: ret void
