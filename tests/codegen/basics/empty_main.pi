@@ -1,0 +1,7 @@
+// Run: %pi %s | filecheck %s
+
+func main() -> int32 {
+}
+
+// CHECK: define i32 @main
+// CHECK: ret i32 0

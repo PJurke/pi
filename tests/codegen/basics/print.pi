@@ -1,0 +1,9 @@
+// Run: %pi %s | filecheck %s
+
+func main() -> int32 {
+    print("Hello World")
+}
+
+// CHECK: @str = private unnamed_addr constant [12 x i8] c"Hello World\00"
+// CHECK: define i32 @main
+// CHECK: call i32 @puts

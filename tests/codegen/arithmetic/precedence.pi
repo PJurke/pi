@@ -1,0 +1,9 @@
+// Run: %pi %s | filecheck %s
+
+func main() -> int32 {
+    const a: int32 = 2 + 3 * 4
+    const b: int32 = (2 + 3) * 4
+}
+
+// CHECK: store i32 14
+// CHECK: store i32 20

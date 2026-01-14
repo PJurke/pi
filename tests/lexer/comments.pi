@@ -1,0 +1,16 @@
+// Run: %pi %s | filecheck %s
+
+// CHECK: define i32 @main()
+func main() -> int32 {
+    // This is a comment that should be ignored
+    // CHECK-NOT: //
+    
+    print("Hello") // Inline comment should be ignored
+    // CHECK: call i32 @puts
+    
+    // const x: int32 = 10 // This should be ignored
+    // CHECK-NOT: 10
+    
+    const y: int32 = 20
+    // CHECK: store i32 20
+}

@@ -54,7 +54,7 @@ Term ::= Factor { ("*" | "/") Factor }
 ```
 
 ```ebnf
-Factor ::= NumberLiteral | "(" Expression ")"
+Factor ::= NumberLiteral | CharLiteral | "(" Expression ")"
 ```
 
 **Literals**<br>
@@ -85,4 +85,10 @@ Digit ::= "0" | "1" | "2" | "3" | "4" | "5" | "6" | "7" | "8" | "9"
 
 ```ebnf
 AnyCharExceptQuote ::= any character except '"'
+```
+
+**Comments**<br>
+Comments start with `//` and extend to the end of the line. They are ignored by the parser.
+```ebnf
+Comment ::= "//" { AnyChar } NewLine
 ```

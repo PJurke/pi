@@ -1,0 +1,17 @@
+// Run: %pi %s | filecheck %s
+
+func main() -> int32 {
+    const a: int8 = 10
+    const b: int16 = 20
+    const c: int32 = 30
+    const d: int64 = 40
+}
+
+// CHECK: alloca i8
+// CHECK: alloca i16
+// CHECK: alloca i32
+// CHECK: alloca i64
+// CHECK: store i8 10
+// CHECK: store i16 20
+// CHECK: store i32 30
+// CHECK: store i64 40

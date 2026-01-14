@@ -159,6 +159,14 @@ std::vector<Token> Lexer::tokenize() {
         }
 
         if (c == '/') {
+            if (index + 1 < source.size() && source[index + 1] == '/') {
+                // Comment detected, skip until end of line
+                while (index < source.size() && source[index] != '\n') {
+                    advance();
+                }
+                continue;
+            }
+
             tokens.push_back({TOKEN_SLASH, "/", tokenLine, tokenColumn});
             advance();
             continue;

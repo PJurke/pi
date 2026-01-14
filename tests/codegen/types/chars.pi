@@ -1,0 +1,8 @@
+// Run: %pi %s | filecheck %s
+
+func main() -> int32 {
+    const a: char8 = 'A'
+}
+
+// CHECK: alloca i8
+// CHECK: store i8 65

@@ -100,6 +100,11 @@ void Codegen::generateConst(const ConstNode* constNode) {
     // Evaluate validity of the expression
     llvm::Value* initVal = generateExpression(constNode->value.get());
 
+    // Cast the value to the target type if necessary
+    if (initVal->getType() != llvmType) {
+        initVal = builder.CreateIntCast(initVal, llvmType, true, "casttmp");
+    }
+
     // Write the constant value to the variable
     builder.CreateStore(initVal, allocaInst);
 
