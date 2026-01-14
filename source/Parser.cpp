@@ -16,6 +16,10 @@ Token Parser::currentToken() {
     return {TOKEN_EOF, "", -1, -1};
 }
 
+bool Parser::isAtEOF() {
+    return currentToken().type == TOKEN_EOF;
+}
+
 void Parser::advance() {
     if (index < tokens.size())
         index++;
@@ -156,7 +160,23 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
         return node;
     }
 
-    throw std::runtime_error("Expected statement (print or const)");
+    else if (currentToken().type == TOKEN_RETURN) {
+        advance(); // skip 'return'
+
+        std::unique_ptr<ASTNode> returnVal = nullptr;
+
+        Token t = currentToken();
+        // Check if the next token starts an expression
+        if (t.type == TOKEN_NUMBER || t.type == TOKEN_CHAR || t.type == TOKEN_LPAREN) {
+            returnVal = parseExpression();
+        }
+
+        auto returnNode = std::make_unique<ReturnNode>();
+        returnNode->returnValue = std::move(returnVal);
+        return returnNode;
+    }
+
+    throw std::runtime_error("Expected statement (print, const, or return)");
 }
 
 std::unique_ptr<ASTNode> Parser::parseExpression() {

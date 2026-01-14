@@ -55,9 +55,12 @@ int main(int argc, char **argv) {
 
     // Parsing: Build an AST from the tokens
     Parser parser(tokens);
-    std::unique_ptr<FuncNode> funcAST;
+    std::vector<std::unique_ptr<FuncNode>> functions;
+    
     try {
-        funcAST = parser.parseFunction();
+        while (!parser.isAtEOF()) {
+            functions.push_back(parser.parseFunction());
+        }
     } catch (const std::runtime_error &e) {
         std::cerr << "Parsing error: " << e.what() << "\n";
         return 1;
@@ -67,13 +70,17 @@ int main(int argc, char **argv) {
     Codegen codegen;
     {
         LOG_SCOPE("Code Generation");
-        codegen.generateCode(funcAST.get());
+        for (const auto& func : functions) {
+            codegen.generateCode(func.get());
+        }
     }
 
     // Create the main function that calls the generated function
-    {
+    // For now, we wrap the last parsed function as the entry point 
+    // This maintains behavior for single-function files while supporting multiple functions
+    if (!functions.empty()) {
         LOG_SCOPE("LLVM IR Construction (Main)");
-        codegen.createMainWrapper(funcAST->name);
+        codegen.createMainWrapper(functions.back()->name);
     }
 
     // Output of the generated LLVM-IR

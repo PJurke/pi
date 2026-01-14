@@ -22,7 +22,11 @@ For now, print and const statements are allowed.
 
 ```ebnf
 
-Statement ::= PrintStatement | ConstStatement
+Statement ::= PrintStatement | ConstStatement | ReturnStatement
+```
+
+```ebnf
+ReturnStatement ::= "return" [ Expression ]
 ```
 
 ```ebnf

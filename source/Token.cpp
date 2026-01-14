@@ -5,6 +5,7 @@ std::string TokenTypeToString(TokenType tokenType) {
     switch (tokenType) {
 
         case TokenType::TOKEN_FUNC:     return "func";
+        case TokenType::TOKEN_RETURN:   return "return";
         case TokenType::TOKEN_VOID:     return "void";
 
         case TokenType::TOKEN_START:    return "start function";

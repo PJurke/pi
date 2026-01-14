@@ -1,0 +1,18 @@
+
+func testReturnInt() -> int32 {
+    return 42
+}
+// CHECK: define i32 @testReturnInt()
+// CHECK: ret i32 42
+
+func testReturnVoid() -> void {
+    return
+}
+// CHECK: define void @testReturnVoid()
+// CHECK: ret void
+
+func testReturnExpression() -> int32 {
+    return 10 + 32
+}
+// CHECK: define i32 @testReturnExpression()
+// CHECK: ret i32 42

@@ -53,6 +53,8 @@ std::vector<Token> Lexer::tokenize() {
 
             if (word == "func")
                 tokens.push_back({TOKEN_FUNC, word, tokenLine, tokenColumn});
+            else if (word == "return")
+                tokens.push_back({TOKEN_RETURN, word, tokenLine, tokenColumn});
             else if (word == "start")
                 tokens.push_back({TOKEN_START, word, tokenLine, tokenColumn});
             else if (word == "print")

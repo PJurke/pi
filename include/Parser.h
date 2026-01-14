@@ -49,11 +49,19 @@ struct ConstNode : public ASTNode {
     std::unique_ptr<ASTNode> value;
 };
 
+/// @brief AST node for return statements
+struct ReturnNode : public ASTNode {
+    std::unique_ptr<ASTNode> returnValue; // Optional return value
+};
+
 class Parser {
 public:
     Parser(const std::vector<Token>& tokens);
     std::unique_ptr<FuncNode> parseFunction();
     std::unique_ptr<ASTNode> parseStatement();
+    
+    /// @brief Check if parser reached end of file
+    bool isAtEOF();
     
     // Expression parsing
     std::unique_ptr<ASTNode> parseExpression();

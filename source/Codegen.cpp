@@ -56,18 +56,47 @@ void Codegen::generateCode(const FuncNode* funcAST) {
             generatePrint(printNode);
         } else if (auto constNode = dynamic_cast<const ConstNode*>(stmt.get())) {
             generateConst(constNode);
+        } else if (auto returnNode = dynamic_cast<const ReturnNode*>(stmt.get())) {
+            generateReturn(returnNode, retType);
         }
     }
 
-    // Return: 0 as default value
-    // Return: 0 as default value
-    if (retType->isVoidTy()) {
-        builder.CreateRetVoid();
-    } else {
-        builder.CreateRet(ConstantInt::get(retType, 0));
+    // Return: 0 as default value if no return encountered (implicit void return at end)
+    // Note: If the last statement was a return, this might be unreachable, but LLVM handles it.
+    if (!builder.GetInsertBlock()->getTerminator()) {
+        if (retType->isVoidTy()) {
+            builder.CreateRetVoid();
+        } else {
+            builder.CreateRet(ConstantInt::get(retType, 0));
+        }
     }
     verifyFunction(*func);
     
+}
+
+void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedRetType) {
+    if (!returnNode->returnValue) {
+        if (!expectedRetType->isVoidTy())
+            throw std::runtime_error("Function must return a value");
+        builder.CreateRetVoid();
+        return;
+    }
+
+    if (expectedRetType->isVoidTy())
+        throw std::runtime_error("Void function cannot return a value");
+
+    llvm::Value* retVal = generateExpression(returnNode->returnValue.get());
+
+    if (retVal->getType() != expectedRetType) {
+        // Simple implicit cast attempt
+        if (expectedRetType->isIntegerTy() && retVal->getType()->isIntegerTy()) {
+            retVal = builder.CreateIntCast(retVal, expectedRetType, true, "casttmp");
+        } else {
+             throw std::runtime_error("Return type mismatch");
+        }
+    }
+
+    builder.CreateRet(retVal);
 }
 
 llvm::Value* Codegen::generateExpression(const ASTNode* node) {

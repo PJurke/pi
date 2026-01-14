@@ -75,6 +75,24 @@ PrintStatement ::= "print" "(" StringLiteral ")"
 print("System OK")
 ```
 
+### Return
+The `return` statement ends the execution of a function and optionally returns a value to the caller. The returned value must match the function's return type.
+
+```ebnf
+ReturnStatement ::= "return" [ Expression ]
+```
+
+**Example:**
+```pi
+func add(a: int32, b: int32) -> int32 {
+    return a + b
+}
+
+func doNothing() -> void {
+    return // Optional for void functions at the end of block
+}
+```
+
 ## Expressions
 Pi supports standard arithmetic operations. Precedence follows standard mathematical rules (multiplication/division before addition/subtraction).
 
