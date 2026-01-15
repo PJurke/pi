@@ -1,0 +1,5 @@
+func main() -> int32 {
+    const x: invalid_type = 10
+    return 0
+}
+// EXPECT_FAIL: Parsing error

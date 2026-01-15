@@ -28,6 +28,8 @@ def run_test(file_path):
     
     # 1. Parse expectations
     expected_checks = []
+    expect_fail_msg = None
+    
     try:
         with open(file_path, 'r') as f:
             for line in f:
@@ -36,13 +38,16 @@ def run_test(file_path):
                     check_content = line.split("// CHECK:")[1].strip()
                     if check_content:
                         expected_checks.append(check_content)
+                elif "// EXPECT_FAIL:" in line:
+                    expect_fail_msg = line.split("// EXPECT_FAIL:")[1].strip()
+                    
     except Exception as e:
         print(f"{Colors.FAIL}Error reading file {file_path}: {e}{Colors.ENDC}")
         return False
 
-    # If no checks are defined, skip the test (or mark as passed)
-    if not expected_checks:
-        print(f"{Colors.WARNING}⚠️  SKIPPED: {file_path} (No CHECK lines found){Colors.ENDC}")
+    # If no checks are defined and not expecting fail, skip the test (or mark as passed)
+    if not expected_checks and not expect_fail_msg:
+        print(f"{Colors.WARNING}⚠️  SKIPPED: {file_path} (No CHECK or EXPECT_FAIL lines found){Colors.ENDC}")
         return True
 
     # 2. Run the compiler
@@ -57,9 +62,26 @@ def run_test(file_path):
         print(f"{Colors.FAIL}❌ CRITICAL: Compiler not found at '{COMPILER_BIN}'{Colors.ENDC}")
         sys.exit(1)
 
+    # --- Negative Test Handling ---
+    if expect_fail_msg:
+        if result.returncode == 0:
+            print(f"{Colors.FAIL}❌ FAILED: {file_path}{Colors.ENDC}")
+            print(f"{Colors.BOLD}   Expected failure but compiler exited successfully.{Colors.ENDC}")
+            return False
+        
+        if expect_fail_msg not in result.stderr:
+            print(f"{Colors.FAIL}❌ FAILED: {file_path}{Colors.ENDC}")
+            print(f"{Colors.BOLD}   Expected error message not found in stderr:{Colors.ENDC}")
+            print(f"     Expected: '{expect_fail_msg}'")
+            # print(f"     Actual Stderr:\n{result.stderr}")
+            return False
+            
+        print(f"{Colors.OKGREEN}✅ PASSED (Negative Test): {file_path}{Colors.ENDC}")
+        return True
+
+    # --- Positive Test Handling ---
+    
     # Check if compiler crashed (non-zero exit code)
-    # Note: If you have negative tests (tests that SHOULD fail), 
-    # you would need to adjust this logic (e.g. look for // RUN: not ...).
     if result.returncode != 0:
         print(f"{Colors.FAIL}❌ FAILED: {file_path} (Compiler returned exit code {result.returncode}){Colors.ENDC}")
         print(f"{Colors.BOLD}Stderr output:{Colors.ENDC}\n{result.stderr}")

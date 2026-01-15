@@ -1,0 +1,5 @@
+func main() -> int32 {
+    const error: int32 = 100 / 0
+    return 0
+}
+// EXPECT_FAIL: Division by zero

@@ -1,0 +1,4 @@
+func main() -> int32 {
+    retun 0
+}
+// EXPECT_FAIL: Expected statement

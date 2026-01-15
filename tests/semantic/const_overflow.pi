@@ -1,0 +1,5 @@
+func main() -> int32 {
+    const tooBig: int8 = 300
+    return 0
+}
+// EXPECT_FAIL: Constant value out of range

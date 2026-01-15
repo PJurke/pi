@@ -1,0 +1,8 @@
+func test() -> void {
+    return 42
+}
+
+func main() -> int32 {
+    return 0
+}
+// EXPECT_FAIL: Void function cannot return a value

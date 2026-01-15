@@ -141,6 +141,13 @@ std::pair<llvm::Value*, bool> Codegen::generateExpression(const ASTNode* node) {
         if (binaryNode->op == "*")
             return {builder.CreateMul(left, right, "multmp"), isUnsigned};
         if (binaryNode->op == "/") {
+            // Check for division by literal zero
+            if (auto numNode = dynamic_cast<const NumberNode*>(binaryNode->right.get())) {
+                if (numNode->value == 0) {
+                     throw std::runtime_error("Division by zero");
+                }
+            }
+
             if (isUnsigned)
                 return {builder.CreateUDiv(left, right, "divtmp"), true};
             else
@@ -160,6 +167,25 @@ void Codegen::generateConst(const ConstNode* constNode) {
 
     // Create a local variable (allocaInst)
     llvm::AllocaInst* allocaInst = builder.CreateAlloca(llvmType, nullptr, constNode->name);
+
+    // [Semantic Check] Constant range check for integer literals
+    if (auto numNode = dynamic_cast<const NumberNode*>(constNode->value.get())) {
+        int64_t val = numNode->value;
+        std::string type = constNode->type;
+
+        if (type == "int8") {
+            if (val < -128 || val > 127) throw std::runtime_error("Constant value out of range (int8)");
+        } else if (type == "uint8") {
+            if (val < 0 || val > 255) throw std::runtime_error("Constant value out of range (uint8)");
+        } else if (type == "int16") {
+            if (val < -32768 || val > 32767) throw std::runtime_error("Constant value out of range (int16)");
+        } else if (type == "uint16") {
+            if (val < 0 || val > 65535) throw std::runtime_error("Constant value out of range (uint16)");
+        } else if (type == "uint32") {
+            if (val < 0 || val > 4294967295) throw std::runtime_error("Constant value out of range (uint32)");
+        }
+        // int32 and int64 are generally covered by the parser's integer limit (if strictly 32-bit int), but good to be safe.
+    }
 
     // Evaluate validity of the expression
     llvm::Value* initVal = generateExpression(constNode->value.get()).first;

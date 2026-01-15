@@ -1,0 +1,4 @@
+func main() -> int32 {
+    return 1 + * 2
+}
+// EXPECT_FAIL: Unexpected token
