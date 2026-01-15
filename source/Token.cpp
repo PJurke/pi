@@ -41,6 +41,13 @@ std::string TokenTypeToString(TokenType tokenType) {
         case TokenType::TOKEN_INT32:    return "int32";
         case TokenType::TOKEN_INT64:    return "int64";
 
+        // UNSIGNED INTEGER TYPES
+        
+        case TokenType::TOKEN_UINT8:    return "uint8";
+        case TokenType::TOKEN_UINT16:   return "uint16";
+        case TokenType::TOKEN_UINT32:   return "uint32";
+        case TokenType::TOKEN_UINT64:   return "uint64";
+
         case TokenType::TOKEN_CHAR:     return "char";
         case TokenType::TOKEN_STRING:   return "string";
         case TokenType::TOKEN_NUMBER:   return "number";

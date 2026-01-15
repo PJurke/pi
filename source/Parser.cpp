@@ -72,6 +72,7 @@ std::unique_ptr<FuncNode> Parser::parseFunction() {
     Token t = currentToken();
     if (t.type == TOKEN_CHAR8 || t.type == TOKEN_CHAR16 || t.type == TOKEN_CHAR32 ||
         t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64 ||
+        t.type == TOKEN_UINT8 || t.type == TOKEN_UINT16 || t.type == TOKEN_UINT32 || t.type == TOKEN_UINT64 ||
         t.type == TOKEN_VOID) {
         returnType = t.lexeme;
         advance();
@@ -141,7 +142,8 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         Token t = currentToken();
         if (t.type == TOKEN_CHAR8 || t.type == TOKEN_CHAR16 || t.type == TOKEN_CHAR32 ||
-            t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64) {
+            t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64 ||
+            t.type == TOKEN_UINT8 || t.type == TOKEN_UINT16 || t.type == TOKEN_UINT32 || t.type == TOKEN_UINT64) {
             declaredType = t.lexeme;
             advance();
         } else {

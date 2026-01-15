@@ -1,0 +1,12 @@
+func main() -> void {
+    const a: uint8 = 255
+    const b: uint16 = 65000
+    const c: uint32 = 100000
+    const d: uint64 = 1000000
+    print("Unsigned ints compiled successfully")
+}
+
+// CHECK: alloca i8
+// CHECK: alloca i16
+// CHECK: alloca i32
+// CHECK: alloca i64

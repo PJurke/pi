@@ -24,18 +24,24 @@ Codegen::Codegen() : module(std::make_unique<Module>("MyLangModule", context)), 
 
 llvm::Type* Codegen::getReturnType(const std::string &retTypeStr) {
 
-    if(retTypeStr == "char8" || retTypeStr == "int8")
+    if(retTypeStr == "char8" || retTypeStr == "int8" || retTypeStr == "uint8")
         return builder.getInt8Ty();
-    else if(retTypeStr == "char16" || retTypeStr == "int16")
+    else if(retTypeStr == "char16" || retTypeStr == "int16" || retTypeStr == "uint16")
         return builder.getInt16Ty();
-    else if(retTypeStr == "char32" || retTypeStr == "int32")
+    else if(retTypeStr == "char32" || retTypeStr == "int32" || retTypeStr == "uint32")
         return builder.getInt32Ty();
-    else if(retTypeStr == "int64")
+    else if(retTypeStr == "int64" || retTypeStr == "uint64")
         return builder.getInt64Ty();
     else if(retTypeStr == "void")
         return builder.getVoidTy();
     
     throw std::runtime_error("Unsupported return type: " + retTypeStr);
+
+}
+
+bool Codegen::isUnsignedType(const std::string &typeStr) {
+    if (typeStr.find("uint") == 0) return true;
+    return false;
 
 }
 
@@ -57,7 +63,7 @@ void Codegen::generateCode(const FuncNode* funcAST) {
         } else if (auto constNode = dynamic_cast<const ConstNode*>(stmt.get())) {
             generateConst(constNode);
         } else if (auto returnNode = dynamic_cast<const ReturnNode*>(stmt.get())) {
-            generateReturn(returnNode, retType);
+            generateReturn(returnNode, retType, isUnsignedType(funcAST->returnType));
         }
     }
 
@@ -74,7 +80,7 @@ void Codegen::generateCode(const FuncNode* funcAST) {
     
 }
 
-void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedRetType) {
+void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedRetType, bool isUnsigned) {
     if (!returnNode->returnValue) {
         if (!expectedRetType->isVoidTy())
             throw std::runtime_error("Function must return a value");
@@ -90,7 +96,7 @@ void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedR
     if (retVal->getType() != expectedRetType) {
         // Simple implicit cast attempt
         if (expectedRetType->isIntegerTy() && retVal->getType()->isIntegerTy()) {
-            retVal = builder.CreateIntCast(retVal, expectedRetType, true, "casttmp");
+            retVal = builder.CreateIntCast(retVal, expectedRetType, !isUnsigned, "casttmp");
         } else {
              throw std::runtime_error("Return type mismatch");
         }
@@ -138,7 +144,7 @@ void Codegen::generateConst(const ConstNode* constNode) {
 
     // Cast the value to the target type if necessary
     if (initVal->getType() != llvmType) {
-        initVal = builder.CreateIntCast(initVal, llvmType, true, "casttmp");
+        initVal = builder.CreateIntCast(initVal, llvmType, !isUnsignedType(constNode->type), "casttmp");
     }
 
     // Write the constant value to the variable

@@ -41,11 +41,12 @@ Pi is a statically typed language with explicit bit-width integers and keys.
 | :--- | :--- |
 | `void` | No return value (functions only) |
 | `int8`, `int16`, `int32`, `int64` | Signed Integers |
+| `uint8`, `uint16`, `uint32`, `uint64` | Unsigned Integers |
 | `char8`, `char16`, `char32` | Character types |
 
 **Syntax:**
 ```ebnf
-Type ::= "char8" | "char16" | "char32" | "int8" | "int16" | "int32" | "int64"
+Type ::= "char8" | "char16" | "char32" | "int8" | "int16" | "int32" | "int64" | "uint8" | "uint16" | "uint32" | "uint64"
 ```
 
 ## Statements

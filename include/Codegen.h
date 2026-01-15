@@ -74,9 +74,19 @@ private:
      */
     llvm::Type* getReturnType(const std::string &retTypeStr);
 
+    /**
+     * @brief Checks if a type string represents an unsigned integer type.
+     *
+     * Supported unsigned types are uchar8, uchar16, uchar32, uint8, uint16, uint32, uint64.
+     *
+     * @param typeStr The string that describes the type.
+     * @return True if the type is unsigned, false otherwise.
+     */
+    bool isUnsignedType(const std::string &typeStr);
+
     void generateConst(const ConstNode* constNode);
     void generatePrint(const PrintNode* printNode);
-    void generateReturn(const ReturnNode* returnNode, llvm::Type* expectedRetType);
+    void generateReturn(const ReturnNode* returnNode, llvm::Type* expectedRetType, bool isUnsigned);
     llvm::Value* generateExpression(const ASTNode* node);
 
 };

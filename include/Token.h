@@ -41,6 +41,13 @@ enum TokenType {
     TOKEN_INT16,
     TOKEN_INT32,
     TOKEN_INT64,
+
+    // UNSIGNED INTEGER TYPES
+    
+    TOKEN_UINT8,
+    TOKEN_UINT16,
+    TOKEN_UINT32,
+    TOKEN_UINT64,
     
     TOKEN_CHAR,     // char data type
     TOKEN_STRING,   // data type string

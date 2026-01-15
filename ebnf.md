@@ -43,7 +43,7 @@ ConstStatement ::= "const" Identifier ":" Type "=" Expression
 Pi has single characters (char) and integers (int).
 
 ```ebnf
-Type ::= "char8" | "char16" | "char32" | "int8" | "int16" | "int32" | "int64"
+Type ::= "char8" | "char16" | "char32" | "int8" | "int16" | "int32" | "int64" | "uint8" | "uint16" | "uint32" | "uint64"
 ```
 
 ```ebnf

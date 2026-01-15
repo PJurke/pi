@@ -81,6 +81,16 @@ std::vector<Token> Lexer::tokenize() {
                 tokens.push_back({TOKEN_INT32, word, tokenLine, tokenColumn});
             else if (word == "int64")
                 tokens.push_back({TOKEN_INT64, word, tokenLine, tokenColumn});
+
+            // UNSIGNED INTEGER TYPES
+            else if (word == "uint8")
+                tokens.push_back({TOKEN_UINT8, word, tokenLine, tokenColumn});
+            else if (word == "uint16")
+                tokens.push_back({TOKEN_UINT16, word, tokenLine, tokenColumn});
+            else if (word == "uint32")
+                tokens.push_back({TOKEN_UINT32, word, tokenLine, tokenColumn});
+            else if (word == "uint64")
+                tokens.push_back({TOKEN_UINT64, word, tokenLine, tokenColumn});
             
             else
                 tokens.push_back({TOKEN_IDENT, word, tokenLine, tokenColumn});
