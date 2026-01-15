@@ -91,7 +91,10 @@ private:
     void generateConst(const ConstNode* constNode);
     void generatePrint(const PrintNode* printNode);
     void generateReturn(const ReturnNode* returnNode, llvm::Type* expectedRetType, bool isUnsigned);
-    llvm::Value* generateExpression(const ASTNode* node);
+    std::pair<llvm::Value*, bool> generateExpression(const ASTNode* node);
+
+    /// @brief Tracks which variables are unsigned in the current scope
+    std::map<std::string, bool> isUnsignedVar;
 
 };
 

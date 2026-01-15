@@ -57,7 +57,9 @@ void Codegen::generateCode(const FuncNode* funcAST) {
     builder.SetInsertPoint(funcBB);
 
     // clear the symbol table for the new function scope
+    // clear the symbol table for the new function scope
     namedValues.clear();
+    isUnsignedVar.clear();
 
     // Here we treat a series of print statements as a function body
     for (const auto& stmt : funcAST->body) {
@@ -94,7 +96,7 @@ void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedR
     if (expectedRetType->isVoidTy())
         throw std::runtime_error("Void function cannot return a value");
 
-    llvm::Value* retVal = generateExpression(returnNode->returnValue.get());
+    llvm::Value* retVal = generateExpression(returnNode->returnValue.get()).first;
 
     if (retVal->getType() != expectedRetType) {
         // Simple implicit cast attempt
@@ -108,32 +110,42 @@ void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedR
     builder.CreateRet(retVal);
 }
 
-llvm::Value* Codegen::generateExpression(const ASTNode* node) {
+std::pair<llvm::Value*, bool> Codegen::generateExpression(const ASTNode* node) {
     if (auto numberNode = dynamic_cast<const NumberNode*>(node)) {
-        return llvm::ConstantInt::get(builder.getInt32Ty(), numberNode->value);
+        return {llvm::ConstantInt::get(builder.getInt32Ty(), numberNode->value), false};
     }
     else if (auto charNode = dynamic_cast<const CharNode*>(node)) {
-        return llvm::ConstantInt::get(builder.getInt8Ty(), charNode->value);
+        return {llvm::ConstantInt::get(builder.getInt8Ty(), charNode->value), false};
     }
     else if (auto variableNode = dynamic_cast<const VariableNode*>(node)) {
         llvm::AllocaInst* alloca = namedValues[variableNode->name];
         if (!alloca) {
              throw std::runtime_error("Unknown variable: " + variableNode->name);
         }
-        return builder.CreateLoad(alloca->getAllocatedType(), alloca, variableNode->name.c_str());
+        bool isUnsigned = isUnsignedVar[variableNode->name];
+        return {builder.CreateLoad(alloca->getAllocatedType(), alloca, variableNode->name.c_str()), isUnsigned};
     }
     else if (auto binaryNode = dynamic_cast<const BinaryOpNode*>(node)) {
-        llvm::Value* left = generateExpression(binaryNode->left.get());
-        llvm::Value* right = generateExpression(binaryNode->right.get());
+        auto leftResult = generateExpression(binaryNode->left.get());
+        auto rightResult = generateExpression(binaryNode->right.get());
+        
+        llvm::Value* left = leftResult.first;
+        llvm::Value* right = rightResult.first;
+        
+        bool isUnsigned = leftResult.second || rightResult.second;
 
         if (binaryNode->op == "+")
-            return builder.CreateAdd(left, right, "addtmp");
+            return {builder.CreateAdd(left, right, "addtmp"), isUnsigned};
         if (binaryNode->op == "-")
-            return builder.CreateSub(left, right, "subtmp");
+            return {builder.CreateSub(left, right, "subtmp"), isUnsigned};
         if (binaryNode->op == "*")
-            return builder.CreateMul(left, right, "multmp");
-        if (binaryNode->op == "/")
-            return builder.CreateSDiv(left, right, "divtmp"); // Signed division
+            return {builder.CreateMul(left, right, "multmp"), isUnsigned};
+        if (binaryNode->op == "/") {
+            if (isUnsigned)
+                return {builder.CreateUDiv(left, right, "divtmp"), true};
+            else
+                return {builder.CreateSDiv(left, right, "divtmp"), false};
+        }
         
         throw std::runtime_error("Unknown binary operator: " + binaryNode->op);
     }
@@ -150,7 +162,7 @@ void Codegen::generateConst(const ConstNode* constNode) {
     llvm::AllocaInst* allocaInst = builder.CreateAlloca(llvmType, nullptr, constNode->name);
 
     // Evaluate validity of the expression
-    llvm::Value* initVal = generateExpression(constNode->value.get());
+    llvm::Value* initVal = generateExpression(constNode->value.get()).first;
 
     // Cast the value to the target type if necessary
     if (initVal->getType() != llvmType) {
@@ -162,6 +174,7 @@ void Codegen::generateConst(const ConstNode* constNode) {
     
     // Register in symbol table after initialization to prevent self-reference
     namedValues[constNode->name] = allocaInst;
+    isUnsignedVar[constNode->name] = isUnsignedType(constNode->type);
 
 }
 

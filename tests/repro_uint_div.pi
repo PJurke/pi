@@ -1,0 +1,8 @@
+func main() -> int32 {
+    const a: uint64 = 100
+    const b: uint64 = 2
+    const c: uint64 = a / b
+    return 0
+}
+
+// CHECK: udiv i64
