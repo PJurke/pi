@@ -169,7 +169,7 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         Token t = currentToken();
         // Check if the next token starts an expression
-        if (t.type == TOKEN_NUMBER || t.type == TOKEN_CHAR || t.type == TOKEN_LPAREN) {
+        if (t.type == TOKEN_NUMBER || t.type == TOKEN_CHAR || t.type == TOKEN_LPAREN || t.type == TOKEN_IDENT) {
             returnVal = parseExpression();
         }
 
@@ -234,6 +234,13 @@ std::unique_ptr<ASTNode> Parser::parseFactor() {
         advance();
         auto node = std::make_unique<CharNode>();
         node->value = val;
+        return node;
+    }
+    else if (currentToken().type == TOKEN_IDENT) {
+        std::string name = currentToken().lexeme;
+        advance();
+        auto node = std::make_unique<VariableNode>();
+        node->name = name;
         return node;
     }
     else if (currentToken().type == TOKEN_LPAREN) {

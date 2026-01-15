@@ -49,6 +49,11 @@ struct ConstNode : public ASTNode {
     std::unique_ptr<ASTNode> value;
 };
 
+/// @brief AST node for variable usage in expressions
+struct VariableNode : public ASTNode {
+    std::string name;
+};
+
 /// @brief AST node for return statements
 struct ReturnNode : public ASTNode {
     std::unique_ptr<ASTNode> returnValue; // Optional return value

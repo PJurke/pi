@@ -100,13 +100,15 @@ Pi supports standard arithmetic operations. Precedence follows standard mathemat
 ```ebnf
 Expression ::= Term { ("+" | "-") Term }
 Term       ::= Factor { ("*" | "/") Factor }
-Factor     ::= NumberLiteral | CharLiteral | "(" Expression ")"
+Factor     ::= NumberLiteral | CharLiteral | Identifier | "(" Expression ")"
 ```
 
 **Example:**
 ```pi
-const a: int32 = 10 + 5 * 2  // Result: 20
-const b: int32 = (10 + 5) * 2 // Result: 30
+const a: int32 = 10
+const b: int32 = 20
+const c: int32 = a + b // Result: 30 (Variables in expressions)
+const d: int32 = (a * 2) + b // Result: 40
 ```
 
 ## Literals

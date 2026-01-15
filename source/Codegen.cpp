@@ -56,6 +56,9 @@ void Codegen::generateCode(const FuncNode* funcAST) {
     BasicBlock* funcBB = BasicBlock::Create(context, "entry", func);
     builder.SetInsertPoint(funcBB);
 
+    // clear the symbol table for the new function scope
+    namedValues.clear();
+
     // Here we treat a series of print statements as a function body
     for (const auto& stmt : funcAST->body) {
         if (auto printNode = dynamic_cast<const PrintNode*>(stmt.get())) {
@@ -112,6 +115,13 @@ llvm::Value* Codegen::generateExpression(const ASTNode* node) {
     else if (auto charNode = dynamic_cast<const CharNode*>(node)) {
         return llvm::ConstantInt::get(builder.getInt8Ty(), charNode->value);
     }
+    else if (auto variableNode = dynamic_cast<const VariableNode*>(node)) {
+        llvm::AllocaInst* alloca = namedValues[variableNode->name];
+        if (!alloca) {
+             throw std::runtime_error("Unknown variable: " + variableNode->name);
+        }
+        return builder.CreateLoad(alloca->getAllocatedType(), alloca, variableNode->name.c_str());
+    }
     else if (auto binaryNode = dynamic_cast<const BinaryOpNode*>(node)) {
         llvm::Value* left = generateExpression(binaryNode->left.get());
         llvm::Value* right = generateExpression(binaryNode->right.get());
@@ -138,7 +148,7 @@ void Codegen::generateConst(const ConstNode* constNode) {
 
     // Create a local variable (allocaInst)
     llvm::AllocaInst* allocaInst = builder.CreateAlloca(llvmType, nullptr, constNode->name);
-    
+
     // Evaluate validity of the expression
     llvm::Value* initVal = generateExpression(constNode->value.get());
 
@@ -149,6 +159,9 @@ void Codegen::generateConst(const ConstNode* constNode) {
 
     // Write the constant value to the variable
     builder.CreateStore(initVal, allocaInst);
+    
+    // Register in symbol table after initialization to prevent self-reference
+    namedValues[constNode->name] = allocaInst;
 
 }
 

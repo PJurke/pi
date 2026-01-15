@@ -62,7 +62,7 @@ Term ::= Factor { ("*" | "/") Factor }
 ```
 
 ```ebnf
-Factor ::= NumberLiteral | CharLiteral | "(" Expression ")"
+Factor ::= NumberLiteral | CharLiteral | Identifier | "(" Expression ")"
 ```
 
 **Literals**<br>

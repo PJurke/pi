@@ -1,0 +1,14 @@
+func main() -> int32 {
+    const x: int32 = 10
+    const y: int32 = 20
+    const z: int32 = x + y
+    return z
+}
+
+// CHECK: alloca i32
+// CHECK: store i32 10
+// CHECK: alloca i32
+// CHECK: store i32 20
+// CHECK: load i32
+// CHECK: load i32
+// CHECK: add i32

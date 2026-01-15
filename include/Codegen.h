@@ -2,6 +2,7 @@
 #define CODEGEN_H
 
 #include <memory>
+#include <map>
 
 #include <llvm/IR/IRBuilder.h>
 #include <llvm/IR/LLVMContext.h>
@@ -62,6 +63,9 @@ private:
     std::unique_ptr<llvm::Module> module;       ///< The LLVM module that contains the generated code
     llvm::IRBuilder<> builder;                  ///< Builder for the creation of LLVM IR
     llvm::FunctionCallee putsFunc;              ///< Declaration of the external C function puts
+
+    /// @brief Symbol table for the current function
+    std::map<std::string, llvm::AllocaInst*> namedValues;
 
     /**
      * @brief Converts a return type string into an LLVM type.

@@ -1,0 +1,2264 @@
+21:45:11.503 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.504 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 377
+21:45:11.504 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.504 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 19
+21:45:11.504 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.044 ms)
+21:45:11.504 | INFO  | Parser.cpp:9                 | Initializing Parser with 19 tokens
+21:45:11.504 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.504 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.504 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.504 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:45:11.504 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.504 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.055 ms)
+21:45:11.504 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.111 ms)
+21:45:11.505 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.511 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.518 | INFO  | main.cpp:72                  | [DONE ] Code Generation (7.129 ms)
+21:45:11.518 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.518 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.217 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 19.303 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.044 ms     0.23%
+Parsing                                            1       0.111 ms     0.58%
+Code Generation                                    1       7.129 ms    36.93%
+LLVM IR Construction (Main)                        1       0.217 ms     1.12%
+Other / Overhead                                   -      11.802 ms    61.14%
+================================================================================
+21:45:11.539 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.540 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:45:11.540 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.540 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 37
+21:45:11.540 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.053 ms)
+21:45:11.540 | INFO  | Parser.cpp:9                 | Initializing Parser with 37 tokens
+21:45:11.540 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.540 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.540 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.540 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.014 ms)
+21:45:11.540 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.540 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:45:11.540 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.540 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:45:11.540 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.540 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:45:11.540 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.540 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:45:11.540 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.122 ms)
+21:45:11.540 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.540 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.540 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.381 ms)
+21:45:11.540 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.540 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.023 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.515 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.053 ms     3.47%
+Parsing                                            1       0.122 ms     8.02%
+Code Generation                                    1       0.381 ms    25.17%
+LLVM IR Construction (Main)                        1       0.023 ms     1.50%
+Other / Overhead                                   -       0.937 ms    61.83%
+================================================================================
+21:45:11.549 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.550 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 340
+21:45:11.550 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.550 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 32
+21:45:11.550 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.039 ms)
+21:45:11.550 | INFO  | Parser.cpp:9                 | Initializing Parser with 32 tokens
+21:45:11.550 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnInt'
+21:45:11.550 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.550 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.550 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:45:11.550 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.032 ms)
+21:45:11.550 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnVoid'
+21:45:11.550 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.550 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.550 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:45:11.550 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.025 ms)
+21:45:11.550 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnExpression'
+21:45:11.550 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.550 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.550 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:45:11.550 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.028 ms)
+21:45:11.550 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.550 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.551 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.317 ms)
+21:45:11.551 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.551 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.032 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.548 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.039 ms     2.53%
+Parsing                                            3       0.085 ms     5.47%
+Code Generation                                    1       0.317 ms    20.49%
+LLVM IR Construction (Main)                        1       0.032 ms     2.07%
+Other / Overhead                                   -       1.075 ms    69.44%
+================================================================================
+21:45:11.561 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.562 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 209
+21:45:11.562 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.562 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 13
+21:45:11.562 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.034 ms)
+21:45:11.562 | INFO  | Parser.cpp:9                 | Initializing Parser with 13 tokens
+21:45:11.562 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.562 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.562 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.562 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:45:11.562 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.028 ms)
+21:45:11.562 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.562 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.562 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.135 ms)
+21:45:11.562 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.562 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.020 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.369 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.034 ms     2.51%
+Parsing                                            1       0.028 ms     2.07%
+Code Generation                                    1       0.135 ms     9.85%
+LLVM IR Construction (Main)                        1       0.020 ms     1.43%
+Other / Overhead                                   -       1.152 ms    84.14%
+================================================================================
+21:45:11.571 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.572 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 104
+21:45:11.572 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.572 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:45:11.572 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.028 ms)
+21:45:11.572 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:45:11.572 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.572 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.572 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.009 ms)
+21:45:11.572 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.572 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.572 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.096 ms)
+21:45:11.572 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.572 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.045 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.105 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.028 ms     2.56%
+Parsing                                            1       0.009 ms     0.82%
+Code Generation                                    1       0.096 ms     8.67%
+LLVM IR Construction (Main)                        1       0.045 ms     4.07%
+Other / Overhead                                   -       0.927 ms    83.88%
+================================================================================
+21:45:11.582 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.582 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 117
+21:45:11.582 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.582 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:45:11.582 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.025 ms)
+21:45:11.582 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:45:11.582 | INFO  | Parser.cpp:61                | Parsing Function 'myvoidfunc'
+21:45:11.582 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.582 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.008 ms)
+21:45:11.582 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.582 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.582 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.076 ms)
+21:45:11.582 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.582 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.029 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.881 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.025 ms     2.82%
+Parsing                                            1       0.008 ms     0.94%
+Code Generation                                    1       0.076 ms     8.62%
+LLVM IR Construction (Main)                        1       0.029 ms     3.23%
+Other / Overhead                                   -       0.744 ms    84.39%
+================================================================================
+21:45:11.591 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.591 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 124
+21:45:11.592 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.592 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 15
+21:45:11.592 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.029 ms)
+21:45:11.592 | INFO  | Parser.cpp:9                 | Initializing Parser with 15 tokens
+21:45:11.592 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.592 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.592 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.592 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.025 ms)
+21:45:11.592 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.045 ms)
+21:45:11.592 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.592 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.592 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.106 ms)
+21:45:11.592 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.592 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.030 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.029 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.029 ms     2.85%
+Parsing                                            1       0.045 ms     4.38%
+Code Generation                                    1       0.106 ms    10.28%
+LLVM IR Construction (Main)                        1       0.030 ms     2.94%
+Other / Overhead                                   -       0.819 ms    79.55%
+================================================================================
+21:45:11.601 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.601 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 197
+21:45:11.601 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.601 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 21
+21:45:11.601 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.032 ms)
+21:45:11.601 | INFO  | Parser.cpp:9                 | Initializing Parser with 21 tokens
+21:45:11.601 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.601 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.601 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.601 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:45:11.601 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.601 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:45:11.601 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.050 ms)
+21:45:11.601 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.601 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.602 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.113 ms)
+21:45:11.602 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.602 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.047 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.032 ms     3.03%
+Parsing                                            1       0.050 ms     4.76%
+Code Generation                                    1       0.113 ms    10.83%
+LLVM IR Construction (Main)                        1       0.027 ms     2.58%
+Other / Overhead                                   -       0.825 ms    78.80%
+================================================================================
+21:45:11.610 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.611 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 326
+21:45:11.611 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.611 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 33
+21:45:11.611 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.040 ms)
+21:45:11.611 | INFO  | Parser.cpp:9                 | Initializing Parser with 33 tokens
+21:45:11.611 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.611 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.611 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.611 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:45:11.611 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.611 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:45:11.611 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.611 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:45:11.611 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.611 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:45:11.611 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.085 ms)
+21:45:11.611 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.611 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.611 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.124 ms)
+21:45:11.611 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.611 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.032 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.147 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.040 ms     3.49%
+Parsing                                            1       0.085 ms     7.37%
+Code Generation                                    1       0.124 ms    10.81%
+LLVM IR Construction (Main)                        1       0.032 ms     2.81%
+Other / Overhead                                   -       0.866 ms    75.52%
+================================================================================
+21:45:11.620 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.621 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:45:11.621 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.621 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 41
+21:45:11.621 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.038 ms)
+21:45:11.621 | INFO  | Parser.cpp:9                 | Initializing Parser with 41 tokens
+21:45:11.621 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.621 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.621 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.621 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.014 ms)
+21:45:11.621 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.621 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:45:11.621 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.621 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.016 ms)
+21:45:11.621 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.621 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.006 ms)
+21:45:11.621 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.097 ms)
+21:45:11.621 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.621 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.621 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.360 ms)
+21:45:11.621 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.621 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.459 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.038 ms     2.60%
+Parsing                                            1       0.097 ms     6.63%
+Code Generation                                    1       0.360 ms    24.66%
+LLVM IR Construction (Main)                        1       0.027 ms     1.87%
+Other / Overhead                                   -       0.937 ms    64.24%
+================================================================================
+21:45:11.630 | INFO  | main.cpp:34                  | PICC starting
+21:45:11.630 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 167
+21:45:11.630 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:45:11.630 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:45:11.631 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.031 ms)
+21:45:11.631 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:45:11.631 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:45:11.631 | INFO  | Parser.cpp:62                | [START] Parsing
+21:45:11.631 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.631 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:45:11.631 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:45:11.631 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:45:11.631 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.050 ms)
+21:45:11.631 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:45:11.631 | INFO  | main.cpp:72                  | [START] Code Generation
+21:45:11.631 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.096 ms)
+21:45:11.631 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:45:11.631 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.926 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.031 ms     3.30%
+Parsing                                            1       0.050 ms     5.45%
+Code Generation                                    1       0.096 ms    10.38%
+LLVM IR Construction (Main)                        1       0.027 ms     2.91%
+Other / Overhead                                   -       0.722 ms    77.96%
+================================================================================
+21:46:04.795 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.795 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 262
+21:46:04.795 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.795 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 35
+21:46:04.795 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.046 ms)
+21:46:04.795 | INFO  | Parser.cpp:9                 | Initializing Parser with 35 tokens
+21:46:04.795 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.795 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.795 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.795 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.013 ms)
+21:46:04.795 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.796 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (1.169 ms)
+21:46:04.796 | INFO  | Parser.cpp:62                | [DONE ] Parsing (1.221 ms)
+21:46:04.804 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.804 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 377
+21:46:04.805 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.805 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 19
+21:46:04.805 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.035 ms)
+21:46:04.805 | INFO  | Parser.cpp:9                 | Initializing Parser with 19 tokens
+21:46:04.805 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.805 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.805 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.805 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:04.805 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.805 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:46:04.805 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.056 ms)
+21:46:04.805 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.805 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.805 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.108 ms)
+21:46:04.805 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.805 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.050 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.035 ms     3.33%
+Parsing                                            1       0.056 ms     5.30%
+Code Generation                                    1       0.108 ms    10.31%
+LLVM IR Construction (Main)                        1       0.026 ms     2.51%
+Other / Overhead                                   -       0.825 ms    78.56%
+================================================================================
+21:46:04.812 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.813 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:46:04.813 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.813 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 37
+21:46:04.813 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.079 ms)
+21:46:04.813 | INFO  | Parser.cpp:9                 | Initializing Parser with 37 tokens
+21:46:04.813 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.813 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.813 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.813 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:04.813 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.813 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.014 ms)
+21:46:04.813 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.813 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:04.813 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.813 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:46:04.813 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.813 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:04.813 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.103 ms)
+21:46:04.813 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.813 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.813 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.123 ms)
+21:46:04.813 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.813 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.019 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.127 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.079 ms     7.01%
+Parsing                                            1       0.103 ms     9.10%
+Code Generation                                    1       0.123 ms    10.90%
+LLVM IR Construction (Main)                        1       0.019 ms     1.72%
+Other / Overhead                                   -       0.803 ms    71.27%
+================================================================================
+21:46:04.822 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.822 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 340
+21:46:04.822 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.822 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 32
+21:46:04.822 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.037 ms)
+21:46:04.822 | INFO  | Parser.cpp:9                 | Initializing Parser with 32 tokens
+21:46:04.822 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnInt'
+21:46:04.822 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.822 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.822 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:46:04.822 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.030 ms)
+21:46:04.822 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnVoid'
+21:46:04.822 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.822 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.822 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.014 ms)
+21:46:04.822 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.030 ms)
+21:46:04.822 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnExpression'
+21:46:04.822 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.822 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.822 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:46:04.822 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.021 ms)
+21:46:04.822 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.822 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.822 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.086 ms)
+21:46:04.822 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.822 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.022 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.963 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.037 ms     3.85%
+Parsing                                            3       0.082 ms     8.48%
+Code Generation                                    1       0.086 ms     8.89%
+LLVM IR Construction (Main)                        1       0.022 ms     2.33%
+Other / Overhead                                   -       0.736 ms    76.45%
+================================================================================
+21:46:04.830 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.831 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 209
+21:46:04.831 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.831 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 13
+21:46:04.831 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.029 ms)
+21:46:04.831 | INFO  | Parser.cpp:9                 | Initializing Parser with 13 tokens
+21:46:04.831 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.831 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.831 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.831 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:04.831 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.026 ms)
+21:46:04.831 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.831 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.831 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.103 ms)
+21:46:04.831 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.831 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.018 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.872 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.029 ms     3.27%
+Parsing                                            1       0.026 ms     3.02%
+Code Generation                                    1       0.103 ms    11.85%
+LLVM IR Construction (Main)                        1       0.018 ms     2.03%
+Other / Overhead                                   -       0.696 ms    79.84%
+================================================================================
+21:46:04.839 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.840 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 104
+21:46:04.840 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.840 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:46:04.840 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.024 ms)
+21:46:04.840 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:46:04.840 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.840 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.840 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.007 ms)
+21:46:04.840 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.840 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.840 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.071 ms)
+21:46:04.840 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.840 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.029 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.763 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.024 ms     3.19%
+Parsing                                            1       0.007 ms     0.98%
+Code Generation                                    1       0.071 ms     9.27%
+LLVM IR Construction (Main)                        1       0.029 ms     3.80%
+Other / Overhead                                   -       0.632 ms    82.76%
+================================================================================
+21:46:04.848 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.848 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 117
+21:46:04.848 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.848 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:46:04.848 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.025 ms)
+21:46:04.848 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:46:04.848 | INFO  | Parser.cpp:61                | Parsing Function 'myvoidfunc'
+21:46:04.848 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.848 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.008 ms)
+21:46:04.848 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.848 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.848 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.068 ms)
+21:46:04.848 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.848 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.741 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.025 ms     3.34%
+Parsing                                            1       0.008 ms     1.11%
+Code Generation                                    1       0.068 ms     9.12%
+LLVM IR Construction (Main)                        1       0.026 ms     3.54%
+Other / Overhead                                   -       0.614 ms    82.90%
+================================================================================
+21:46:04.856 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.856 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 124
+21:46:04.856 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.856 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 15
+21:46:04.856 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.028 ms)
+21:46:04.856 | INFO  | Parser.cpp:9                 | Initializing Parser with 15 tokens
+21:46:04.856 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.856 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.856 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.856 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:04.856 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.029 ms)
+21:46:04.856 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.857 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.857 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.084 ms)
+21:46:04.857 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.857 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.030 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.807 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.028 ms     3.41%
+Parsing                                            1       0.029 ms     3.59%
+Code Generation                                    1       0.084 ms    10.38%
+LLVM IR Construction (Main)                        1       0.030 ms     3.67%
+Other / Overhead                                   -       0.637 ms    78.95%
+================================================================================
+21:46:04.864 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.865 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 197
+21:46:04.865 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.865 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 21
+21:46:04.865 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.031 ms)
+21:46:04.865 | INFO  | Parser.cpp:9                 | Initializing Parser with 21 tokens
+21:46:04.865 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.865 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.865 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.865 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:04.865 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.865 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:04.865 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.047 ms)
+21:46:04.865 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.865 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.865 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.095 ms)
+21:46:04.865 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.865 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.867 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.031 ms     3.54%
+Parsing                                            1       0.047 ms     5.45%
+Code Generation                                    1       0.095 ms    10.92%
+LLVM IR Construction (Main)                        1       0.026 ms     2.96%
+Other / Overhead                                   -       0.669 ms    77.13%
+================================================================================
+21:46:04.873 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.873 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 326
+21:46:04.873 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.873 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 33
+21:46:04.873 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.037 ms)
+21:46:04.873 | INFO  | Parser.cpp:9                 | Initializing Parser with 33 tokens
+21:46:04.873 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.873 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.873 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.873 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:04.873 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.873 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:04.873 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.873 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:04.873 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.873 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:46:04.873 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.082 ms)
+21:46:04.873 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.874 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.874 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.092 ms)
+21:46:04.874 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.874 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.024 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.867 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.037 ms     4.31%
+Parsing                                            1       0.082 ms     9.41%
+Code Generation                                    1       0.092 ms    10.63%
+LLVM IR Construction (Main)                        1       0.024 ms     2.82%
+Other / Overhead                                   -       0.632 ms    72.83%
+================================================================================
+21:46:04.882 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.882 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:46:04.882 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.882 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 41
+21:46:04.882 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.036 ms)
+21:46:04.882 | INFO  | Parser.cpp:9                 | Initializing Parser with 41 tokens
+21:46:04.882 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.882 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.882 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.882 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:46:04.882 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.882 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:04.882 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.882 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:04.882 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.882 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:46:04.882 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.081 ms)
+21:46:04.882 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.882 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.882 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.097 ms)
+21:46:04.882 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.882 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.862 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.036 ms     4.21%
+Parsing                                            1       0.081 ms     9.42%
+Code Generation                                    1       0.097 ms    11.27%
+LLVM IR Construction (Main)                        1       0.026 ms     3.06%
+Other / Overhead                                   -       0.621 ms    72.05%
+================================================================================
+21:46:04.890 | INFO  | main.cpp:34                  | PICC starting
+21:46:04.891 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 167
+21:46:04.891 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:04.891 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:46:04.891 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.030 ms)
+21:46:04.891 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:46:04.891 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:04.891 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:04.891 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.891 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:46:04.891 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:04.891 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.016 ms)
+21:46:04.891 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.055 ms)
+21:46:04.891 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:04.891 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:04.891 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.094 ms)
+21:46:04.891 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:04.891 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.826 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.030 ms     3.60%
+Parsing                                            1       0.055 ms     6.68%
+Code Generation                                    1       0.094 ms    11.36%
+LLVM IR Construction (Main)                        1       0.026 ms     3.10%
+Other / Overhead                                   -       0.621 ms    75.27%
+================================================================================
+21:46:52.791 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.791 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 262
+21:46:52.791 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.791 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 35
+21:46:52.791 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.042 ms)
+21:46:52.791 | INFO  | Parser.cpp:9                 | Initializing Parser with 35 tokens
+21:46:52.791 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.791 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.791 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.791 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:46:52.791 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.791 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.039 ms)
+21:46:52.792 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.089 ms)
+21:46:52.800 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.800 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 377
+21:46:52.800 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.800 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 19
+21:46:52.800 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.035 ms)
+21:46:52.800 | INFO  | Parser.cpp:9                 | Initializing Parser with 19 tokens
+21:46:52.800 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.800 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.800 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.801 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:52.801 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.801 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:46:52.801 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.048 ms)
+21:46:52.801 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.801 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.801 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.114 ms)
+21:46:52.801 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.801 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.017 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.991 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.035 ms     3.50%
+Parsing                                            1       0.048 ms     4.86%
+Code Generation                                    1       0.114 ms    11.48%
+LLVM IR Construction (Main)                        1       0.017 ms     1.70%
+Other / Overhead                                   -       0.777 ms    78.45%
+================================================================================
+21:46:52.809 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.810 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:46:52.810 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.810 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 37
+21:46:52.810 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.040 ms)
+21:46:52.810 | INFO  | Parser.cpp:9                 | Initializing Parser with 37 tokens
+21:46:52.810 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.810 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.810 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.810 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:46:52.810 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.810 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:52.810 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.810 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:52.810 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.810 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:52.810 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.810 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:52.810 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.105 ms)
+21:46:52.810 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.810 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.810 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.143 ms)
+21:46:52.810 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.810 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.019 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.054 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.040 ms     3.80%
+Parsing                                            1       0.105 ms     9.92%
+Code Generation                                    1       0.143 ms    13.55%
+LLVM IR Construction (Main)                        1       0.019 ms     1.76%
+Other / Overhead                                   -       0.748 ms    70.98%
+================================================================================
+21:46:52.818 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.818 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 340
+21:46:52.818 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.818 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 32
+21:46:52.818 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.038 ms)
+21:46:52.818 | INFO  | Parser.cpp:9                 | Initializing Parser with 32 tokens
+21:46:52.819 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnInt'
+21:46:52.819 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.819 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.819 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:46:52.819 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.031 ms)
+21:46:52.819 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnVoid'
+21:46:52.819 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.819 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.819 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:46:52.819 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.024 ms)
+21:46:52.819 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnExpression'
+21:46:52.819 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.819 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.819 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:52.819 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.023 ms)
+21:46:52.819 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.819 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.819 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.098 ms)
+21:46:52.819 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.819 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.993 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.038 ms     3.82%
+Parsing                                            3       0.078 ms     7.87%
+Code Generation                                    1       0.098 ms     9.89%
+LLVM IR Construction (Main)                        1       0.027 ms     2.69%
+Other / Overhead                                   -       0.752 ms    75.73%
+================================================================================
+21:46:52.827 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.827 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 209
+21:46:52.827 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.827 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 13
+21:46:52.827 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.030 ms)
+21:46:52.827 | INFO  | Parser.cpp:9                 | Initializing Parser with 13 tokens
+21:46:52.827 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.827 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.827 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.827 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:52.827 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.035 ms)
+21:46:52.827 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.828 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.828 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.098 ms)
+21:46:52.828 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.828 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.018 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.928 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.030 ms     3.29%
+Parsing                                            1       0.035 ms     3.79%
+Code Generation                                    1       0.098 ms    10.57%
+LLVM IR Construction (Main)                        1       0.018 ms     1.90%
+Other / Overhead                                   -       0.747 ms    80.45%
+================================================================================
+21:46:52.835 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.836 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 104
+21:46:52.836 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.836 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:46:52.836 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.025 ms)
+21:46:52.836 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:46:52.836 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.836 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.836 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.009 ms)
+21:46:52.836 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.836 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.836 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.075 ms)
+21:46:52.836 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.836 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.030 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.859 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.025 ms     2.85%
+Parsing                                            1       0.009 ms     1.04%
+Code Generation                                    1       0.075 ms     8.69%
+LLVM IR Construction (Main)                        1       0.030 ms     3.44%
+Other / Overhead                                   -       0.721 ms    83.98%
+================================================================================
+21:46:52.844 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.844 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 117
+21:46:52.844 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.844 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:46:52.844 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.026 ms)
+21:46:52.844 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:46:52.844 | INFO  | Parser.cpp:61                | Parsing Function 'myvoidfunc'
+21:46:52.844 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.844 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.009 ms)
+21:46:52.844 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.844 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.844 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.073 ms)
+21:46:52.844 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.844 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.031 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.814 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.026 ms     3.15%
+Parsing                                            1       0.009 ms     1.04%
+Code Generation                                    1       0.073 ms     8.95%
+LLVM IR Construction (Main)                        1       0.031 ms     3.77%
+Other / Overhead                                   -       0.677 ms    83.10%
+================================================================================
+21:46:52.852 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.852 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 124
+21:46:52.852 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.852 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 15
+21:46:52.852 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.026 ms)
+21:46:52.852 | INFO  | Parser.cpp:9                 | Initializing Parser with 15 tokens
+21:46:52.852 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.852 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.852 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.852 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:52.852 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.029 ms)
+21:46:52.852 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.852 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.853 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.082 ms)
+21:46:52.853 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.853 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.822 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.026 ms     3.17%
+Parsing                                            1       0.029 ms     3.55%
+Code Generation                                    1       0.082 ms     9.94%
+LLVM IR Construction (Main)                        1       0.027 ms     3.28%
+Other / Overhead                                   -       0.658 ms    80.07%
+================================================================================
+21:46:52.860 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.861 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 197
+21:46:52.861 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.861 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 21
+21:46:52.861 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.032 ms)
+21:46:52.861 | INFO  | Parser.cpp:9                 | Initializing Parser with 21 tokens
+21:46:52.861 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.861 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.861 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.861 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:52.861 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.861 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:52.861 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.049 ms)
+21:46:52.861 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.861 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.861 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.091 ms)
+21:46:52.861 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.861 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.911 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.032 ms     3.46%
+Parsing                                            1       0.049 ms     5.35%
+Code Generation                                    1       0.091 ms     9.96%
+LLVM IR Construction (Main)                        1       0.027 ms     2.92%
+Other / Overhead                                   -       0.714 ms    78.32%
+================================================================================
+21:46:52.869 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.869 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 326
+21:46:52.869 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.869 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 33
+21:46:52.869 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.039 ms)
+21:46:52.869 | INFO  | Parser.cpp:9                 | Initializing Parser with 33 tokens
+21:46:52.869 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.869 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.869 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.869 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:46:52.869 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.869 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:52.869 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.869 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:52.869 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.869 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:46:52.869 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.086 ms)
+21:46:52.869 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.869 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.870 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.093 ms)
+21:46:52.870 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.870 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.983 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.039 ms     3.95%
+Parsing                                            1       0.086 ms     8.76%
+Code Generation                                    1       0.093 ms     9.50%
+LLVM IR Construction (Main)                        1       0.027 ms     2.71%
+Other / Overhead                                   -       0.738 ms    75.07%
+================================================================================
+21:46:52.877 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.877 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:46:52.877 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.877 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 41
+21:46:52.877 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.036 ms)
+21:46:52.877 | INFO  | Parser.cpp:9                 | Initializing Parser with 41 tokens
+21:46:52.877 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.877 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.877 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.877 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:46:52.877 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.877 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:46:52.877 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.877 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:52.877 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.877 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:46:52.877 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.084 ms)
+21:46:52.877 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.877 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.878 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.086 ms)
+21:46:52.878 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.878 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.025 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.841 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.036 ms     4.29%
+Parsing                                            1       0.084 ms    10.01%
+Code Generation                                    1       0.086 ms    10.26%
+LLVM IR Construction (Main)                        1       0.025 ms     2.92%
+Other / Overhead                                   -       0.610 ms    72.52%
+================================================================================
+21:46:52.885 | INFO  | main.cpp:34                  | PICC starting
+21:46:52.886 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 167
+21:46:52.886 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:46:52.886 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:46:52.886 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.033 ms)
+21:46:52.886 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:46:52.886 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:46:52.886 | INFO  | Parser.cpp:62                | [START] Parsing
+21:46:52.886 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.886 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:46:52.886 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:46:52.886 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:46:52.886 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.052 ms)
+21:46:52.886 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:46:52.886 | INFO  | main.cpp:72                  | [START] Code Generation
+21:46:52.886 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.095 ms)
+21:46:52.886 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:46:52.886 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.886 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.033 ms     3.72%
+Parsing                                            1       0.052 ms     5.85%
+Code Generation                                    1       0.095 ms    10.69%
+LLVM IR Construction (Main)                        1       0.026 ms     2.95%
+Other / Overhead                                   -       0.680 ms    76.79%
+================================================================================
+21:47:15.746 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.747 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 258
+21:47:15.747 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.747 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:47:15.747 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.056 ms)
+21:47:15.747 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:47:15.747 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.747 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.747 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.747 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.013 ms)
+21:47:15.747 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.747 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.013 ms)
+21:47:15.747 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.747 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.041 ms)
+21:47:15.747 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.113 ms)
+21:47:15.754 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.755 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 377
+21:47:15.755 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.755 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 19
+21:47:15.755 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.044 ms)
+21:47:15.755 | INFO  | Parser.cpp:9                 | Initializing Parser with 19 tokens
+21:47:15.755 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.755 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.755 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.755 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:15.755 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.755 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.014 ms)
+21:47:15.755 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.057 ms)
+21:47:15.755 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.755 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.755 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.099 ms)
+21:47:15.755 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.755 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.016 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.930 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.044 ms     4.77%
+Parsing                                            1       0.057 ms     6.14%
+Code Generation                                    1       0.099 ms    10.67%
+LLVM IR Construction (Main)                        1       0.016 ms     1.73%
+Other / Overhead                                   -       0.713 ms    76.68%
+================================================================================
+21:47:15.763 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.763 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:47:15.763 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.763 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 37
+21:47:15.763 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.039 ms)
+21:47:15.763 | INFO  | Parser.cpp:9                 | Initializing Parser with 37 tokens
+21:47:15.763 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.763 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.763 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.763 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:47:15.763 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.763 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:15.763 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.763 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:15.763 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.763 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:15.763 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.763 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:15.763 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.104 ms)
+21:47:15.763 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.763 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.764 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.104 ms)
+21:47:15.764 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.764 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.018 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.916 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.039 ms     4.30%
+Parsing                                            1       0.104 ms    11.33%
+Code Generation                                    1       0.104 ms    11.40%
+LLVM IR Construction (Main)                        1       0.018 ms     1.94%
+Other / Overhead                                   -       0.650 ms    71.02%
+================================================================================
+21:47:15.771 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.772 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 340
+21:47:15.772 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.772 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 32
+21:47:15.772 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.039 ms)
+21:47:15.772 | INFO  | Parser.cpp:9                 | Initializing Parser with 32 tokens
+21:47:15.772 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnInt'
+21:47:15.772 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.772 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.772 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:15.772 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.033 ms)
+21:47:15.772 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnVoid'
+21:47:15.772 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.772 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.772 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:47:15.772 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.024 ms)
+21:47:15.772 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnExpression'
+21:47:15.772 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.772 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.772 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:15.772 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.024 ms)
+21:47:15.772 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.772 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.772 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.086 ms)
+21:47:15.772 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.772 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.024 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.926 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.039 ms     4.26%
+Parsing                                            3       0.081 ms     8.75%
+Code Generation                                    1       0.086 ms     9.34%
+LLVM IR Construction (Main)                        1       0.024 ms     2.56%
+Other / Overhead                                   -       0.695 ms    75.09%
+================================================================================
+21:47:15.779 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.780 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 209
+21:47:15.780 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.780 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 13
+21:47:15.780 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.029 ms)
+21:47:15.780 | INFO  | Parser.cpp:9                 | Initializing Parser with 13 tokens
+21:47:15.780 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.780 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.780 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.780 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:15.780 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.028 ms)
+21:47:15.780 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.780 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.780 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.082 ms)
+21:47:15.780 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.780 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.018 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.788 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.029 ms     3.63%
+Parsing                                            1       0.028 ms     3.54%
+Code Generation                                    1       0.082 ms    10.44%
+LLVM IR Construction (Main)                        1       0.018 ms     2.24%
+Other / Overhead                                   -       0.631 ms    80.14%
+================================================================================
+21:47:15.787 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.788 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 104
+21:47:15.788 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.788 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:47:15.788 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.024 ms)
+21:47:15.788 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:47:15.788 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.788 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.788 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.008 ms)
+21:47:15.788 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.788 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.788 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.057 ms)
+21:47:15.788 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.788 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.029 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.704 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.024 ms     3.40%
+Parsing                                            1       0.008 ms     1.17%
+Code Generation                                    1       0.057 ms     8.12%
+LLVM IR Construction (Main)                        1       0.029 ms     4.19%
+Other / Overhead                                   -       0.585 ms    83.12%
+================================================================================
+21:47:15.795 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.796 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 117
+21:47:15.796 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.796 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:47:15.796 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.024 ms)
+21:47:15.796 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:47:15.796 | INFO  | Parser.cpp:61                | Parsing Function 'myvoidfunc'
+21:47:15.796 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.796 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.008 ms)
+21:47:15.796 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.796 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.796 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.060 ms)
+21:47:15.796 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.796 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.664 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.024 ms     3.68%
+Parsing                                            1       0.008 ms     1.23%
+Code Generation                                    1       0.060 ms     9.09%
+LLVM IR Construction (Main)                        1       0.026 ms     3.88%
+Other / Overhead                                   -       0.546 ms    82.13%
+================================================================================
+21:47:15.803 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.803 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 124
+21:47:15.803 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.803 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 15
+21:47:15.803 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.025 ms)
+21:47:15.803 | INFO  | Parser.cpp:9                 | Initializing Parser with 15 tokens
+21:47:15.803 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.803 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.803 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.803 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:15.803 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.030 ms)
+21:47:15.803 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.803 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.803 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.075 ms)
+21:47:15.803 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.804 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.726 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.025 ms     3.49%
+Parsing                                            1       0.030 ms     4.11%
+Code Generation                                    1       0.075 ms    10.29%
+LLVM IR Construction (Main)                        1       0.026 ms     3.63%
+Other / Overhead                                   -       0.570 ms    78.49%
+================================================================================
+21:47:15.811 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.811 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 197
+21:47:15.811 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.811 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 21
+21:47:15.811 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.030 ms)
+21:47:15.811 | INFO  | Parser.cpp:9                 | Initializing Parser with 21 tokens
+21:47:15.811 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.811 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.811 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.811 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:15.811 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.811 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:47:15.811 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.051 ms)
+21:47:15.811 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.811 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.811 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.076 ms)
+21:47:15.811 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.811 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.024 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.745 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.030 ms     3.97%
+Parsing                                            1       0.051 ms     6.85%
+Code Generation                                    1       0.076 ms    10.27%
+LLVM IR Construction (Main)                        1       0.024 ms     3.23%
+Other / Overhead                                   -       0.564 ms    75.68%
+================================================================================
+21:47:15.819 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.819 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 326
+21:47:15.819 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.819 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 33
+21:47:15.819 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.036 ms)
+21:47:15.819 | INFO  | Parser.cpp:9                 | Initializing Parser with 33 tokens
+21:47:15.819 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.819 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.819 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.819 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:15.819 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.819 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:15.819 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.819 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:15.819 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.819 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:15.819 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.081 ms)
+21:47:15.819 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.819 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.819 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.073 ms)
+21:47:15.819 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.819 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.022 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.753 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.036 ms     4.75%
+Parsing                                            1       0.081 ms    10.73%
+Code Generation                                    1       0.073 ms     9.73%
+LLVM IR Construction (Main)                        1       0.022 ms     2.89%
+Other / Overhead                                   -       0.542 ms    71.91%
+================================================================================
+21:47:15.826 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.827 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:47:15.827 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.827 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 41
+21:47:15.827 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.035 ms)
+21:47:15.827 | INFO  | Parser.cpp:9                 | Initializing Parser with 41 tokens
+21:47:15.827 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.827 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.827 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.827 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:15.827 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.827 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:15.827 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.827 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:15.827 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.827 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:15.827 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.083 ms)
+21:47:15.827 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.827 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.827 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.078 ms)
+21:47:15.827 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.827 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.023 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.727 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.035 ms     4.85%
+Parsing                                            1       0.083 ms    11.35%
+Code Generation                                    1       0.078 ms    10.71%
+LLVM IR Construction (Main)                        1       0.023 ms     3.22%
+Other / Overhead                                   -       0.508 ms    69.87%
+================================================================================
+21:47:15.834 | INFO  | main.cpp:34                  | PICC starting
+21:47:15.834 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 167
+21:47:15.834 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:15.834 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:47:15.834 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.029 ms)
+21:47:15.834 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:47:15.835 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:15.835 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:15.835 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.835 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:47:15.835 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:15.835 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:47:15.835 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.050 ms)
+21:47:15.835 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:15.835 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:15.835 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.078 ms)
+21:47:15.835 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:15.835 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.024 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.745 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.029 ms     3.94%
+Parsing                                            1       0.050 ms     6.68%
+Code Generation                                    1       0.078 ms    10.52%
+LLVM IR Construction (Main)                        1       0.024 ms     3.22%
+Other / Overhead                                   -       0.563 ms    75.63%
+================================================================================
+21:47:42.732 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.733 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 258
+21:47:42.733 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.733 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:47:42.733 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.034 ms)
+21:47:42.733 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:47:42.733 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.733 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.733 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.733 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.019 ms)
+21:47:42.733 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.733 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:42.733 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.733 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.334 ms)
+21:47:42.733 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.405 ms)
+21:47:42.747 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.748 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 377
+21:47:42.748 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.748 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 19
+21:47:42.748 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.036 ms)
+21:47:42.748 | INFO  | Parser.cpp:9                 | Initializing Parser with 19 tokens
+21:47:42.748 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.748 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.748 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.748 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:42.748 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.748 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:47:42.748 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.049 ms)
+21:47:42.749 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.754 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.757 | INFO  | main.cpp:72                  | [DONE ] Code Generation (3.583 ms)
+21:47:42.757 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.757 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.173 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 11.474 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.036 ms     0.31%
+Parsing                                            1       0.049 ms     0.43%
+Code Generation                                    1       3.583 ms    31.23%
+LLVM IR Construction (Main)                        1       0.173 ms     1.50%
+Other / Overhead                                   -       7.633 ms    66.52%
+================================================================================
+21:47:42.767 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.767 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:47:42.767 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.768 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 37
+21:47:42.768 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.089 ms)
+21:47:42.768 | INFO  | Parser.cpp:9                 | Initializing Parser with 37 tokens
+21:47:42.768 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.768 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.768 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.768 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:47:42.768 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.768 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.017 ms)
+21:47:42.768 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.768 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:42.768 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.768 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:47:42.768 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.768 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:42.768 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.117 ms)
+21:47:42.768 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.768 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.768 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.417 ms)
+21:47:42.768 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.768 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.021 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.388 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.089 ms     6.40%
+Parsing                                            1       0.117 ms     8.45%
+Code Generation                                    1       0.417 ms    30.07%
+LLVM IR Construction (Main)                        1       0.021 ms     1.48%
+Other / Overhead                                   -       0.744 ms    53.60%
+================================================================================
+21:47:42.777 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.777 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 340
+21:47:42.777 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.777 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 32
+21:47:42.777 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.038 ms)
+21:47:42.777 | INFO  | Parser.cpp:9                 | Initializing Parser with 32 tokens
+21:47:42.777 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnInt'
+21:47:42.777 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.777 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.777 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:47:42.777 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.030 ms)
+21:47:42.777 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnVoid'
+21:47:42.777 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.777 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.777 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:47:42.777 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.024 ms)
+21:47:42.777 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnExpression'
+21:47:42.777 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.777 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.777 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:42.777 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.024 ms)
+21:47:42.777 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.777 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.778 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.321 ms)
+21:47:42.778 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.778 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.282 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.038 ms     2.95%
+Parsing                                            3       0.078 ms     6.10%
+Code Generation                                    1       0.321 ms    25.04%
+LLVM IR Construction (Main)                        1       0.027 ms     2.14%
+Other / Overhead                                   -       0.818 ms    63.77%
+================================================================================
+21:47:42.788 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.789 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 209
+21:47:42.789 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.789 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 13
+21:47:42.789 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.032 ms)
+21:47:42.789 | INFO  | Parser.cpp:9                 | Initializing Parser with 13 tokens
+21:47:42.789 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.789 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.789 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.789 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:42.789 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.031 ms)
+21:47:42.789 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.789 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.789 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.170 ms)
+21:47:42.789 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.789 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.022 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.494 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.032 ms     2.15%
+Parsing                                            1       0.031 ms     2.10%
+Code Generation                                    1       0.170 ms    11.36%
+LLVM IR Construction (Main)                        1       0.022 ms     1.45%
+Other / Overhead                                   -       1.239 ms    82.94%
+================================================================================
+21:47:42.799 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.800 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 104
+21:47:42.800 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.800 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:47:42.800 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.030 ms)
+21:47:42.800 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:47:42.800 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.800 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.800 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.010 ms)
+21:47:42.800 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.800 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.800 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.130 ms)
+21:47:42.800 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.800 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.043 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.461 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.030 ms     2.07%
+Parsing                                            1       0.010 ms     0.70%
+Code Generation                                    1       0.130 ms     8.87%
+LLVM IR Construction (Main)                        1       0.043 ms     2.94%
+Other / Overhead                                   -       1.248 ms    85.42%
+================================================================================
+21:47:42.811 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.811 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 117
+21:47:42.811 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.811 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:47:42.811 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.029 ms)
+21:47:42.811 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:47:42.811 | INFO  | Parser.cpp:61                | Parsing Function 'myvoidfunc'
+21:47:42.811 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.811 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.009 ms)
+21:47:42.811 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.811 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.811 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.081 ms)
+21:47:42.811 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.811 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.030 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.922 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.029 ms     3.19%
+Parsing                                            1       0.009 ms     0.96%
+Code Generation                                    1       0.081 ms     8.74%
+LLVM IR Construction (Main)                        1       0.030 ms     3.25%
+Other / Overhead                                   -       0.773 ms    83.87%
+================================================================================
+21:47:42.821 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.821 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 124
+21:47:42.821 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.821 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 15
+21:47:42.821 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.028 ms)
+21:47:42.821 | INFO  | Parser.cpp:9                 | Initializing Parser with 15 tokens
+21:47:42.821 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.821 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.821 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.821 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:47:42.821 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.030 ms)
+21:47:42.821 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.821 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.821 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.096 ms)
+21:47:42.821 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.822 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.032 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.972 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.028 ms     2.92%
+Parsing                                            1       0.030 ms     3.11%
+Code Generation                                    1       0.096 ms     9.91%
+LLVM IR Construction (Main)                        1       0.032 ms     3.33%
+Other / Overhead                                   -       0.785 ms    80.72%
+================================================================================
+21:47:42.831 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.831 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 197
+21:47:42.831 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.831 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 21
+21:47:42.831 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.033 ms)
+21:47:42.831 | INFO  | Parser.cpp:9                 | Initializing Parser with 21 tokens
+21:47:42.831 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.831 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.831 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.831 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:47:42.831 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.831 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:42.831 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.051 ms)
+21:47:42.831 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.831 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.832 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.101 ms)
+21:47:42.832 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.832 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.028 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.998 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.033 ms     3.27%
+Parsing                                            1       0.051 ms     5.11%
+Code Generation                                    1       0.101 ms    10.17%
+LLVM IR Construction (Main)                        1       0.028 ms     2.83%
+Other / Overhead                                   -       0.784 ms    78.61%
+================================================================================
+21:47:42.841 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.841 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 326
+21:47:42.841 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.841 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 33
+21:47:42.841 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.045 ms)
+21:47:42.841 | INFO  | Parser.cpp:9                 | Initializing Parser with 33 tokens
+21:47:42.841 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.841 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.841 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.841 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:47:42.841 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.841 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:42.841 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.841 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:47:42.841 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.841 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:47:42.841 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.084 ms)
+21:47:42.842 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.842 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.842 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.128 ms)
+21:47:42.842 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.842 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.031 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.260 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.045 ms     3.55%
+Parsing                                            1       0.084 ms     6.63%
+Code Generation                                    1       0.128 ms    10.19%
+LLVM IR Construction (Main)                        1       0.031 ms     2.45%
+Other / Overhead                                   -       0.972 ms    77.18%
+================================================================================
+21:47:42.851 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.852 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:47:42.852 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.852 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 41
+21:47:42.852 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.039 ms)
+21:47:42.852 | INFO  | Parser.cpp:9                 | Initializing Parser with 41 tokens
+21:47:42.852 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.852 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.852 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.852 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:47:42.852 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.852 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:47:42.852 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.852 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:47:42.852 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.852 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:47:42.852 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.090 ms)
+21:47:42.852 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.852 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.852 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.124 ms)
+21:47:42.852 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.852 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.031 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.140 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.039 ms     3.44%
+Parsing                                            1       0.090 ms     7.88%
+Code Generation                                    1       0.124 ms    10.87%
+LLVM IR Construction (Main)                        1       0.031 ms     2.76%
+Other / Overhead                                   -       0.855 ms    75.05%
+================================================================================
+21:47:42.861 | INFO  | main.cpp:34                  | PICC starting
+21:47:42.861 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 167
+21:47:42.862 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:47:42.862 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:47:42.862 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.032 ms)
+21:47:42.862 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:47:42.862 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:47:42.862 | INFO  | Parser.cpp:62                | [START] Parsing
+21:47:42.862 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.862 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:47:42.862 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:47:42.862 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:47:42.862 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.053 ms)
+21:47:42.862 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:47:42.862 | INFO  | main.cpp:72                  | [START] Code Generation
+21:47:42.862 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.105 ms)
+21:47:42.862 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:47:42.862 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.028 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.133 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.032 ms     2.78%
+Parsing                                            1       0.053 ms     4.65%
+Code Generation                                    1       0.105 ms     9.25%
+LLVM IR Construction (Main)                        1       0.028 ms     2.46%
+Other / Overhead                                   -       0.916 ms    80.85%
+================================================================================
+21:53:06.308 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.309 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 258
+21:53:06.309 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.309 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:53:06.309 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.034 ms)
+21:53:06.309 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:53:06.309 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.309 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.309 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.309 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.018 ms)
+21:53:06.309 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.309 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:53:06.309 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.309 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:53:06.309 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.309 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.007 ms)
+21:53:06.309 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.088 ms)
+21:53:06.309 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.310 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.311 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.891 ms)
+21:53:06.311 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.311 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.101 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 3.363 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.034 ms     1.00%
+Parsing                                            1       0.088 ms     2.63%
+Code Generation                                    1       0.891 ms    26.48%
+LLVM IR Construction (Main)                        1       0.101 ms     3.01%
+Other / Overhead                                   -       2.249 ms    66.87%
+================================================================================
+21:53:06.324 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.324 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 377
+21:53:06.324 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.324 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 19
+21:53:06.324 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.047 ms)
+21:53:06.324 | INFO  | Parser.cpp:9                 | Initializing Parser with 19 tokens
+21:53:06.324 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.324 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.324 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.324 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:53:06.324 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.324 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.016 ms)
+21:53:06.324 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.066 ms)
+21:53:06.325 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.325 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.325 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.200 ms)
+21:53:06.325 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.325 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.024 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.244 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.047 ms     3.75%
+Parsing                                            1       0.066 ms     5.28%
+Code Generation                                    1       0.200 ms    16.06%
+LLVM IR Construction (Main)                        1       0.024 ms     1.97%
+Other / Overhead                                   -       0.908 ms    72.94%
+================================================================================
+21:53:06.335 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.336 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:53:06.336 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.336 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 37
+21:53:06.336 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.049 ms)
+21:53:06.336 | INFO  | Parser.cpp:9                 | Initializing Parser with 37 tokens
+21:53:06.336 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.336 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.336 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.336 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:53:06.336 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.336 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:53:06.336 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.336 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:53:06.336 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.336 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:53:06.336 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.336 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:53:06.336 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.120 ms)
+21:53:06.336 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.336 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.336 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.160 ms)
+21:53:06.336 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.336 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.021 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.195 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.049 ms     4.13%
+Parsing                                            1       0.120 ms    10.08%
+Code Generation                                    1       0.160 ms    13.42%
+LLVM IR Construction (Main)                        1       0.021 ms     1.75%
+Other / Overhead                                   -       0.844 ms    70.62%
+================================================================================
+21:53:06.346 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.346 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 340
+21:53:06.346 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.346 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 32
+21:53:06.346 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.040 ms)
+21:53:06.346 | INFO  | Parser.cpp:9                 | Initializing Parser with 32 tokens
+21:53:06.346 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnInt'
+21:53:06.347 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.347 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.347 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:53:06.347 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.033 ms)
+21:53:06.347 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnVoid'
+21:53:06.347 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.347 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.347 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:53:06.347 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.026 ms)
+21:53:06.347 | INFO  | Parser.cpp:61                | Parsing Function 'testReturnExpression'
+21:53:06.347 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.347 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.347 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:53:06.347 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.026 ms)
+21:53:06.347 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.347 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.347 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.124 ms)
+21:53:06.347 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.347 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.031 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.139 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.040 ms     3.55%
+Parsing                                            3       0.085 ms     7.43%
+Code Generation                                    1       0.124 ms    10.86%
+LLVM IR Construction (Main)                        1       0.031 ms     2.69%
+Other / Overhead                                   -       0.860 ms    75.49%
+================================================================================
+21:53:06.356 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.356 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 209
+21:53:06.356 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.356 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 13
+21:53:06.356 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.029 ms)
+21:53:06.356 | INFO  | Parser.cpp:9                 | Initializing Parser with 13 tokens
+21:53:06.356 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.356 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.356 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.356 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:53:06.356 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.029 ms)
+21:53:06.356 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.356 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.356 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.091 ms)
+21:53:06.356 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.356 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.019 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.844 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.029 ms     3.43%
+Parsing                                            1       0.029 ms     3.40%
+Code Generation                                    1       0.091 ms    10.73%
+LLVM IR Construction (Main)                        1       0.019 ms     2.27%
+Other / Overhead                                   -       0.676 ms    80.18%
+================================================================================
+21:53:06.365 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.366 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 104
+21:53:06.366 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.366 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:53:06.366 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.026 ms)
+21:53:06.366 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:53:06.366 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.366 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.366 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.010 ms)
+21:53:06.366 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.366 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.366 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.070 ms)
+21:53:06.366 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.366 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.036 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.889 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.026 ms     2.90%
+Parsing                                            1       0.010 ms     1.17%
+Code Generation                                    1       0.070 ms     7.84%
+LLVM IR Construction (Main)                        1       0.036 ms     4.07%
+Other / Overhead                                   -       0.747 ms    84.02%
+================================================================================
+21:53:06.374 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.375 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 117
+21:53:06.375 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.375 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 9
+21:53:06.375 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.025 ms)
+21:53:06.375 | INFO  | Parser.cpp:9                 | Initializing Parser with 9 tokens
+21:53:06.375 | INFO  | Parser.cpp:61                | Parsing Function 'myvoidfunc'
+21:53:06.375 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.375 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.010 ms)
+21:53:06.375 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.375 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.375 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.072 ms)
+21:53:06.375 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.375 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.027 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.810 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.025 ms     3.14%
+Parsing                                            1       0.010 ms     1.20%
+Code Generation                                    1       0.072 ms     8.93%
+LLVM IR Construction (Main)                        1       0.027 ms     3.31%
+Other / Overhead                                   -       0.675 ms    83.41%
+================================================================================
+21:53:06.384 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.384 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 124
+21:53:06.384 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.384 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 15
+21:53:06.384 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.026 ms)
+21:53:06.384 | INFO  | Parser.cpp:9                 | Initializing Parser with 15 tokens
+21:53:06.384 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.384 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.384 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.384 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:53:06.384 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.030 ms)
+21:53:06.384 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.384 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.385 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.088 ms)
+21:53:06.385 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.385 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.030 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.876 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.026 ms     2.97%
+Parsing                                            1       0.030 ms     3.38%
+Code Generation                                    1       0.088 ms    10.02%
+LLVM IR Construction (Main)                        1       0.030 ms     3.44%
+Other / Overhead                                   -       0.703 ms    80.18%
+================================================================================
+21:53:06.393 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.394 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 197
+21:53:06.394 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.394 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 21
+21:53:06.394 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.031 ms)
+21:53:06.394 | INFO  | Parser.cpp:9                 | Initializing Parser with 21 tokens
+21:53:06.394 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.394 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.394 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.394 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:53:06.394 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.394 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:53:06.394 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.049 ms)
+21:53:06.394 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.394 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.394 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.092 ms)
+21:53:06.394 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.394 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.871 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.031 ms     3.55%
+Parsing                                            1       0.049 ms     5.67%
+Code Generation                                    1       0.092 ms    10.52%
+LLVM IR Construction (Main)                        1       0.026 ms     2.98%
+Other / Overhead                                   -       0.673 ms    77.27%
+================================================================================
+21:53:06.402 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.403 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 326
+21:53:06.403 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.403 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 33
+21:53:06.403 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.038 ms)
+21:53:06.403 | INFO  | Parser.cpp:9                 | Initializing Parser with 33 tokens
+21:53:06.403 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.403 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.403 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.403 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.014 ms)
+21:53:06.403 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.403 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:53:06.403 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.403 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:53:06.403 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.403 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.012 ms)
+21:53:06.403 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.092 ms)
+21:53:06.403 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.403 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.403 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.097 ms)
+21:53:06.403 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.403 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.028 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.946 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.038 ms     4.05%
+Parsing                                            1       0.092 ms     9.72%
+Code Generation                                    1       0.097 ms    10.21%
+LLVM IR Construction (Main)                        1       0.028 ms     3.00%
+Other / Overhead                                   -       0.691 ms    73.02%
+================================================================================
+21:53:06.411 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.411 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 269
+21:53:06.411 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.411 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 41
+21:53:06.411 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.038 ms)
+21:53:06.411 | INFO  | Parser.cpp:9                 | Initializing Parser with 41 tokens
+21:53:06.412 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.412 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.412 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.412 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:53:06.412 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.412 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:53:06.412 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.412 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.009 ms)
+21:53:06.412 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.412 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.008 ms)
+21:53:06.412 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.085 ms)
+21:53:06.412 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.412 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.412 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.129 ms)
+21:53:06.412 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.412 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.036 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 1.005 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.038 ms     3.74%
+Parsing                                            1       0.085 ms     8.48%
+Code Generation                                    1       0.129 ms    12.87%
+LLVM IR Construction (Main)                        1       0.036 ms     3.59%
+Other / Overhead                                   -       0.717 ms    71.32%
+================================================================================
+21:53:06.420 | INFO  | main.cpp:34                  | PICC starting
+21:53:06.420 | INFO  | Lexer.cpp:8                  | Initializing Lexer with source code of length: 167
+21:53:06.420 | INFO  | Lexer.cpp:29                 | [START] Tokenization
+21:53:06.420 | INFO  | Lexer.cpp:234                |   Tokenization completed successfully. Total tokens: 31
+21:53:06.420 | INFO  | Lexer.cpp:29                 | [DONE ] Tokenization (0.041 ms)
+21:53:06.420 | INFO  | Parser.cpp:9                 | Initializing Parser with 31 tokens
+21:53:06.420 | INFO  | Parser.cpp:61                | Parsing Function 'main'
+21:53:06.420 | INFO  | Parser.cpp:62                | [START] Parsing
+21:53:06.420 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.420 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.011 ms)
+21:53:06.420 | INFO  | Parser.cpp:107               |   [START] Parsing Statement
+21:53:06.420 | INFO  | Parser.cpp:107               |   [DONE ] Parsing Statement (0.010 ms)
+21:53:06.420 | INFO  | Parser.cpp:62                | [DONE ] Parsing (0.059 ms)
+21:53:06.420 | INFO  | Codegen.cpp:11               | Initializing CodeGen with new LLVM module
+21:53:06.421 | INFO  | main.cpp:72                  | [START] Code Generation
+21:53:06.421 | INFO  | main.cpp:72                  | [DONE ] Code Generation (0.091 ms)
+21:53:06.421 | INFO  | main.cpp:82                  | [START] LLVM IR Construction (Main)
+21:53:06.421 | INFO  | main.cpp:82                  | [DONE ] LLVM IR Construction (Main) (0.026 ms)
+
+================================================================================
+                         PERFORMANCE SUMMARY                                    
+--------------------------------------------------------------------------------
+ Total Application Time: 0.896 ms
+--------------------------------------------------------------------------------
+ Phase / Scope                                 Count     Total Time     % App
+--------------------------------------------------------------------------------
+Tokenization                                       1       0.041 ms     4.57%
+Parsing                                            1       0.059 ms     6.54%
+Code Generation                                    1       0.091 ms    10.13%
+LLVM IR Construction (Main)                        1       0.026 ms     2.88%
+Other / Overhead                                   -       0.680 ms    75.89%
+================================================================================
