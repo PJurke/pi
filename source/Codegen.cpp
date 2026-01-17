@@ -59,13 +59,12 @@ void Codegen::generateCode(const FuncNode* funcAST) {
         throw std::runtime_error(formatError(funcAST->token, e.what()));
     }
 
-    // Create the function signature
+    // Create the functionC signature
     FunctionType* funcType = FunctionType::get(retType, false);
     Function* func = Function::Create(funcType, Function::ExternalLinkage, funcAST->name, module.get());
     BasicBlock* funcBB = BasicBlock::Create(context, "entry", func);
     builder.SetInsertPoint(funcBB);
 
-    // clear the symbol table for the new function scope
     // clear the symbol table for the new function scope
     namedValues.clear();
     isUnsignedVar.clear();
@@ -121,7 +120,7 @@ void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedR
 
 std::pair<llvm::Value*, bool> Codegen::generateExpression(const ASTNode* node) {
     if (auto numberNode = dynamic_cast<const NumberNode*>(node)) {
-        return {llvm::ConstantInt::get(builder.getInt32Ty(), numberNode->value), false};
+        return {llvm::ConstantInt::get(builder.getInt64Ty(), numberNode->value), false};
     }
     else if (auto charNode = dynamic_cast<const CharNode*>(node)) {
         return {llvm::ConstantInt::get(builder.getInt8Ty(), charNode->value), false};

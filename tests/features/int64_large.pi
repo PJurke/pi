@@ -1,0 +1,6 @@
+func main() -> int64 {
+    const huge: int64 = 5000000000
+    // Check if the value is correctly stored as 64-bit constant
+    return huge
+}
+// CHECK: store i64 5000000000

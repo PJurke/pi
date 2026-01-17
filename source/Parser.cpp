@@ -237,7 +237,7 @@ std::unique_ptr<ASTNode> Parser::parseFactor() {
     
     if (currentToken().type == TOKEN_NUMBER) {
         Token numToken = currentToken();
-        int val = std::stoi(currentToken().lexeme);
+        int64_t val = std::stoll(currentToken().lexeme);
         advance();
         auto node = std::make_unique<NumberNode>();
         node->token = numToken;

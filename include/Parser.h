@@ -21,7 +21,7 @@ struct PrintNode : public ASTNode {
 
 /// @brief AST node for numbers
 struct NumberNode : public ASTNode {
-    int value;
+    int64_t value;
 };
 
 /// @brief AST node for characters
