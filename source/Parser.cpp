@@ -6,56 +6,86 @@
 #include "../include/Token.h"
 
 Parser::Parser(const std::vector<Token>& tokens) : tokens(tokens), index(0) {
-    LOG_INFO("Initializing Parser with " + std::to_string(tokens.size()) + " tokens");
+    // Explicitly ensure an EOF token exists at the end
+    if (this->tokens.empty() || this->tokens.back().type != TOKEN_EOF) {
+        // Use last token's line info if available, else placeholders
+        int line = -1;
+        int col = -1;
+        if (!this->tokens.empty()) {
+            line = this->tokens.back().line;
+            col = this->tokens.back().column; // technically + length but this is fine
+        }
+        this->tokens.push_back({TOKEN_EOF, "", line, col});
+    }
+    LOG_INFO("Initializing Parser with " + std::to_string(this->tokens.size()) + " tokens");
 }
 
-Token Parser::currentToken() {
-    if (index < tokens.size())
-        return tokens[index];
-
-    return {TOKEN_EOF, "", -1, -1};
+const Token& Parser::currentToken() const {
+    return tokens[index];
 }
 
-bool Parser::isAtEOF() {
+bool Parser::isAtEOF() const {
     return currentToken().type == TOKEN_EOF;
 }
 
 void Parser::advance() {
-    if (index < tokens.size())
+    if (!isAtEOF()) {
         index++;
+    }
 }
 
-void Parser::expect(TokenType type, const std::string& errorMessage) {
+const Token& Parser::peek() const {
+    return tokens[index];
+}
 
-    Token token = currentToken();
+const Token& Parser::previous() const {
+    if (index > 0) return tokens[index - 1];
+    return tokens[0];
+}
 
-    if (token.type != type) {
-        std::string fullError = "Syntax Error\n" +
-            errorMessage + "\n" +
-            "Line " + std::to_string(token.line) + ", column " + std::to_string(token.column) + "\n" +
-            "Encountered: \"" + token.lexeme + "\"\n";
+bool Parser::check(TokenType type) const {
+    if (isAtEOF()) return false;
+    return currentToken().type == type;
+}
 
-        throw std::runtime_error(fullError);
+bool Parser::match(const std::vector<TokenType>& types) {
+    for (TokenType type : types) {
+        if (check(type)) {
+            advance();
+            return true;
+        }
+    }
+    return false;
+}
+
+const Token& Parser::consume(TokenType type, const std::string& message) {
+    if (check(type)) {
+        advance();
+        return previous();
     }
 
-    advance();
+    const Token& token = currentToken();
+    std::string fullError = "Syntax Error\n" +
+        message + "\n" +
+        "Line " + std::to_string(token.line) + ", column " + std::to_string(token.column) + "\n" +
+        "Encountered: \"" + token.lexeme + "\"\n";
+
+    throw std::runtime_error(fullError);
 }
 
 std::unique_ptr<FuncNode> Parser::parseFunction() {
 
     // Expected syntax
     // func <name> () -> <type> { <body> }
-    expect(TOKEN_FUNC, "Expected 'func' at beginning of function definition");
+    consume(TOKEN_FUNC, "Expected 'func' at beginning of function definition");
     
     // Function name
-    // Two possibilities: TOKEN_START (entry function) or TOKEN_IDENT (user-defined function)
     std::string functionName;
-
     Token funcNameToken;
-    if (currentToken().type == TOKEN_START || currentToken().type == TOKEN_IDENT) {
-        funcNameToken = currentToken();
-        functionName = currentToken().lexeme;
-        advance();
+
+    if (match({TOKEN_START, TOKEN_IDENT})) {
+        funcNameToken = previous();
+        functionName = funcNameToken.lexeme;
     } else {
         throw std::runtime_error("Expected function name after 'func'");
     }
@@ -64,38 +94,36 @@ std::unique_ptr<FuncNode> Parser::parseFunction() {
     LOG_SCOPE("Parsing");
 
     // Parameter list (empty for now)
-    expect(TOKEN_LPAREN, "Expected '(' after function name");
-    expect(TOKEN_RPAREN, "Expected ')' after '(' in function definition");
+    consume(TOKEN_LPAREN, "Expected '(' after function name");
+    consume(TOKEN_RPAREN, "Expected ')' after '(' in function definition");
 
     // Return type
-    expect(TOKEN_ARROW, "Expected '->' after parameter list");
+    consume(TOKEN_ARROW, "Expected '->' after parameter list");
     std::string returnType;
 
-    Token t = currentToken();
-    if (t.type == TOKEN_CHAR8 || t.type == TOKEN_CHAR16 || t.type == TOKEN_CHAR32 ||
-        t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64 ||
-        t.type == TOKEN_UINT8 || t.type == TOKEN_UINT16 || t.type == TOKEN_UINT32 || t.type == TOKEN_UINT64 ||
-        t.type == TOKEN_VOID) {
-        returnType = t.lexeme;
-        advance();
+    if (match({TOKEN_CHAR8, TOKEN_CHAR16, TOKEN_CHAR32,
+               TOKEN_INT8, TOKEN_INT16, TOKEN_INT32, TOKEN_INT64,
+               TOKEN_UINT8, TOKEN_UINT16, TOKEN_UINT32, TOKEN_UINT64,
+               TOKEN_VOID})) {
+        returnType = previous().lexeme;
     } else {
         throw std::runtime_error("Expected type (e.g. void, char8, char16, char32, int8, int16, int32, int64) after '->'");
     }
 
     // Function body
-    expect(TOKEN_LBRACE, "Expected '{' to start function body");
+    consume(TOKEN_LBRACE, "Expected '{' to start function body");
 
     // We allow multiple statements in a function body
     std::vector<std::unique_ptr<ASTNode>> bodyStatements;
 
-    while (currentToken().type != TOKEN_RBRACE) {
+    while (!check(TOKEN_RBRACE) && !isAtEOF()) {
 
         // Parse statement function processes print and const statements
         bodyStatements.push_back(parseStatement());
         
     }
     
-    expect(TOKEN_RBRACE, "Expected '}' to close function body");
+    consume(TOKEN_RBRACE, "Expected '}' to close function body");
 
     auto funcNode = std::make_unique<FuncNode>();
     funcNode->token = funcNameToken;
@@ -109,56 +137,43 @@ std::unique_ptr<FuncNode> Parser::parseFunction() {
 std::unique_ptr<ASTNode> Parser::parseStatement() {
     LOG_SCOPE("Parsing Statement");
 
-    if (currentToken().type == TOKEN_PRINT) {
-
-        Token printToken = currentToken();
-        advance(); // skip 'print'
-        expect(TOKEN_LPAREN, "Expected '(' after 'print'");
+    if (match({TOKEN_PRINT})) {
+        Token printToken = previous();
+        consume(TOKEN_LPAREN, "Expected '(' after 'print'");
 
         std::string printText;
-
-        if (currentToken().type == TOKEN_STRING) {
-            printText = currentToken().lexeme;
-            advance();
+        if (match({TOKEN_STRING})) {
+            printText = previous().lexeme;
         } else {
             throw std::runtime_error("Expected string literal in print statement");
         }
 
-        expect(TOKEN_RPAREN, "Expected ')' after string literal");
+        consume(TOKEN_RPAREN, "Expected ')' after string literal");
 
         auto printNode = std::make_unique<PrintNode>();
         printNode->token = printToken;
         printNode->text = printText;
         return printNode;
     }
-    else if (currentToken().type == TOKEN_CONST) {
+    else if (match({TOKEN_CONST})) {
+        Token constToken = previous();
 
-        Token constToken = currentToken();
-        advance(); // skip 'const'
+        Token identToken = consume(TOKEN_IDENT, "Expected identifier after 'const'");
+        std::string name = identToken.lexeme;
 
-        if (currentToken().type != TOKEN_IDENT)
-            throw std::runtime_error("Expected identifier after 'const'");
-
-        std::string name = currentToken().lexeme;
-        advance();
-
-        expect(TOKEN_COLON, "Expected ':' after identifier");
+        consume(TOKEN_COLON, "Expected ':' after identifier");
 
         std::string declaredType;
-
-        Token t = currentToken();
-        if (t.type == TOKEN_CHAR8 || t.type == TOKEN_CHAR16 || t.type == TOKEN_CHAR32 ||
-            t.type == TOKEN_INT8 || t.type == TOKEN_INT16 || t.type == TOKEN_INT32 || t.type == TOKEN_INT64 ||
-            t.type == TOKEN_UINT8 || t.type == TOKEN_UINT16 || t.type == TOKEN_UINT32 || t.type == TOKEN_UINT64) {
-            declaredType = t.lexeme;
-            advance();
+        if (match({TOKEN_CHAR8, TOKEN_CHAR16, TOKEN_CHAR32,
+                   TOKEN_INT8, TOKEN_INT16, TOKEN_INT32, TOKEN_INT64,
+                   TOKEN_UINT8, TOKEN_UINT16, TOKEN_UINT32, TOKEN_UINT64})) {
+            declaredType = previous().lexeme;
         } else {
             throw std::runtime_error("Expected type after ':'");
         }
 
-        expect(TOKEN_ASSIGN, "Expected '=' after type");
+        consume(TOKEN_ASSIGN, "Expected '=' after type");
 
-        // Parse expression for the value
         auto expr = parseExpression();
 
         auto node = std::make_unique<ConstNode>();
@@ -168,16 +183,13 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
         node->value = std::move(expr);
         return node;
     }
-
-    else if (currentToken().type == TOKEN_RETURN) {
-        Token returnToken = currentToken();
-        advance(); // skip 'return'
-
+    else if (match({TOKEN_RETURN})) {
+        Token returnToken = previous();
+        
         std::unique_ptr<ASTNode> returnVal = nullptr;
 
-        Token t = currentToken();
-        // Check if the next token starts an expression
-        if (t.type == TOKEN_NUMBER || t.type == TOKEN_CHAR || t.type == TOKEN_LPAREN || t.type == TOKEN_IDENT) {
+        // Check lookahead for expression starters
+        if (check(TOKEN_NUMBER) || check(TOKEN_CHAR) || check(TOKEN_LPAREN) || check(TOKEN_IDENT)) {
             returnVal = parseExpression();
         }
 
@@ -187,17 +199,17 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
         return returnNode;
     }
 
-    throw std::runtime_error("Expected statement (print, const, or return)");
+    Token t = currentToken();
+    throw std::runtime_error("Expected statement (print, const, or return) but found '" + t.lexeme + "'");
 }
 
 std::unique_ptr<ASTNode> Parser::parseExpression() {
     // Expression ::= Term { ("+" | "-") Term }
     auto left = parseTerm();
 
-    while (currentToken().type == TOKEN_PLUS || currentToken().type == TOKEN_MINUS) {
-        Token opToken = currentToken();
-        std::string op = currentToken().lexeme;
-        advance();
+    while (match({TOKEN_PLUS, TOKEN_MINUS})) {
+        Token opToken = previous();
+        std::string op = opToken.lexeme;
         auto right = parseTerm();
         
         auto binaryNode = std::make_unique<BinaryOpNode>();
@@ -215,10 +227,9 @@ std::unique_ptr<ASTNode> Parser::parseTerm() {
     // Term ::= Factor { ("*" | "/") Factor }
     auto left = parseFactor();
 
-    while (currentToken().type == TOKEN_STAR || currentToken().type == TOKEN_SLASH) {
-        Token opToken = currentToken();
-        std::string op = currentToken().lexeme;
-        advance();
+    while (match({TOKEN_STAR, TOKEN_SLASH})) {
+        Token opToken = previous();
+        std::string op = opToken.lexeme;
         auto right = parseFactor();
 
         auto binaryNode = std::make_unique<BinaryOpNode>();
@@ -235,37 +246,33 @@ std::unique_ptr<ASTNode> Parser::parseTerm() {
 std::unique_ptr<ASTNode> Parser::parseFactor() {
     // Factor ::= NumberLiteral | "(" Expression ")"
     
-    if (currentToken().type == TOKEN_NUMBER) {
-        Token numToken = currentToken();
-        int64_t val = std::stoll(currentToken().lexeme);
-        advance();
+    if (match({TOKEN_NUMBER})) {
+        Token numToken = previous();
+        int64_t val = std::stoll(numToken.lexeme);
         auto node = std::make_unique<NumberNode>();
         node->token = numToken;
         node->value = val;
         return node;
     }
-    else if (currentToken().type == TOKEN_CHAR) {
-        Token charToken = currentToken();
-        char val = currentToken().lexeme[0];
-        advance();
+    else if (match({TOKEN_CHAR})) {
+        Token charToken = previous();
+        char val = charToken.lexeme[0];
         auto node = std::make_unique<CharNode>();
         node->token = charToken;
         node->value = val;
         return node;
     }
-    else if (currentToken().type == TOKEN_IDENT) {
-        Token varToken = currentToken();
-        std::string name = currentToken().lexeme;
-        advance();
+    else if (match({TOKEN_IDENT})) {
+        Token varToken = previous();
+        std::string name = varToken.lexeme;
         auto node = std::make_unique<VariableNode>();
         node->token = varToken;
         node->name = name;
         return node;
     }
-    else if (currentToken().type == TOKEN_LPAREN) {
-        advance(); // skip '('
+    else if (match({TOKEN_LPAREN})) {
         auto expr = parseExpression();
-        expect(TOKEN_RPAREN, "Expected ')' after expression");
+        consume(TOKEN_RPAREN, "Expected ')' after expression");
         return expr;
     }
 

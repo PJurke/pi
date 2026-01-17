@@ -1,3 +1,3 @@
 func main() -> int32 {
     return 0
-// EXPECT_FAIL: Expected statement
+// EXPECT_FAIL: Expected '}' to close function body

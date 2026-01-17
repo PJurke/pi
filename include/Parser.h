@@ -67,7 +67,7 @@ public:
     std::unique_ptr<ASTNode> parseStatement();
     
     /// @brief Check if parser reached end of file
-    bool isAtEOF();
+    bool isAtEOF() const;
     
     // Expression parsing
     std::unique_ptr<ASTNode> parseExpression();
@@ -75,18 +75,22 @@ public:
     std::unique_ptr<ASTNode> parseFactor();
 
 private:
-    const std::vector<Token>& tokens;
+    std::vector<Token> tokens; // Owns the tokens now to ensure EOF safety
     size_t index;
 
-    /// @brief Get the current token from the token vector 
-    Token currentToken();
+    /// @brief Get the current token
+    const Token& currentToken() const;
 
     /// @brief Advance the index to the next token
     void advance();
     
-    // Auxiliary functions, e.g. to check expected tokens:
-    void expect(TokenType type, const std::string& errorMessage);
-
+    // New Helper API
+    bool check(TokenType type) const;
+    bool match(const std::vector<TokenType>& types);
+    const Token& consume(TokenType type, const std::string& message);
+    const Token& peek() const;
+    const Token& previous() const;
+    
 };
 
 #endif
