@@ -6,6 +6,10 @@
 
 using namespace llvm;
 
+static std::string formatError(const Token& token, const std::string& message) {
+    return "Error: [Line " + std::to_string(token.line) + ", Col " + std::to_string(token.column) + "] " + message;
+}
+
 Codegen::Codegen() : module(std::make_unique<Module>("MyLangModule", context)), builder(context) {
 
     LOG_INFO("Initializing CodeGen with new LLVM module");
@@ -48,7 +52,12 @@ bool Codegen::isUnsignedType(const std::string &typeStr) {
 void Codegen::generateCode(const FuncNode* funcAST) {
 
     // Determine the LLVM type for the return type of the function
-    llvm::Type* retType = getReturnType(funcAST->returnType);
+    llvm::Type* retType = nullptr;
+    try {
+        retType = getReturnType(funcAST->returnType);
+    } catch (const std::exception& e) {
+        throw std::runtime_error(formatError(funcAST->token, e.what()));
+    }
 
     // Create the function signature
     FunctionType* funcType = FunctionType::get(retType, false);
@@ -88,13 +97,13 @@ void Codegen::generateCode(const FuncNode* funcAST) {
 void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedRetType, bool isUnsigned) {
     if (!returnNode->returnValue) {
         if (!expectedRetType->isVoidTy())
-            throw std::runtime_error("Function must return a value");
+            throw std::runtime_error(formatError(returnNode->token, "Function must return a value"));
         builder.CreateRetVoid();
         return;
     }
 
     if (expectedRetType->isVoidTy())
-        throw std::runtime_error("Void function cannot return a value");
+        throw std::runtime_error(formatError(returnNode->token, "Void function cannot return a value"));
 
     llvm::Value* retVal = generateExpression(returnNode->returnValue.get()).first;
 
@@ -103,7 +112,7 @@ void Codegen::generateReturn(const ReturnNode* returnNode, llvm::Type* expectedR
         if (expectedRetType->isIntegerTy() && retVal->getType()->isIntegerTy()) {
             retVal = builder.CreateIntCast(retVal, expectedRetType, !isUnsigned, "casttmp");
         } else {
-             throw std::runtime_error("Return type mismatch");
+             throw std::runtime_error(formatError(returnNode->token, "Return type mismatch"));
         }
     }
 
@@ -120,7 +129,7 @@ std::pair<llvm::Value*, bool> Codegen::generateExpression(const ASTNode* node) {
     else if (auto variableNode = dynamic_cast<const VariableNode*>(node)) {
         llvm::AllocaInst* alloca = namedValues[variableNode->name];
         if (!alloca) {
-             throw std::runtime_error("Unknown variable: " + variableNode->name);
+             throw std::runtime_error(formatError(variableNode->token, "Unknown variable: " + variableNode->name));
         }
         bool isUnsigned = isUnsignedVar[variableNode->name];
         return {builder.CreateLoad(alloca->getAllocatedType(), alloca, variableNode->name.c_str()), isUnsigned};
@@ -144,7 +153,7 @@ std::pair<llvm::Value*, bool> Codegen::generateExpression(const ASTNode* node) {
             // Check for division by literal zero
             if (auto numNode = dynamic_cast<const NumberNode*>(binaryNode->right.get())) {
                 if (numNode->value == 0) {
-                     throw std::runtime_error("Division by zero");
+                     throw std::runtime_error(formatError(binaryNode->token, "Division by zero"));
                 }
             }
 
@@ -154,16 +163,21 @@ std::pair<llvm::Value*, bool> Codegen::generateExpression(const ASTNode* node) {
                 return {builder.CreateSDiv(left, right, "divtmp"), false};
         }
         
-        throw std::runtime_error("Unknown binary operator: " + binaryNode->op);
+        throw std::runtime_error(formatError(binaryNode->token, "Unknown binary operator: " + binaryNode->op));
     }
     
-    throw std::runtime_error("Unknown expression node type");
+    throw std::runtime_error(formatError(node->token, "Unknown expression node type"));
 }
 
 void Codegen::generateConst(const ConstNode* constNode) {
 
     // Determine the corresponding LLVM type for the constant
-    llvm::Type* llvmType = getReturnType(constNode->type);
+    llvm::Type* llvmType = nullptr;
+    try {
+        llvmType = getReturnType(constNode->type);
+    } catch (const std::exception& e) {
+        throw std::runtime_error(formatError(constNode->token, e.what()));
+    }
 
     // Create a local variable (allocaInst)
     llvm::AllocaInst* allocaInst = builder.CreateAlloca(llvmType, nullptr, constNode->name);
@@ -174,15 +188,15 @@ void Codegen::generateConst(const ConstNode* constNode) {
         std::string type = constNode->type;
 
         if (type == "int8") {
-            if (val < -128 || val > 127) throw std::runtime_error("Constant value out of range (int8)");
+            if (val < -128 || val > 127) throw std::runtime_error(formatError(numNode->token, "Constant value out of range (int8)"));
         } else if (type == "uint8") {
-            if (val < 0 || val > 255) throw std::runtime_error("Constant value out of range (uint8)");
+            if (val < 0 || val > 255) throw std::runtime_error(formatError(numNode->token, "Constant value out of range (uint8)"));
         } else if (type == "int16") {
-            if (val < -32768 || val > 32767) throw std::runtime_error("Constant value out of range (int16)");
+            if (val < -32768 || val > 32767) throw std::runtime_error(formatError(numNode->token, "Constant value out of range (int16)"));
         } else if (type == "uint16") {
-            if (val < 0 || val > 65535) throw std::runtime_error("Constant value out of range (uint16)");
+            if (val < 0 || val > 65535) throw std::runtime_error(formatError(numNode->token, "Constant value out of range (uint16)"));
         } else if (type == "uint32") {
-            if (val < 0 || val > 4294967295) throw std::runtime_error("Constant value out of range (uint32)");
+            if (val < 0 || val > 4294967295) throw std::runtime_error(formatError(numNode->token, "Constant value out of range (uint32)"));
         }
         // int32 and int64 are generally covered by the parser's integer limit (if strictly 32-bit int), but good to be safe.
     }

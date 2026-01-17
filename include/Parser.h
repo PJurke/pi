@@ -9,6 +9,7 @@
 
 /// @brief Base class for AST nodes
 struct ASTNode {
+    Token token;
     virtual ~ASTNode() = default;
 };
 

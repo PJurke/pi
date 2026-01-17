@@ -51,7 +51,9 @@ std::unique_ptr<FuncNode> Parser::parseFunction() {
     // Two possibilities: TOKEN_START (entry function) or TOKEN_IDENT (user-defined function)
     std::string functionName;
 
+    Token funcNameToken;
     if (currentToken().type == TOKEN_START || currentToken().type == TOKEN_IDENT) {
+        funcNameToken = currentToken();
         functionName = currentToken().lexeme;
         advance();
     } else {
@@ -96,6 +98,7 @@ std::unique_ptr<FuncNode> Parser::parseFunction() {
     expect(TOKEN_RBRACE, "Expected '}' to close function body");
 
     auto funcNode = std::make_unique<FuncNode>();
+    funcNode->token = funcNameToken;
     funcNode->name = functionName;
     funcNode->returnType = returnType;
     funcNode->body = std::move(bodyStatements);
@@ -108,6 +111,7 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
     if (currentToken().type == TOKEN_PRINT) {
 
+        Token printToken = currentToken();
         advance(); // skip 'print'
         expect(TOKEN_LPAREN, "Expected '(' after 'print'");
 
@@ -123,11 +127,13 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
         expect(TOKEN_RPAREN, "Expected ')' after string literal");
 
         auto printNode = std::make_unique<PrintNode>();
+        printNode->token = printToken;
         printNode->text = printText;
         return printNode;
     }
     else if (currentToken().type == TOKEN_CONST) {
 
+        Token constToken = currentToken();
         advance(); // skip 'const'
 
         if (currentToken().type != TOKEN_IDENT)
@@ -156,6 +162,7 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
         auto expr = parseExpression();
 
         auto node = std::make_unique<ConstNode>();
+        node->token = constToken;
         node->name = name;
         node->type = declaredType;
         node->value = std::move(expr);
@@ -163,6 +170,7 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
     }
 
     else if (currentToken().type == TOKEN_RETURN) {
+        Token returnToken = currentToken();
         advance(); // skip 'return'
 
         std::unique_ptr<ASTNode> returnVal = nullptr;
@@ -174,6 +182,7 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
         }
 
         auto returnNode = std::make_unique<ReturnNode>();
+        returnNode->token = returnToken;
         returnNode->returnValue = std::move(returnVal);
         return returnNode;
     }
@@ -186,11 +195,13 @@ std::unique_ptr<ASTNode> Parser::parseExpression() {
     auto left = parseTerm();
 
     while (currentToken().type == TOKEN_PLUS || currentToken().type == TOKEN_MINUS) {
+        Token opToken = currentToken();
         std::string op = currentToken().lexeme;
         advance();
         auto right = parseTerm();
         
         auto binaryNode = std::make_unique<BinaryOpNode>();
+        binaryNode->token = opToken;
         binaryNode->left = std::move(left);
         binaryNode->right = std::move(right);
         binaryNode->op = op;
@@ -205,11 +216,13 @@ std::unique_ptr<ASTNode> Parser::parseTerm() {
     auto left = parseFactor();
 
     while (currentToken().type == TOKEN_STAR || currentToken().type == TOKEN_SLASH) {
+        Token opToken = currentToken();
         std::string op = currentToken().lexeme;
         advance();
         auto right = parseFactor();
 
         auto binaryNode = std::make_unique<BinaryOpNode>();
+        binaryNode->token = opToken;
         binaryNode->left = std::move(left);
         binaryNode->right = std::move(right);
         binaryNode->op = op;
@@ -223,23 +236,29 @@ std::unique_ptr<ASTNode> Parser::parseFactor() {
     // Factor ::= NumberLiteral | "(" Expression ")"
     
     if (currentToken().type == TOKEN_NUMBER) {
+        Token numToken = currentToken();
         int val = std::stoi(currentToken().lexeme);
         advance();
         auto node = std::make_unique<NumberNode>();
+        node->token = numToken;
         node->value = val;
         return node;
     }
     else if (currentToken().type == TOKEN_CHAR) {
+        Token charToken = currentToken();
         char val = currentToken().lexeme[0];
         advance();
         auto node = std::make_unique<CharNode>();
+        node->token = charToken;
         node->value = val;
         return node;
     }
     else if (currentToken().type == TOKEN_IDENT) {
+        Token varToken = currentToken();
         std::string name = currentToken().lexeme;
         advance();
         auto node = std::make_unique<VariableNode>();
+        node->token = varToken;
         node->name = name;
         return node;
     }
