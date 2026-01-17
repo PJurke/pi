@@ -1,0 +1,5 @@
+func main() -> int32 {
+    const a: int32 = -5
+    return a
+}
+// CHECK: store i32 -5

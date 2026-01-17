@@ -240,6 +240,18 @@ std::unique_ptr<ASTNode> Parser::parseTerm() {
 std::unique_ptr<ASTNode> Parser::parseFactor() {
     // Factor ::= NumberLiteral | "(" Expression ")"
     
+    if (match({TOKEN_MINUS})) {
+        Token opToken = previous();
+        auto operand = parseFactor(); // Recursion for "- - 5" Support
+
+        if (auto num = dynamic_cast<NumberNode*>(operand.get())) {
+            num->value = -num->value;
+            num->token = opToken; // Update Token location to the minus sign
+            return operand;
+        }
+        throw std::runtime_error("Syntax Error\nLine " + std::to_string(opToken.line) + ": Only integer literals can be negated currently.");
+    }
+
     if (match({TOKEN_NUMBER})) {
         Token numToken = previous();
         int64_t val = std::stoll(numToken.lexeme);
