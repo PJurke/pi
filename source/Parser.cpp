@@ -73,6 +73,16 @@ const Token& Parser::consume(TokenType type, const std::string& message) {
     throw std::runtime_error(fullError);
 }
 
+std::string Parser::parseType() {
+    if (match({TOKEN_CHAR8, TOKEN_CHAR16, TOKEN_CHAR32,
+               TOKEN_INT8, TOKEN_INT16, TOKEN_INT32, TOKEN_INT64,
+               TOKEN_UINT8, TOKEN_UINT16, TOKEN_UINT32, TOKEN_UINT64,
+               TOKEN_VOID})) {
+        return previous().lexeme;
+    }
+    throw std::runtime_error("Expected type (e.g. void, char8, char16, char32, int8, int16, int32, int64) after symbol");
+}
+
 std::unique_ptr<FuncNode> Parser::parseFunction() {
 
     // Expected syntax
@@ -99,16 +109,7 @@ std::unique_ptr<FuncNode> Parser::parseFunction() {
 
     // Return type
     consume(TOKEN_ARROW, "Expected '->' after parameter list");
-    std::string returnType;
-
-    if (match({TOKEN_CHAR8, TOKEN_CHAR16, TOKEN_CHAR32,
-               TOKEN_INT8, TOKEN_INT16, TOKEN_INT32, TOKEN_INT64,
-               TOKEN_UINT8, TOKEN_UINT16, TOKEN_UINT32, TOKEN_UINT64,
-               TOKEN_VOID})) {
-        returnType = previous().lexeme;
-    } else {
-        throw std::runtime_error("Expected type (e.g. void, char8, char16, char32, int8, int16, int32, int64) after '->'");
-    }
+    std::string returnType = parseType();
 
     // Function body
     consume(TOKEN_LBRACE, "Expected '{' to start function body");
@@ -163,14 +164,7 @@ std::unique_ptr<ASTNode> Parser::parseStatement() {
 
         consume(TOKEN_COLON, "Expected ':' after identifier");
 
-        std::string declaredType;
-        if (match({TOKEN_CHAR8, TOKEN_CHAR16, TOKEN_CHAR32,
-                   TOKEN_INT8, TOKEN_INT16, TOKEN_INT32, TOKEN_INT64,
-                   TOKEN_UINT8, TOKEN_UINT16, TOKEN_UINT32, TOKEN_UINT64})) {
-            declaredType = previous().lexeme;
-        } else {
-            throw std::runtime_error("Expected type after ':'");
-        }
+        std::string declaredType = parseType();
 
         consume(TOKEN_ASSIGN, "Expected '=' after type");
 

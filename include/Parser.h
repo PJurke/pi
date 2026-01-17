@@ -75,6 +75,7 @@ public:
     std::unique_ptr<ASTNode> parseFactor();
 
 private:
+    std::string parseType();
     std::vector<Token> tokens; // Owns the tokens now to ensure EOF safety
     size_t index;
 
